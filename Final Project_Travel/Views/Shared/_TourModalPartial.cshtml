@@ -1,0 +1,123 @@
+﻿@model Tour
+
+
+<div class="modal-content">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+    </div>
+    <div class="modal-body">
+        <div class="col-lg-6 mb-3">
+            <div class="tour-title ">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <h2>@Model.Name</h2>
+                    </div>
+                    <div class="col-lg-6 mt-2">
+                        <h4 style="font-size: 18px;">
+                            Code:<span style="font-size: 16px; color: gray;">
+                                @Model.Code
+                            </span>
+                        </h4>
+                    </div>
+                </div>
+            </div>
+            <div class="tour-title-bottom">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <i class="fa-solid fa-hourglass-half"
+                           style="color: #DBA337;font-size: 16px;"></i> <span>@(@Model.EndDate.Subtract(Model.StartDate).Days+1) DAYS - @Model.EndDate.Subtract(Model.StartDate).Days NIGHTS</span>
+                    </div>
+                    <div class="col-lg-6">
+                        <h4 style="font-size: 16px; margin-left: -16px;">
+                            <i class="fa-solid fa-tag"
+                               style="color: #DBA337; font-weight: 800;"></i> Category:<span style="font-size: 16px; color: gray;"> @Model.Category</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- product details inner end -->
+        <div class="product-details-inner mb-5">
+            <div class="row">
+                <div class="col-lg-5">
+
+                    <img style="width: 100%;" src="~/manage/assets/uploads/tours/@Model.TourImages.FirstOrDefault(x=>x.PosterStatus==true).ImageName" alt="">
+
+                </div>
+                <div class="col-lg-7">
+                    <div class="product-details-des">
+                        <p>
+                          @Model.Desc
+                        </p>
+
+                        <div class="ratings">
+                            <span class="good"><i class="fa fa-star"></i></span>
+                            <span class="good"><i class="fa fa-star"></i></span>
+                            <span class="good"><i class="fa fa-star"></i></span>
+                            <span class="good"><i class="fa fa-star"></i></span>
+                            <span><i class="fa fa-star"></i></span>
+                        </div>
+
+                        <div class="review-description">
+
+                            <div class="price-box">
+                                <span class="regular-price">@Model.DiscountPrice AZN</span>
+                                <span class="old-price"><del>@Model.SalePrice AZN</del></span>
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="col-lg-6">
+                            <h4 style="font-size: 16px;">
+                                <i class="fa-solid fa-users-line"
+                                   style="color: #DBA337; font-weight: 800;"></i>
+                                Count:<span style="font-size: 16px; color: gray;">
+                                    @Model.PersonCount
+                                </span>
+                        </div>
+                        <div class="col-lg-6">
+                            <h4 style="font-size: 16px; ">
+                                <i class="fa-solid fa-location-dot"
+                                   style="color: #DBA337; font-weight: 800;"></i>
+                                Departure Location:<span style="font-size: 16px; color: gray;">
+                                    @Model.DepartureLocation.Name
+                                </span>
+                        </div>
+                        <div class="col-lg-6">
+                            <h4 style="font-size: 16px; ">
+                                <i class="fa-solid fa-plane"
+                                   style="color: #DBA337; font-weight: 800;"></i>
+                                Destination:<span style="font-size: 16px; color: gray;">
+                                    @Model.Destination.Name
+                                </span>
+                        </div>
+
+
+                        <div class="col-lg-6">
+                            <h4 style="font-size: 16px; ">
+                                <i class="fa-solid fa-heart-circle-check"
+                                   style="color: #DBA337; font-weight: 800;"></i>
+                                Insurance:<span style="font-size: 16px; color: gray;">
+                                    @(Model.Insurance ? "Included" : "Not Included")
+                                </span>
+                        </div>
+                        <div class="col-lg-6">
+                            <h4 style="font-size: 16px; ">
+                                <i class="fa-solid fa-taxi"
+                                   style="color: #DBA337; font-weight: 800;"></i>
+                                Transfer:<span style="font-size: 16px; color: gray;">
+                                    @(Model.Transfer ? "Included" : "Not Included")
+                                </span>
+                        </div>
+
+                        <a asp-action="index" asp-controller="checkout" class="btn btn-default"
+                           style="background-color: #DBA337; margin-left: 50%;">Booking Now</a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- product details inner end -->
+    </div>
+</div>

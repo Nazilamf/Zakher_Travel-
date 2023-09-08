@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\HP\\Desktop\\API\\API-Project\\Final Project_Travel\\Final Project_Travel\\Final Project_Travel.csproj": {}
+    "C:\\Users\\HP\\Desktop\\API\\API-Project\\Final Project_Travel\\Zakher_Travel-\\Final Project_Travel\\Final Project_Travel.csproj": {}
   },
   "projects": {
-    "C:\\Users\\HP\\Desktop\\API\\API-Project\\Final Project_Travel\\Final Project_Travel\\Final Project_Travel.csproj": {
+    "C:\\Users\\HP\\Desktop\\API\\API-Project\\Final Project_Travel\\Zakher_Travel-\\Final Project_Travel\\Final Project_Travel.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\HP\\Desktop\\API\\API-Project\\Final Project_Travel\\Final Project_Travel\\Final Project_Travel.csproj",
+        "projectUniqueName": "C:\\Users\\HP\\Desktop\\API\\API-Project\\Final Project_Travel\\Zakher_Travel-\\Final Project_Travel\\Final Project_Travel.csproj",
         "projectName": "Final Project_Travel",
-        "projectPath": "C:\\Users\\HP\\Desktop\\API\\API-Project\\Final Project_Travel\\Final Project_Travel\\Final Project_Travel.csproj",
+        "projectPath": "C:\\Users\\HP\\Desktop\\API\\API-Project\\Final Project_Travel\\Zakher_Travel-\\Final Project_Travel\\Final Project_Travel.csproj",
         "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\HP\\Desktop\\API\\API-Project\\Final Project_Travel\\Final Project_Travel\\obj\\",
+        "outputPath": "C:\\Users\\HP\\Desktop\\API\\API-Project\\Final Project_Travel\\Zakher_Travel-\\Final Project_Travel\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -53,6 +53,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[6.0.21, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[6.0.16, )"
             }
           },
           "imports": [

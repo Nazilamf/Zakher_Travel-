@@ -8,6 +8,11 @@ namespace Final_Project_Travel.ViewModels
         public List<Destination> Destinations { get; set; }
 
         public List <Tour>PopularTours { get; set; }
+        public List <Advantage> Advantages { get; set; }
+        public List <Tour> DiscountTours { get; set; }
+        public List <Tour> Tours { get; set; }
+
+        
 
         
     }
