@@ -61,9 +61,29 @@
         <div class="register">
             <p> @DateTime.UtcNow.ToString("dd-MMMM-yyyy")</p>
             <p>
-                <a asp-action="index" asp-controller="login"><i class="fa-solid fa-user"></i> Login</a> 
-                <a asp-action="index" asp-controller="register">Register</a>
+                @if (User.Identity.IsAuthenticated && User.IsInRole("Member"))
+                {
+                    <a asp-action="profile" asp-controller="account"><i class="fa-solid fa-user"></i> My Account</a>
+                    <a  asp-action="profile" asp-controller="account">
+                        @User.Identity.Name
+                    </a>
+                    <a asp-action="logout" asp-controller="account">Logout</a>
+
+                }
+
+                else
+                {
+                    <a  asp-action="login" asp-controller="account">
+                        login
+                    </a>
+                    <a asp-action="register" asp-controller="account">register</a>
+                }
+            
             </p>
+           
+
+
+
         </div>
         <nav>
             <div class="bar-icon">
@@ -213,6 +233,7 @@
     <script src="~/assets/js/vendor.js"></script>
     <script src="~/assets/js/plugins.js"></script>
     <script src="~/assets/js/index.js"></script>
+    <script src="~/assets/js/main.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flickity/1.0.2/flickity.pkgd.js"></script>
 
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>

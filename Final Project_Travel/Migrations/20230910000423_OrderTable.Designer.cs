@@ -4,6 +4,7 @@ using Final_Project_Travel.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Final_Project_Travel.Migrations
 {
     [DbContext(typeof(ZakherDbContext))]
-    partial class ZakherDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230910000423_OrderTable")]
+    partial class OrderTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -102,88 +104,6 @@ namespace Final_Project_Travel.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Destinations");
-                });
-
-            modelBuilder.Entity("Final_Project_Travel.Entities.Order", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("Adress")
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("AppUserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Email")
-                        .HasMaxLength(35)
-                        .HasColumnType("nvarchar(35)");
-
-                    b.Property<string>("FullName")
-                        .HasMaxLength(35)
-                        .HasColumnType("nvarchar(35)");
-
-                    b.Property<string>("Note")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Phone")
-                        .HasMaxLength(15)
-                        .HasColumnType("nvarchar(15)");
-
-                    b.Property<byte>("Status")
-                        .HasColumnType("tinyint");
-
-                    b.Property<decimal>("TotalAmount")
-                        .HasMaxLength(300)
-                        .HasColumnType("decimal(18,2)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AppUserId");
-
-                    b.ToTable("Orders");
-                });
-
-            modelBuilder.Entity("Final_Project_Travel.Entities.OrderItem", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<int>("OrderId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ToursId")
-                        .HasColumnType("int");
-
-                    b.Property<decimal>("UnitCostPrice")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<decimal>("UnitDiscountPrice")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<decimal>("UnitSalePrice")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("OrderId");
-
-                    b.HasIndex("ToursId");
-
-                    b.ToTable("OrderItems");
                 });
 
             modelBuilder.Entity("Final_Project_Travel.Entities.Setting", b =>
@@ -590,32 +510,6 @@ namespace Final_Project_Travel.Migrations
                     b.HasDiscriminator().HasValue("AppUser");
                 });
 
-            modelBuilder.Entity("Final_Project_Travel.Entities.Order", b =>
-                {
-                    b.HasOne("Final_Project_Travel.Entities.AppUser", "AppUser")
-                        .WithMany()
-                        .HasForeignKey("AppUserId");
-
-                    b.Navigation("AppUser");
-                });
-
-            modelBuilder.Entity("Final_Project_Travel.Entities.OrderItem", b =>
-                {
-                    b.HasOne("Final_Project_Travel.Entities.Order", "Order")
-                        .WithMany("OrderItems")
-                        .HasForeignKey("OrderId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Final_Project_Travel.Entities.Tour", "Tours")
-                        .WithMany()
-                        .HasForeignKey("ToursId");
-
-                    b.Navigation("Order");
-
-                    b.Navigation("Tours");
-                });
-
             modelBuilder.Entity("Final_Project_Travel.Entities.Tour", b =>
                 {
                     b.HasOne("Final_Project_Travel.Entities.Category", "Category")
@@ -718,11 +612,6 @@ namespace Final_Project_Travel.Migrations
             modelBuilder.Entity("Final_Project_Travel.Entities.Destination", b =>
                 {
                     b.Navigation("Tours");
-                });
-
-            modelBuilder.Entity("Final_Project_Travel.Entities.Order", b =>
-                {
-                    b.Navigation("OrderItems");
                 });
 
             modelBuilder.Entity("Final_Project_Travel.Entities.Tour", b =>

@@ -65,7 +65,7 @@
                             <i style="background-color: rgba(43, 42, 42, 0.344); color: white!important;"
                            class="fa-solid fa-plane"></i>
                         </a>
-                        <a asp-controller="tour" asp-action="getdetail" asp-route-id="@item.Id" class="modal-btn" data-target="#quick_view">
+                        <a asp-controller="tour" asp-action="getdetail" asp-route-id="@item.Id" class="modal-btn">
                             <span data-toggle="tooltip"
                               title="Quick View">
                                 <i style="background-color: rgba(43, 42, 42, 0.344); color: white!important;"
@@ -158,14 +158,14 @@
             {
             <div class="item">
                 <div class="icon-wishlist"></div>
-                <div class="image" style=" background-image: url(../../wwwroot/manage/assets/uploads/tours/@item.ImageName);">
+                <div class="image" style=" background-image:url('/assets/image/uploads/tours/@item.ImageName');">
                     <span><del>@item.SalePrice AZN</del> @item.DiscountPrice AZN</span>
                     <div class="img-icons">
                         <a asp-action="index" asp-controller="checkout" data-toggle="tooltip" title="Add To Cart">
                             <i style="background-color: rgba(43, 42, 42, 0.344); color: white!important;"
                            class="fa-solid fa-plane"></i>
                         </a>
-                        <a asp-controller="tour" asp-action="getdetail" asp-route-id="@item.Id" class="modal-btn" data-target="#quick_view">
+                        <a asp-controller="tour" asp-action="getdetail" asp-route-id="@item.Id" class="modal-btn" >
                             <span data-toggle="tooltip"
                               title="Quick View">
                                 <i style="background-color: rgba(43, 42, 42, 0.344); color: white!important;"

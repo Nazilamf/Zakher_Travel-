@@ -1,0 +1,38 @@
+﻿@using Final_Project_Travel.ViewModels;
+ @model MemberLoginViewModel
+
+
+<!-- Main section start -->
+
+
+<div class="container ">
+    <h1 class="title">Login</h1>
+    <div class="card m-auto mb-5">
+        <form method="post">
+           <div class="single-input-item">
+                                        <label asp-for="UserName">UserName</label>
+                                        <input asp-for="UserName" class="form-control" />
+                                        <span class="text-danger" asp-validation-for="UserName"></span>
+                                    </div>
+            <div class="single-input-item">
+                                        <label asp-for="Password">Password</label>
+                                        <input asp-for="Password" class="form-control" />
+                                        <span class="text-danger" asp-validation-for="Password"></span>
+                                    </div>
+                                    <div class="remember-meta">
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="rememberMe">
+                                            <label class="custom-control-label" for="rememberMe">Remember Me</label>
+                                        </div>
+                                    </div>
+            <div class="text danger" asp-validation-summary="ModelOnly"></div>
+            <div class="buttons">
+                <a href="#" class="register-link">Register</a>
+                <button type="submit" class="login-button">Login</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<!-- main section end -->

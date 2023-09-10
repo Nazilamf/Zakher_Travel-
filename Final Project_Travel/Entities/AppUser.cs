@@ -1,6 +1,9 @@
-﻿namespace Final_Project_Travel.Entities
+﻿using Microsoft.AspNetCore.Identity;
+
+namespace Final_Project_Travel.Entities
 {
-    public class AppUser
+    public class AppUser:IdentityUser
     {
+        public string FullName { get; set; }
     }
 }

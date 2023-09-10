@@ -1,0 +1,39 @@
+﻿@using Final_Project_Travel.ViewModels;
+  
+@model MemberUpdateViewModel
+
+<form asp-action="memberupdate" method="post">
+                       <div class="single-input-item text-black">
+                        <input asp-for="UserName"  placeholder="UserName" />
+                        <span class="text-danger" asp-validation-for="UserName"></span>
+                    </div>
+                      <div class="single-input-item">
+                        <input asp-for="FullName"  placeholder="FullName" />
+                        <span class="text-danger" asp-validation-for="FullName"></span>
+                    </div>
+                     <div class="single-input-item">
+                        <input asp-for="Email"  placeholder="Email" />
+                        <span class="text-danger" asp-validation-for="Email"></span>
+                    </div>
+                         <div class="single-input-item">
+                        <input asp-for="Phone"  placeholder="Phone" />
+                        <span class="text-danger" asp-validation-for="Phone"></span>
+                    </div>
+                       <div class="single-input-item">
+                        <input asp-for="CurrentPassword"  placeholder="CurrentPassword" />
+                        <span class="text-danger" asp-validation-for="CurrentPassword"></span>
+                    </div>
+                      <div class="single-input-item">
+                        <input asp-for="NewPassword"  placeholder="NewPassword" />
+                        <span class="text-danger" asp-validation-for="NewPassword"></span>
+                    </div>
+                       <div class="single-input-item">
+                    <input asp-for="ConfirmNewPassword" placeholder="ConfirmNewPassword" />
+                    <span class="text-danger" asp-validation-for="ConfirmNewPassword"></span>
+                </div>
+                <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+
+                       <div class="buttons">
+                           <button type="submit" class="login-button">Save Changes</button>
+                       </div>
+                   </form>

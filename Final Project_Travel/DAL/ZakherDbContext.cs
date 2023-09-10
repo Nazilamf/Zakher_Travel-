@@ -1,10 +1,11 @@
 ﻿using Final_Project_Travel.Entities;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Cryptography.X509Certificates;
 
 namespace Final_Project_Travel.DAL
 {
-    public class ZakherDbContext:DbContext
+    public class ZakherDbContext:IdentityDbContext
     {
         public ZakherDbContext(DbContextOptions<ZakherDbContext> options) : base(options)
         {
@@ -28,5 +29,11 @@ namespace Final_Project_Travel.DAL
         public DbSet <Worker> Workers { get; set; } 
 
         public DbSet<Setting> Settings { get; set; }    
+
+        public DbSet <AppUser> AppUsers { get; set; }
+
+        public DbSet<OrderItem> OrderItems { get; set; }
+
+        public DbSet<Order> Orders { get; set; }
     }
 }
