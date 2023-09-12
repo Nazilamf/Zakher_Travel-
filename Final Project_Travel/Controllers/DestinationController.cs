@@ -2,25 +2,26 @@
 using Final_Project_Travel.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System.Drawing;
 
 namespace Final_Project_Travel.Controllers
 {
-    public class AboutUsController : Controller
+    public class DestinationController : Controller
     {
         private readonly ZakherDbContext _context;
-        public AboutUsController(ZakherDbContext context)
+        public DestinationController(ZakherDbContext context)
 
         {
             _context = context;
         }
         public IActionResult Index()
         {
-            AboutUsViewModel vm = new AboutUsViewModel
+            DestinationViewModel vm = new DestinationViewModel
             {
-                Branches = _context.Branches.ToList(),
-                Workers= _context.Workers.ToList(),
+
+                Destinations = _context.Destinations.Include(x=>x.Tours).ToList(),
+
             };
+
             return View(vm);
         }
     }

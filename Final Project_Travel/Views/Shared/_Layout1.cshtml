@@ -1,0 +1,198 @@
+﻿@using Final_Project_Travel.Services;
+﻿﻿
+
+@inject LayoutService _layoutService;
+
+@{
+    var settings = _layoutService.GetSettings();
+    var wishlist = _layoutService.GetWishlist();
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/assets/style/bootstrap.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flickity/1.0.2/flickity.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+          integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="~/assets/style/plugins.css">
+    <link rel="stylesheet" href="~assets/style/shop.css">
+    <link rel="stylesheet" href="~/assets/style/destination.css">
+    <link rel="stylesheet" href="~/assets/style/details.css">
+    <link rel="stylesheet" href="~/assets/style/index.css">
+    <link rel="stylesheet" href="~/assets/style/style.css">
+    <link rel="stylesheet" href="~/assets/style/animate.css">
+    <link rel="stylesheet" href="~/assets/style/about.css">
+    <script src="./assets/js/modernizr-2.8.3.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+          integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <!-- Add the slick-theme.css if you want default styling -->
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+          integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- Header section start -->
+    <header>
+
+        <div class="search-item">
+            <i class="fa-solid fa-xmark"></i>
+            <div class="btn-input">
+                <input type="text" placeholder="Search...">
+                <button><i class="fa-solid fa-magnifying-glass"></i></button>
+            </div>
+        </div>
+        <div class="register">
+            <p> @DateTime.UtcNow.ToString("dd-MMMM-yyyy")</p>
+            <p>
+                @if (User.Identity.IsAuthenticated && User.IsInRole("Member"))
+                {
+                    <a asp-action="profile" asp-controller="account"><i class="fa-solid fa-user"></i> My Account</a>
+                    <a asp-action="profile" asp-controller="account">
+                        @User.Identity.Name
+                    </a>
+                    <a asp-action="logout" asp-controller="account">Logout</a>
+
+                }
+
+                else
+                {
+                    <a asp-action="login" asp-controller="account">
+                        login
+                    </a>
+                    <a asp-action="register" asp-controller="account">register</a>
+                }
+            </p>
+        </div>
+        <nav>
+            <div class="bar-icon">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+            <div class="menu">
+                <i class="fa-solid fa-xmark"></i>
+                <div class="bar-menu">
+                    <ul>
+                        <li><a asp-action="index" asp-controller="home">HOME</a></li>
+                        <li><a asp-action="index" asp-controller="aboutus">ABOUT US</a></li>
+                        <li><a asp-action="index" asp-controller="shop">TOURS</a></li>
+                        <li><a asp-action="index" asp-controller="destination">DESTINATIONS</a></li>
+                        <li><a asp-action="index" asp-controller="contactus">CONTACT US</a></li>
+                    </ul>
+                    <div class="search">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                    <div style="transform: translate(60px,-35px);" class="search">
+                        <i class="fa-solid fa-heart"></i>
+                    </div>
+                </div>
+            </div>
+            <img src="~/assets/image/@settings["Logo"]" alt="">
+            <div class="navbar">
+                <ul>
+                    <li><a asp-action="index" asp-controller="home">HOME</a></li>
+                    <li><a asp-action="index" asp-controller="aboutus">ABOUT US</a></li>
+                    <li><a asp-action="index" asp-controller="shop">TOURS</a></li>
+                    <li><a asp-action="index" asp-controller="destination">DESTINATIONS</a></li>
+                    <li><a asp-action="index" asp-controller="contactus">CONTACT US</a></li>
+                </ul>
+                <div class="search">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+                <div style="margin-left: 10px;" class="search">
+                    <i class="fa-solid fa-heart"></i>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Header section end -->
+    <div>
+        @RenderBody()
+    </div>
+    <!-- Footer section start -->
+
+    <footer>
+        <div class="footer-menu">
+            <div class="lists">
+                <div class="item contact">
+                    <h3>CONTACT</h3>
+                    <p>
+                        <i class="fa-solid fa-location-dot"></i>@settings["Address"]"
+                    </p>
+                    <p><i class="fa-solid fa-phone"></i> @settings["Office Phone"]"</p>
+                    <p><i class="fa-solid fa-phone"></i>@settings["Cell Phone"]"</p>
+                    <p><a href="https://api.whatsapp.com/send/?phone=%2B994502532200&text&type=phone_number&app_absent=0"><i class="fa-brands fa-whatsapp"></i>@settings["WhatsApp"]"</a></p>
+                    <p><i class="fa-solid fa-envelope"></i>@settings["Email"]"</p>
+                </div>
+                <div class="item">
+                    <h3>INFORMATION</h3>
+                    <ul>
+                        <li><a href="https://www.zakher.travel/booklet/"><i class="fa-solid fa-greater-than"></i>Media Centre</a></li>
+                        <li><a href="https://www.zakher.travel/zakher-travel-first-golf-agency-in-azerbaijan/"><i class="fa-solid fa-greater-than"></i>Travel News</a></li>
+                        <li><a asp-action="index" asp-controller="aboutus"><i class="fa-solid fa-greater-than"></i>About Us</a></li>
+                        <li><a href="https://www.zakher.travel/azerbaijan-tours/"><i class="fa-solid fa-greater-than"></i>Azerbaijan</a></li>
+                        <li><a asp-action="index" asp-controller="contactus"><i class="fa-solid fa-greater-than"></i>Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="item">
+                    <h3>OUR MENU</h3>
+                    <ul>
+                        <li><a asp-action="index" asp-controller="home"><i class="fa-solid fa-greater-than"></i>Home</a></li>
+                        <li><a asp-action="index" asp-controller="aboutus"><i class="fa-solid fa-greater-than"></i>About Us</a></li>
+                        <li><a asp-action="index" asp-controller="shop"><i class="fa-solid fa-greater-than"></i>Tours</a></li>
+                        <li><a asp-action="index" asp-controller="destination"><i class="fa-solid fa-greater-than"></i>Destination</a></li>
+                        <li><a asp-action="index" asp-controller="contactus"><i class="fa-solid fa-greater-than"></i>Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="item insta ">
+                    <h3>Social Media</h3>
+                    <div>
+                        <a href="https://www.instagram.com/zakher_travel_azerbaijan/"> <i class="fa-brands fa-instagram me-2" style="color: white;"></i></a>
+                        <a href="https://twitter.com/zakhertravel?lang=en"><i class="fa-brands fa-twitter me-2" style="color: white;"></i></a>
+                        <a href="https://www.facebook.com/zakher.travel/"><i class="fa-brands fa-facebook-f g-2" style="color: white;"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="foot">
+                <p>Copyright © 2023 Zakher Travel. All Rights Reserved.</p>
+
+            </div>
+        </div>
+        <!-- offcanvas mini cart start -->
+        <div class="offcanvas-minicart-wrapper">
+            <div id="wishlistcard" class="minicart-inner">
+                <div class="offcanvas-overlay"></div>
+                @Html.Partial("_WishlistPartialView",wishlist)
+            </div>
+        </div>
+        <!-- offcanvas mini cart end -->
+    </footer>
+
+    <!-- Footer section end -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.js"
+            integrity="sha512-8Z5++K1rB3U+USaLKG6oO8uWWBhdYsM3hmdirnOEWp8h2B1aOikj5zBzlXs8QOrvY9OxEnD2QDkbSKKpfqcIWw=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="~/assets/js/vendor.js"></script>
+    <script src="~/assets/js/plugins.js"></script>
+    <script src="~/assets/js/index.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flickity/1.0.2/flickity.pkgd.js"></script>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+
+</body>
+
+</html>

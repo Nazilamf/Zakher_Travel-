@@ -1,0 +1,54 @@
+﻿@using Final_Project_Travel.ViewModels;
+@{
+    Layout = "_Layout1";
+}
+
+
+@model DestinationViewModel
+
+<!-- Hero header -->
+<div class="container-fluid bg-primary py-5 mb-5 hero-header">
+    <div class="container py-5">
+        <div class="row justify-content-center py-5">
+            <div class="col-lg-10 pt-lg-5 mt-lg-5 text-center">
+                <h1 class="display-3 text-white animated slideInDown">Destination</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Hero header end -->
+<!-- Destination section start -->
+
+
+<div class="destination ">
+    <div class="container mt-2">
+        <!--   <div class="card card-block mb-2">
+          <h4 class="card-title">Card 1</h4>
+          <p class="card-text">Welcom to bootstrap card styles</p>
+          <a href="#" class="btn btn-primary">Submit</a>
+        </div>   -->
+        <div class="row text-center">
+            <div class="div mb-4">
+                <h2>DES<em>TINATION</em></h2>
+            </div>
+           @foreach (var item in Model.Destinations)
+            {
+                <div class="col-md-3 col-sm-6 item mb-3">
+                    <div class="card item-card card-block">
+                        <div class="dest-count">
+                            <h4>@item.Tours.Count() Tours</h4>
+                        </div>
+                        <img src="~/manage/assets/uploads/destination/@item.ImageName">
+                        <h4 class="item-card-title text-right p-2"><i>@item.Name</i></h4>
+                    </div>
+                </div>
+            }
+        
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Destinatin section end -->

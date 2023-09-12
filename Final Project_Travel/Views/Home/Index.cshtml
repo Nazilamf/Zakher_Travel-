@@ -59,6 +59,7 @@
             <div class="item ">
                 <div class="icon-wishlist"> <a asp-controller="tour" asp-action="addtoWishlist" asp-route-id="@item.Id" data-toggle="tooltip" class="wishlist-btn" title="Add To wishlist"></a></div>
                 <div class="image" style=" background-image: url(../manage/assets/uploads/tours/@item.ImageName);">
+                  
                     <span>@item.SalePrice AZN</span>
                     <div class="img-icons">
                         <a asp-action="index" asp-controller="checkout" data-toggle="tooltip" title="Add To Cart">

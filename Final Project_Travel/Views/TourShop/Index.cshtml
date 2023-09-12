@@ -1,0 +1,512 @@
+﻿@using Final_Project_Travel.ViewModels;
+   @model TourShopViewModel
+
+
+
+<!-- Hero header -->
+    <div class="container-fluid bg-primary py-5 mb-5 hero-header">
+        <div class="container py-5">
+            <div class="row justify-content-center py-5">
+                <div class="col-lg-10 pt-lg-5 mt-lg-5 text-center">
+                    <h1 class="display-3 text-white animated slideInDown">Tours</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero header end -->
+
+    <!-- page main wrapper start -->
+    <div class="shop-main-wrapper section-padding">
+        <div class="container">
+            <div class="row">
+                <!-- sidebar area start -->
+                <div class="col-lg-3 order-2 order-lg-1">
+                    <div class="sidebar-wrapper">
+                        <!-- single sidebar start -->
+                        <div class="sidebar-single">
+                            <div class="sidebar-title">
+                                <h3>Categories</h3>
+                            </div>
+                            <div class="sidebar-body">
+                                <ul class="color-list">
+                                @foreach (var item in Model.Categories)
+                                {
+
+                                    <div class="form-check">
+                                        <input class="form-check-input" @(item.Id==Model.SelectedCategoryId?"checked" :"") form="filterForm" type="radio" name="categoryId" value="@item.Id" id="category-@item.Id">
+                                        <label class="form-check-label" for="category-@item.Id">
+                                            @item.Name <span>(@item.Tours.Count)
+                                        </label>
+                                    </div>
+
+                                }
+
+                            </ul>
+                            </div>
+                        </div>
+                        <!-- single sidebar end -->
+
+                        <!-- single sidebar start -->
+                        <div class="sidebar-single">
+                            <div class="sidebar-title">
+                                <h3>filter by price</h3>
+                            </div>
+                            <div class="sidebar-body">
+                                <div class="price-range-wrap">
+                                    <div class="price-range" data-min="20" data-max="400"></div>
+                                    <div class="range-slider">
+                                        <form action="#">
+                                            <div class="price-input">
+                                                <label for="amount">Price: </label>
+                                                <input type="text" id="amount">
+                                            </div>
+                                            <button class="filter-btn">filter</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- single sidebar end -->
+
+                        <!-- single sidebar start -->
+                        <div class="sidebar-single">
+                            <div class="sidebar-title">
+                                <h3>Destination</h3>
+                            </div>
+                            <div class="sidebar-body">
+                                <ul class="color-list">
+                                @foreach (var item in Model.Destinations)
+                                {
+
+                                    <div class="form-check">
+                                        <input class="form-check-input" @(Model.SelectedDestinationId.Contains(@item.Id)?"checked" :"") form="filterForm" type="checkbox" name="destinationId" value="@item.Id" id="destination-@item.Id">
+                                        <label class="form-check-label" for="destination-@item.Id">
+                                            @item.Name <span>(@item.Tours.Count)
+                                        </label>
+                                    </div>
+                                }
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- single sidebar end -->
+
+                        <!-- single sidebar start -->
+                        <div class="sidebar-single">
+                            <div class="sidebar-title">
+                                <h3>Month</h3>
+                            </div>
+                            <div class="sidebar-body">
+                                <ul class="size-list">
+                                    <li><a href="#">L <span>(05)</span></a></li>
+                                    <li><a href="#">M <span>(06)</span></a></li>
+                                    <li><a href="#">S <span>(02)</span></a></li>
+                                    <li><a href="#">XL <span>(01)</span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- single sidebar end -->
+                    <!-- single sidebar start -->
+                    <div class="sidebar-single">
+                        <div class="sidebar-title">
+                            <h3>Month</h3>
+                        </div>
+                        <div class="sidebar-body">
+                            <ul class="color-list">
+                                @foreach (var item in Model.MonthNames)
+                                {
+
+                                    <div class="form-check">
+                                        <input class="form-check-input" @(item.Id==Model.SelectedMonth?"checked" :"") form="filterForm" type="radio" name="month" value="@item.Id" id="month-@item.Id">
+                                        <label class="form-check-label" for="month-@item.Id">
+                                            @item.Name <span>(@item.Tours.Count)
+                                        </label>
+                                    </div>
+
+                                }
+
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- single sidebar end -->
+
+                        <!-- single sidebar start -->
+                        <div class="sidebar-single">
+                            <div class="sidebar-banner">
+                                <a href="#">
+                                    <img src="~/assets/image/slider1.jpg" alt="">
+                                </a>
+                            </div>
+                        </div>
+                        <!-- single sidebar end -->
+                    </div>
+                </div>
+                <!-- sidebar area end -->
+
+                <!-- shop main wrapper start -->
+                <div class="col-lg-9 order-1 order-lg-2">
+                    <div class="shop-product-wrapper ">
+                        <!-- shop product top wrap start -->
+                        <div class="shop-top-bar">
+                            <div class="row">
+
+                                <div class="col-xl-7 col-lg-8 col-md-9 order-1 order-md-2">
+                                    <div class="top-bar-right">
+                                        <div class="product-short ">
+                                            <p>Sort By : </p>
+                                            <select class="nice-select" name="sortby">
+                                                <option value="trending">Relevance</option>
+                                                <option value="sales">Name (A - Z)</option>
+                                                <option value="sales">Name (Z - A)</option>
+                                                <option value="rating">Price (Low &gt; High)</option>
+
+                                            </select>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- shop product top wrap start -->
+                        <!-- product item list start -->
+                        <section id="tour-count" >
+                            <div class="items d-flex row" style="width: 120%;">
+
+                                <!-- product grid item start -->
+                                <div class="count-item item mb-5 col-lg-4 col-12 ">
+                                    <div class="icon-wishlist"></div>
+                                    <div class="image" style=" background-image: url(./assets/image/slider1.jpg);">
+                                        <span>$82.00</span>
+                                        <div class="img-icons">
+                                            <a href="#" data-toggle="tooltip" title="Add To Cart"><i
+                                                    style="background-color: rgba(43, 42, 42, 0.344); color: white!important;"
+                                                    class="fa-solid fa-plane"></i></a>
+                                            <a href="#" data-toggle="modal" data-target="#quick_view"> <span
+                                                    data-toggle="tooltip" title="Quick View"><i
+                                                        style="background-color: rgba(43, 42, 42, 0.344); color: white!important;"
+                                                        class="fa-solid fa-eye"></i></span> </a>
+                                        </div>
+                                    </div>
+                                    <div class="slide-text">
+                                        <h2>Kiwiana Panorama</h2>
+                                        <p><i class="fa-regular fa-clock"></i>2 DAYS - 1 NIGHTS</p>
+                                        <p>Aliquam lacus nisl, viverra convallis sit amet penatibus nunc luctus</p>
+                                    </div>
+                                    <div class="read-more">
+                                        <div class="icons">
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                        </div>
+                                        <div class="read">
+                                            <span></span>
+                                            READ MORE
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- product grid item end -->
+                                <!-- Items section start -->
+                                <div class="count-item item mb-5 col-lg-4 col-12">
+                                    <div class="icon-wishlist"></div>
+                                    <div class="image" style=" background-image: url(./assets/image/slider1.jpg);">
+                                        <span>$82.00</span>
+                                        <div class="img-icons">
+                                            <a href="#" data-toggle="tooltip" title="Add To Cart"><i
+                                                    style="background-color: rgba(43, 42, 42, 0.344); color: white!important;"
+                                                    class="fa-solid fa-plane"></i></a>
+                                            <a href="#" data-toggle="modal" data-target="#quick_view"> <span
+                                                    data-toggle="tooltip" title="Quick View"><i
+                                                        style="background-color: rgba(43, 42, 42, 0.344); color: white!important;"
+                                                        class="fa-solid fa-eye"></i></span> </a>
+                                        </div>
+                                    </div>
+                                    <div class="slide-text">
+                                        <h2>Kiwiana Panorama</h2>
+                                        <p><i class="fa-regular fa-clock"></i>2 DAYS - 1 NIGHTS</p>
+                                        <p>Aliquam lacus nisl, viverra convallis sit amet penatibus nunc luctus</p>
+                                    </div>
+                                    <div class="read-more">
+                                        <div class="icons">
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                        </div>
+                                        <div class="read">
+                                            <span></span>
+                                            READ MORE
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- product grid item end  -->
+                                  <!-- Items section start -->
+                                  <div class="count-item item mb-5 col-lg-4 col-12">
+                                    <div class="icon-wishlist"></div>
+                                    <div class="image" style=" background-image: url(./assets/image/slider1.jpg);">
+                                        <span>$82.00</span>
+                                        <div class="img-icons">
+                                            <a href="#" data-toggle="tooltip" title="Add To Cart"><i
+                                                    style="background-color: rgba(43, 42, 42, 0.344); color: white!important;"
+                                                    class="fa-solid fa-plane"></i></a>
+                                            <a href="#" data-toggle="modal" data-target="#quick_view"> <span
+                                                    data-toggle="tooltip" title="Quick View"><i
+                                                        style="background-color: rgba(43, 42, 42, 0.344); color: white!important;"
+                                                        class="fa-solid fa-eye"></i></span> </a>
+                                        </div>
+                                    </div>
+                                    <div class="slide-text">
+                                        <h2>Kiwiana Panorama</h2>
+                                        <p><i class="fa-regular fa-clock"></i>2 DAYS - 1 NIGHTS</p>
+                                        <p>Aliquam lacus nisl, viverra convallis sit amet penatibus nunc luctus</p>
+                                    </div>
+                                    <div class="read-more">
+                                        <div class="icons">
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                        </div>
+                                        <div class="read">
+                                            <span></span>
+                                            READ MORE
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- product grid item end  -->
+                                  <!-- Items section start -->
+                                  <div class="count-item item mb-5 col-lg-4 col-12 ">
+                                    <div class="icon-wishlist"></div>
+                                    <div class="image" style=" background-image: url(./assets/image/slider1.jpg);">
+                                        <span>$82.00</span>
+                                        <div class="img-icons">
+                                            <a href="#" data-toggle="tooltip" title="Add To Cart"><i
+                                                    style="background-color: rgba(43, 42, 42, 0.344); color: white!important;"
+                                                    class="fa-solid fa-plane"></i></a>
+                                            <a href="#" data-toggle="modal" data-target="#quick_view"> <span
+                                                    data-toggle="tooltip" title="Quick View"><i
+                                                        style="background-color: rgba(43, 42, 42, 0.344); color: white!important;"
+                                                        class="fa-solid fa-eye"></i></span> </a>
+                                        </div>
+                                    </div>
+                                    <div class="slide-text">
+                                        <h2>Kiwiana Panorama</h2>
+                                        <p><i class="fa-regular fa-clock"></i>2 DAYS - 1 NIGHTS</p>
+                                        <p>Aliquam lacus nisl, viverra convallis sit amet penatibus nunc luctus</p>
+                                    </div>
+                                    <div class="read-more">
+                                        <div class="icons">
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                        </div>
+                                        <div class="read">
+                                            <span></span>
+                                            READ MORE
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- product grid item end  -->
+                                  <!-- Items section start -->
+                                  <div class="count-item item mb-5 col-lg-4 col-12">
+                                    <div class="icon-wishlist"></div>
+                                    <div class="image" style=" background-image: url(./assets/image/slider1.jpg);">
+                                        <span>$82.00</span>
+                                        <div class="img-icons">
+                                            <a href="#" data-toggle="tooltip" title="Add To Cart"><i
+                                                    style="background-color: rgba(43, 42, 42, 0.344); color: white!important;"
+                                                    class="fa-solid fa-plane"></i></a>
+                                            <a href="#" data-toggle="modal" data-target="#quick_view"> <span
+                                                    data-toggle="tooltip" title="Quick View"><i
+                                                        style="background-color: rgba(43, 42, 42, 0.344); color: white!important;"
+                                                        class="fa-solid fa-eye"></i></span> </a>
+                                        </div>
+                                    </div>
+                                    <div class="slide-text">
+                                        <h2>Kiwiana Panorama</h2>
+                                        <p><i class="fa-regular fa-clock"></i>2 DAYS - 1 NIGHTS</p>
+                                        <p>Aliquam lacus nisl, viverra convallis sit amet penatibus nunc luctus</p>
+                                    </div>
+                                    <div class="read-more">
+                                        <div class="icons">
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                        </div>
+                                        <div class="read">
+                                            <span></span>
+                                            READ MORE
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- product grid item end  -->
+
+
+                                <!-- product grid item start -->
+                                <div class="count-item item mb-5 col-lg-4 col-12">
+                                    <div class="icon-wishlist"></div>
+                                    <div class="image" style=" background-image: url(./assets/image/slider1.jpg);">
+                                        <span>$82.00</span>
+                                        <div class="img-icons">
+                                            <a href="#" data-toggle="tooltip" title="Add To Cart"><i
+                                                    style="background-color: rgba(43, 42, 42, 0.344); color: white!important;"
+                                                    class="fa-solid fa-plane"></i></a>
+                                            <a href="#" data-toggle="modal" data-target="#quick_view"> <span
+                                                    data-toggle="tooltip" title="Quick View"><i
+                                                        style="background-color: rgba(43, 42, 42, 0.344); color: white!important;"
+                                                        class="fa-solid fa-eye"></i></span> </a>
+                                        </div>
+                                    </div>
+                                    <div class="slide-text">
+                                        <h2>Kiwiana Panorama</h2>
+                                        <p><i class="fa-regular fa-clock"></i>2 DAYS - 1 NIGHTS</p>
+                                        <p>Aliquam lacus nisl, viverra convallis sit amet penatibus nunc luctus</p>
+                                    </div>
+                                    <div class="read-more">
+                                        <div class="icons">
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                        </div>
+                                        <div class="read">
+                                            <span></span>
+                                            READ MORE
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- product grid item end -->
+                            </div>
+
+                        </section>
+
+
+
+                    </div>
+                </div>
+                <!-- shop main wrapper end -->
+            </div>
+        </div>
+    </div>
+    <!-- page main wrapper end -->
+
+    <!-- Quick view modal start -->
+    <div class="modal" id="quick_view">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="col-lg-6 mb-3">
+                        <div class="tour-title ">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <h2>Sheki Tour</h2>
+                                </div>
+                                <div class="col-lg-6 mt-2">
+                                    <h4 style="font-size: 18px;">Code:<span style="font-size: 16px; color: gray;">
+                                            ZK1001</span> </h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tour-title-bottom">
+                            <div class="row">
+                                <div class="col-lg-6"><i class="fa-solid fa-hourglass-half"
+                                        style="color: #DBA337;font-size: 16px;"></i> <span>6 DAYS - 5 NIGHTS</span>
+                                </div>
+                                <div class="col-lg-6">
+                                    <h4 style="font-size: 16px; margin-left: -16px;"><i class="fa-solid fa-tag"
+                                            style="color: #DBA337; font-weight: 800;"></i> Category:<span
+                                            style="font-size: 16px; color: gray;"> Historical</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- product details inner end -->
+                    <div class="product-details-inner mb-5">
+                        <div class="row">
+                            <div class="col-lg-5">
+
+                                <img style="width: 100%;" src="./assets/image/azerbaijan.jpeg" alt="">
+                            </div>
+                            <div class="col-lg-7">
+                                <div class="product-details-des">
+                                    <p>Hörmətli səyahət sevənlər artiq 4 cü dəfə təşkil
+                                        etdiyimiz novbeti Sheki turuna sizləri dəvət
+                                        edirik.Bütün əyləncələr sizi gözləyir. Yerlər məhdud
+                                        saydadir.</p>
+
+                                    <div class="ratings">
+                                        <span class="good"><i class="fa fa-star"></i></span>
+                                        <span class="good"><i class="fa fa-star"></i></span>
+                                        <span class="good"><i class="fa fa-star"></i></span>
+                                        <span class="good"><i class="fa fa-star"></i></span>
+                                        <span><i class="fa fa-star"></i></span>
+                                    </div>
+
+                                    <div class="review-description">
+
+                                        <div class="price-box">
+                                            <span class="regular-price">$70.00</span>
+                                            <span class="old-price"><del>$80.00</del></span>
+                                        </div>
+
+                                    </div>
+
+
+
+                                    <div class="col-lg-6">
+                                        <h4 style="font-size: 16px;"><i class="fa-solid fa-users-line"
+                                                style="color: #DBA337; font-weight: 800;"></i>
+                                            Count:<span style="font-size: 16px; color: gray;">
+                                                1</span>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <h4 style="font-size: 16px; "><i class="fa-solid fa-location-dot"
+                                                style="color: #DBA337; font-weight: 800;"></i>
+                                            Departure Location:<span style="font-size: 16px; color: gray;">
+                                                Baku</span>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <h4 style="font-size: 16px; "><i class="fa-solid fa-plane"
+                                                style="color: #DBA337; font-weight: 800;"></i>
+                                            Destination:<span style="font-size: 16px; color: gray;">
+                                                Sheki</span>
+                                    </div>
+
+
+                                    <div class="col-lg-6">
+                                        <h4 style="font-size: 16px; "><i class="fa-solid fa-heart-circle-check"
+                                                style="color: #DBA337; font-weight: 800;"></i>
+                                            Insurance:<span style="font-size: 16px; color: gray;">
+                                                Included</span>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <h4 style="font-size: 16px; "><i class="fa-solid fa-taxi"
+                                                style="color: #DBA337; font-weight: 800;"></i>
+                                            Transfer:<span style="font-size: 16px; color: gray;">
+                                                Included</span>
+                                    </div>
+
+                                    <a href="cart.html" class="btn btn-default"
+                                        style="background-color: #DBA337; margin-left: 50%;">Booking Now</a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- product details inner end -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Quick view modal end -->

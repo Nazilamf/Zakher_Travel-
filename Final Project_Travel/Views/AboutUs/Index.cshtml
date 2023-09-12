@@ -1,0 +1,90 @@
+﻿@using Final_Project_Travel.ViewModels;
+@{
+    Layout = "_Layout1";
+}
+
+@model AboutUsViewModel
+
+    <!-- Hero header -->
+    <div class="container-fluid bg-primary py-5 mb-5 hero-header">
+        <div class="container py-5">
+            <div class="row justify-content-center py-5">
+                <div class="col-lg-10 pt-lg-5 mt-lg-5 text-center">
+                    <h1 class="display-3 text-white animated slideInDown">About Us</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero header end -->
+    <!-- Slider Branches section start -->
+    <section id="slider">
+        <p>Our</p>
+        <h2>BRANCHES</h2>
+        <hr>
+        <div class="items js-flickity" data-flickity-options='{"wrapAround": true,"freeScroll": true }'>
+           @foreach (var item in Model.Branches)
+            {
+            <div class="item">
+                <div class="hover"></div>
+                <p>@item.Name</p>
+                <img src="~/manage/assets/uploads/branches/@item.ImageName" alt="">
+            </div>
+        }
+         
+        </div>
+    </section>
+
+    <!-- Slider Branches section start -->
+    <!-- Team section start -->
+    <div class="team">
+        <div class="container mt-2">
+            <!--   <div class="card card-block mb-2">
+              <h4 class="card-title">Card 1</h4>
+              <p class="card-text">Welcom to bootstrap card styles</p>
+              <a href="#" class="btn btn-primary">Submit</a>
+            </div>   -->
+            <div class="row text-center">
+                <div class="div">
+                    <h2>Our <em>TEAM</em></h2>
+                </div>
+               @foreach (var item in Model.Workers)
+            {
+                <div class="col-md-3 col-sm-6 item">
+                    <div class="card item-card card-block">
+                        <img style="width:270px;margin:auto" src="~/manage/assets/uploads/workers/@item.ImageName" alt="Photo of sunset">
+                        <h4 class="item-card-title text-right p-2"><i>@item.FullName</i></h4>
+                        <span class="card-text ms-1 p-2">@item.Position</span>
+                    </div>
+                </div>
+            }
+           
+            </div>
+
+        </div>
+        <!-- Team section end -->
+        <!-- Who we are section start -->
+    </div>
+    <div class="container mt-5 mb-5">
+        <div class="who-we-are d-flex">
+            <div class="col-lg-6">
+                <img style="width: 80%;" src="https://www.zakher.travel/wp-content/uploads/2019/11/xabout-img.png" alt="">
+            </div>
+
+            <div class="col-lg-6">
+                <h4 class="item-card-title text-right p-2"><i>Who We Are?</i></h4>
+
+                <p>
+
+                    Zakher Travel officially started its activity in 2016 and soon managed to make an outstanding achievement. It
+                    received thousands of tourists from the GCC region and other countries and began to introduce them the charming
+                    treasures not only Azerbaijan’s , but also countries’ such as Russia, Kazakhstan , Kyrgyzstan, Poland, Ukraine
+                    and UAE. For two years of our existence, we have opened brunches in these countries. We are a tour operator and
+                    we have a contract with more than 500 travel companies. We provide tailor made holidays to our customers with
+                    our expert staff consisting of 100 and more people and professional services.
+                </p>
+            </div>
+        </div>
+    </div>
+    <!-- Who we are section end -->
+    
