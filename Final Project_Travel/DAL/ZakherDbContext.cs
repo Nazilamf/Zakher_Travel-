@@ -35,5 +35,11 @@ namespace Final_Project_Travel.DAL
         public DbSet<OrderItem> OrderItems { get; set; }
 
         public DbSet<Order> Orders { get; set; }
+
+        public DbSet<WishlistItem> WishlistItems { get; set; }
+
+        public DbSet<ContactUs> ContactUs { get; set; }
+
+        public DbSet<Branch> Branches { get; set; } 
     }
 }

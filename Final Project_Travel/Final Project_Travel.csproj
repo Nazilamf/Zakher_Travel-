@@ -21,6 +21,7 @@
   <ItemGroup>
     <Folder Include="wwwroot\manage\assets\uploads\icon\" />
     <Folder Include="wwwroot\manage\assets\uploads\destination\" />
+    <Folder Include="wwwroot\manage\assets\uploads\branches\" />
     <Folder Include="wwwroot\manage\assets\uploads\workers\" />
     <Folder Include="wwwroot\manage\assets\uploads\slider\" />
   </ItemGroup>

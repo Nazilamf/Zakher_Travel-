@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "za9aGQFOMzC+7KpQ958wGubeR8PGGVWw/nKNWzpO874=",
+  "Hash": "pPWnRP3ngISumY3MMF1VtGKFTIaHgjo/AjERIHqNS9Q=",
   "Source": "Final Project_Travel",
   "BasePath": "_content/Final Project_Travel",
   "Mode": "Default",
@@ -2582,6 +2582,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\manage\\assets\\scss\\vertical\\_vertical-wrapper.scss"
+    },
+    {
+      "Identity": "C:\\Users\\HP\\Desktop\\API\\API-Project\\Final Project_Travel\\Zakher_Travel-\\Final Project_Travel\\wwwroot\\manage\\assets\\uploads\\branches\\db8f633a-0882-4e4b-962f-4f216fa73a67azerbaijan.jpeg",
+      "SourceId": "Final Project_Travel",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\HP\\Desktop\\API\\API-Project\\Final Project_Travel\\Zakher_Travel-\\Final Project_Travel\\wwwroot\\",
+      "BasePath": "_content/Final Project_Travel",
+      "RelativePath": "manage/assets/uploads/branches/db8f633a-0882-4e4b-962f-4f216fa73a67azerbaijan.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\manage\\assets\\uploads\\branches\\db8f633a-0882-4e4b-962f-4f216fa73a67azerbaijan.jpeg"
     },
     {
       "Identity": "C:\\Users\\HP\\Desktop\\API\\API-Project\\Final Project_Travel\\Zakher_Travel-\\Final Project_Travel\\wwwroot\\manage\\assets\\uploads\\destination\\08f2f407-e27a-4cec-9c71-eb8ef32233dfpoland.jpeg",

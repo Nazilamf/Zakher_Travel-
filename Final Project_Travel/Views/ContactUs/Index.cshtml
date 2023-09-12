@@ -1,0 +1,107 @@
+﻿@using Final_Project_Travel.Services;
+@using Final_Project_Travel.ViewModels;
+
+@model ContactViewModel
+
+﻿
+
+@inject LayoutService  _layoutService;
+
+@{
+    var settings = _layoutService.GetSettings();
+
+}
+
+
+<!-- Hero header -->
+<div class="container-fluid bg-primary py-5 mb-5 hero-header">
+    <div class="container py-5">
+        <div class="row justify-content-center py-5">
+            <div class="col-lg-10 pt-lg-5 mt-lg-5 text-center">
+                <h1 class="display-3 text-white animated slideInDown">Contact Us</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Hero header end -->
+<!-- Contact Start -->
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+            <h6 class="section-title bg-white text-center text-primary px-3" style="color: #dba337!important;">Contact Us</h6>
+            <h1 class="mb-5">Contact For Any Query</h1>
+        </div>
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="d-flex align-items-center mb-4">
+                    <div class="d-flex align-items-center justify-content-center flex-shrink-0 bg-primary" style="width: 50px; height: 50px;background-color: #dba337!important;">
+                        <i class="fa fa-map-marker-alt text-white"></i>
+                    </div>
+                    <div class="ms-3">
+                        <h5 class="text-primary" style="color: #dba337!important;">Office</h5>
+                        <p class="mb-0">
+                             @settings["Address"]
+                        </p>
+                    </div>
+                </div>
+                <div class="d-flex align-items-center mb-4">
+                    <div class="d-flex align-items-center justify-content-center flex-shrink-0 bg-primary" style="width: 50px; height: 50px;background-color: #dba337!important;">
+                        <i class="fa fa-phone-alt text-white"></i>
+                    </div>
+                    <div class="ms-3">
+                        <h5 class="text-primary" style="color: #dba337!important;">Office Phone</h5>
+                        <p class="mb-0">@settings["Office Phone"]</p>
+                    </div>
+
+                </div>
+                <div class="d-flex align-items-center mb-4">
+                    <div class="d-flex align-items-center justify-content-center flex-shrink-0 bg-primary" style="width: 50px; height: 50px;background-color: #dba337!important;">
+                        <i class="fa fa-phone-alt text-white"></i>
+                    </div>
+                    <div class="ms-3">
+                        <h5 class="text-primary" style="color: #dba337!important;">Mobile</h5>
+                        <p class="mb-0">@settings["Cell Phone"] </p>
+                    </div>
+
+                </div>
+                <div class="d-flex align-items-center mb-4">
+                    <div class="d-flex align-items-center justify-content-center flex-shrink-0 bg-primary" style="width: 50px; height: 50px;background-color: #dba337!important;">
+                        <i class="fa fa-phone-alt text-white"></i>
+                    </div>
+                    <div class="ms-3">
+                        <h5 class="text-primary" style="color: #dba337!important;">Whatsapp</h5>
+                        <p class="mb-0">@settings["WhatsApp"]</p>
+                    </div>
+
+                </div>
+
+                <div class="d-flex align-items-center">
+                    <div class="d-flex align-items-center justify-content-center flex-shrink-0 bg-primary" style="width: 50px; height: 50px;background-color: #dba337!important;">
+                        <i class="fa fa-envelope-open text-white"></i>
+                    </div>
+                    <div class="ms-3">
+                        <h5 class="text-primary" style="color: #dba337!important;">Email</h5>
+                        <p class="mb-0">@settings["Email"]</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                <div class="mapouter">
+                    <div class="gmap_canvas"><iframe class="gmap_iframe" width="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=600&amp;height=400&amp;hl=en&amp;q=Zakher Trabel&amp;t=&amp;z=15&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe><a href="https://gachanymph.com/">Gacha Nymph APK</a></div><style>
+                                                                                                                                                                                                                                                                                                                                                                                      height: 400px !important;
+                                                                                                                                                                                                                                                                                                                                                                                 }</style>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-12 wow fadeInUp" data-wow-delay="0.5s">
+                <form method="post" asp-action="create" id="contactform" asp-controller="contactus">
+                    @Html.Partial("_ContactUsPartial",Model)
+                </form>
+                <div class="col-12">
+                    <button type="submit" form="contactform" class="btn btn-primary w-100 py-3" style="background-color: #dba337!important;" type="submit">Send Message</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Contact End -->

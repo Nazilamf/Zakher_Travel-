@@ -57,7 +57,7 @@
             @foreach (var item in Model.PopularTours)
             {
             <div class="item ">
-                <div class="icon-wishlist"></div>
+                <div class="icon-wishlist"> <a asp-controller="tour" asp-action="addtoWishlist" asp-route-id="@item.Id" data-toggle="tooltip" class="wishlist-btn" title="Add To wishlist"></a></div>
                 <div class="image" style=" background-image: url(../manage/assets/uploads/tours/@item.ImageName);">
                     <span>@item.SalePrice AZN</span>
                     <div class="img-icons">
@@ -157,7 +157,7 @@
             @foreach (var item in Model.DiscountTours)
             {
             <div class="item">
-                <div class="icon-wishlist"></div>
+                <div class="icon-wishlist"><a asp-controller="tour" asp-action="addtoWishlist" asp-route-id="@item.Id" data-toggle="tooltip" class="wishlist-btn" title="Add To wishlist"></a></div>
                 <div class="image" style=" background-image:url('/assets/image/uploads/tours/@item.ImageName');">
                     <span><del>@item.SalePrice AZN</del> @item.DiscountPrice AZN</span>
                     <div class="img-icons">

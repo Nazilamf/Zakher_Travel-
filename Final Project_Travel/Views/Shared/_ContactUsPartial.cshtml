@@ -1,0 +1,70 @@
+﻿@using Final_Project_Travel.ViewModels;
+@model ContactViewModel
+
+<div class="row g-3">
+    @if (User.Identity.IsAuthenticated && User.IsInRole("Member"))
+    {
+        
+        <div class="col-md-6">
+            <div class="form-floating">
+                <input class="form-control" id="FullMame" disabled value="@Model.FullName">
+                <label for="FullName">FullName</label>
+                <input type="hidden" name="FullName" value="@Model.FullName"></input>
+            </div>
+        </div>
+        <div class="col-md-6">
+         <div class="form-floating">
+            <input class="form-control" id="Phone" disabled value="@Model.Phone">
+            <label for="Phone">Phone</label>
+            <input type="hidden" name="Phone" value="@Model.Phone"></input>
+         </div>
+        </div>
+         <div class="col-12">
+            <div class="form-floating">
+                <input class="form-control" id="Email" disabled value="@Model.Email" />
+                <label for="Email">Email</label>
+                <input type="hidden" name="Email" value="@Model.Email"></input
+            </div>
+         </div>
+
+       
+    }
+    else
+    {
+         <div class="col-md-6">
+         <div class="form-floating">
+            <label asp-for="FullName" class="required">FullName</label>
+                <input class="form-control" type="text" asp-for="FullName" placeholder="FullName" />
+                <span class="text-danger" asp-validation-for="FullName"></span>
+         </div>
+        </div>
+        <div class="col-md-6">
+         <div class="form-floating">
+                <label asp-for="Phone">Phone</label>
+                <input class="form-control" type="text" asp-for="Phone" placeholder="Phone" />
+                <span class="text-danger" asp-validation-for="Phone"></span>
+         </div>
+        </div>
+       
+       <div class="col-12">
+            <div class="form-floating">
+                <label asp-for="Email" class="required">Email </label>
+                <input class="form-control" type="email" asp-for="Email" placeholder="Email" />
+               <span class="text-danger" asp-validation-for="Email"></span>
+            </div>
+         </div>
+       
+
+    }
+   <div class="single-input-item col-12 p-0 mt-1">
+        <div style="color: #dba337; font-weight:400" ><label asp-for="Subject"> Subject</label></div>
+        <textarea name="Subject" asp-for="Subject" cols="44" rows="2" placeholder="Please write about your subject.."></textarea>
+        <span class="text-danger" asp-validation-for="Subject"></span>
+       </div>
+        <div class="single-input-item col-12 p-0 mt-1" >
+        <div style="color: #dba337; font-weight:400"> <label asp-for="Text"> Note</label></div>
+            <textarea name="Text" asp-for="Text" cols="44" rows="4" placeholder="Please write about your problem.."></textarea>
+            <span class="text-danger" asp-validation-for="Text"></span>
+        </div>
+   
+</div>

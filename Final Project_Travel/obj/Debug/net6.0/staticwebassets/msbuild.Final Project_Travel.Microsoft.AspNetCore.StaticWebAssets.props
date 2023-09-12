@@ -2416,6 +2416,22 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\manage\assets\scss\vertical\_vertical-wrapper.scss))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\manage\assets\uploads\branches\db8f633a-0882-4e4b-962f-4f216fa73a67azerbaijan.jpeg))">
+      <SourceType>Package</SourceType>
+      <SourceId>Final Project_Travel</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/Final Project_Travel</BasePath>
+      <RelativePath>manage/assets/uploads/branches/db8f633a-0882-4e4b-962f-4f216fa73a67azerbaijan.jpeg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\manage\assets\uploads\branches\db8f633a-0882-4e4b-962f-4f216fa73a67azerbaijan.jpeg))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\manage\assets\uploads\destination\08f2f407-e27a-4cec-9c71-eb8ef32233dfpoland.jpeg))">
       <SourceType>Package</SourceType>
       <SourceId>Final Project_Travel</SourceId>

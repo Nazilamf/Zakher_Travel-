@@ -11,21 +11,19 @@
       <div class="tab-container">
       <div class="tab-menu">
             <ul >
-            <li><a href="#" class="tab-a active-a " (@ViewBag.tab= ="Profile" ? "show active" : "" )" " data-id="tab1">ACCOUNT</a></li>
-            <li><a href="#" class="tab-a  (@ViewBag.tab= ="Order" ? "show active" : "" )" data-id="tab2">BOOKINGS</a></li>
+            <li><a href="#" class="tab-a active-a " (@ViewBag.tab= ="Profile" ? "show active" : "" )" href="#profile" data-toggle="tab" data-id="tab1">ACCOUNT</a></li>
+            <li><a href="#" class="tab-a  (@ViewBag.tab == " Order" ? "show active" : "" )" href="#orders" data-toggle="tab" data-id="tab2">BOOKINGS</a></li>
                <li><a asp-action="login"  class="tab-a" data-id="tab3">LOG OUT</a></li>
             </ul>
          </div><!--end of tab-menu-->
-    <div class="tab tab-active " (@ViewBag.tab= ="Profile" ? "show active" : "" " data-id="tab1">
-            <div class="container">
-               <div class="card m-auto mb-5 ">
+    <div class="tab tab-active " (@ViewBag.tab== "Profile" ? "show active" : "")" data-id="tab1">
+           
                             @Html.Partial("_MemberUpdateFormPartial",Model.Member)
-               </div>
-           </div>
+           
 
          </div><!--end of tab one--> 
 
-         <div  class="tab  (@ViewBag.tab= ="Order" ? "show active" : """ data-id="tab2">
+         <div  class="tab  (@ViewBag.tab== "Order" ? "show active" : """ data-id="tab2">
             <table class="table table-bordered mt-5 mb-5">
                <thead>
                  <tr>
@@ -45,7 +43,7 @@
                    <th scope="row">@dataOrder</th>
                    <td>@item.CreatedDate</td>
                    <td>@item.Status</td>
-                   <td>200 AZN</td>
+                   <td>@item.TotalAmount</td>
                     <td><a asp-action="getdetail" asp-controller="tour" asp-route-id="@item.Id" class="btn" style="background-color: #DBA337; color: white;">View</a></td>
                  </tr>
                  }

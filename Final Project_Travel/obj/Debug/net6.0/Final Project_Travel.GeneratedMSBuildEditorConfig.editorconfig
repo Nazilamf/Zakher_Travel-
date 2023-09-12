@@ -28,6 +28,18 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlXFZpZXdzXEFkdmFudGFnZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/HP/Desktop/API/API-Project/Final Project_Travel/Zakher_Travel-/Final Project_Travel/Areas/Manage/Views/Branch/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlXFZpZXdzXEJyYW5jaFxDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP/Desktop/API/API-Project/Final Project_Travel/Zakher_Travel-/Final Project_Travel/Areas/Manage/Views/Branch/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlXFZpZXdzXEJyYW5jaFxFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP/Desktop/API/API-Project/Final Project_Travel/Zakher_Travel-/Final Project_Travel/Areas/Manage/Views/Branch/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlXFZpZXdzXEJyYW5jaFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/HP/Desktop/API/API-Project/Final Project_Travel/Zakher_Travel-/Final Project_Travel/Areas/Manage/Views/Category/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlXFZpZXdzXENhdGVnb3J5XENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -38,6 +50,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/HP/Desktop/API/API-Project/Final Project_Travel/Zakher_Travel-/Final Project_Travel/Areas/Manage/Views/Category/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlXFZpZXdzXENhdGVnb3J5XEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP/Desktop/API/API-Project/Final Project_Travel/Zakher_Travel-/Final Project_Travel/Areas/Manage/Views/ContactUs/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlXFZpZXdzXENvbnRhY3RVc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/HP/Desktop/API/API-Project/Final Project_Travel/Zakher_Travel-/Final Project_Travel/Areas/Manage/Views/Dashboard/Index.cshtml]
@@ -140,8 +156,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/HP/Desktop/API/API-Project/Final Project_Travel/Zakher_Travel-/Final Project_Travel/Views/ContactUs/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udGFjdFVzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/HP/Desktop/API/API-Project/Final Project_Travel/Zakher_Travel-/Final Project_Travel/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP/Desktop/API/API-Project/Final Project_Travel/Zakher_Travel-/Final Project_Travel/Views/Shared/_ContactUsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Db250YWN0VXNQYXJ0aWFsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/HP/Desktop/API/API-Project/Final Project_Travel/Zakher_Travel-/Final Project_Travel/Views/Shared/_Layout.cshtml]
@@ -154,6 +178,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/HP/Desktop/API/API-Project/Final Project_Travel/Zakher_Travel-/Final Project_Travel/Views/Shared/_TourModalPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Ub3VyTW9kYWxQYXJ0aWFsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP/Desktop/API/API-Project/Final Project_Travel/Zakher_Travel-/Final Project_Travel/Views/Shared/_WishlistPartialView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9XaXNobGlzdFBhcnRpYWxWaWV3LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/HP/Desktop/API/API-Project/Final Project_Travel/Zakher_Travel-/Final Project_Travel/Views/_ViewImports.cshtml]

@@ -5,6 +5,7 @@
 
 @{
     var settings = _layoutService.GetSettings();
+    var wishlist = _layoutService.GetWishlist();
 }
 
 
@@ -183,44 +184,9 @@
 
         <!-- offcanvas mini cart start -->
         <div class="offcanvas-minicart-wrapper">
-            <div class="minicart-inner">
+            <div id="wishlistcard" class="minicart-inner">
                 <div class="offcanvas-overlay"></div>
-                <div class="minicart-inner-content">
-                    <div class="minicart-close">
-                        <i class="fa fa-close"></i>
-                    </div>
-                    <div class="minicart-content-box">
-                        <div class="minicart-item-wrapper">
-                            <ul>
-                                <li class="minicart-item">
-                                    <div class="minicart-thumb">
-                                        <a asp-action="index" asp-controller="details">
-                                            <img style="width: 100%;" src="~/assets/image/azerbaijan.jpeg"
-                                                 alt="product" />
-                                        </a>
-                                    </div>
-                                    <div class="minicart-content">
-                                        <h3 class="product-name">
-                                            <a asp-action="index" asp-controller="details">Sheki Tour</a>
-                                        </h3>
-                                        <p>
-                                            <span class="cart-price">$100.00</span>
-                                        </p>
-                                    </div>
-
-                                    <div class="icon-wishlist"></div>
-                                </li>
-
-                            </ul>
-                        </div>
-
-
-                        <div class="minicart-button">
-                            <a asp-action="index" asp-controller="wishlist"><i class="fa fa-heart"></i>View Wishlist</a>
-
-                        </div>
-                    </div>
-                </div>
+              @Html.Partial("_WishlistPartialView",wishlist)
             </div>
         </div>
         <!-- offcanvas mini cart end -->
