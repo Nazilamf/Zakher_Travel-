@@ -4,6 +4,7 @@ using Final_Project_Travel.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Final_Project_Travel.Migrations
 {
     [DbContext(typeof(ZakherDbContext))]
-    partial class ZakherDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230913001710_ReviewTable")]
+    partial class ReviewTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -45,7 +47,7 @@ namespace Final_Project_Travel.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Advantages", (string)null);
+                    b.ToTable("Advantages");
                 });
 
             modelBuilder.Entity("Final_Project_Travel.Entities.Branch", b =>
@@ -66,7 +68,7 @@ namespace Final_Project_Travel.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Branches", (string)null);
+                    b.ToTable("Branches");
                 });
 
             modelBuilder.Entity("Final_Project_Travel.Entities.Category", b =>
@@ -83,7 +85,7 @@ namespace Final_Project_Travel.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Categories", (string)null);
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("Final_Project_Travel.Entities.ContactUs", b =>
@@ -122,7 +124,7 @@ namespace Final_Project_Travel.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ContactUs", (string)null);
+                    b.ToTable("ContactUs");
                 });
 
             modelBuilder.Entity("Final_Project_Travel.Entities.DepartureLocation", b =>
@@ -139,7 +141,7 @@ namespace Final_Project_Travel.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("DepartureLocations", (string)null);
+                    b.ToTable("DepartureLocations");
                 });
 
             modelBuilder.Entity("Final_Project_Travel.Entities.Destination", b =>
@@ -161,7 +163,7 @@ namespace Final_Project_Travel.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Destinations", (string)null);
+                    b.ToTable("Destinations");
                 });
 
             modelBuilder.Entity("Final_Project_Travel.Entities.Order", b =>
@@ -208,7 +210,7 @@ namespace Final_Project_Travel.Migrations
 
                     b.HasIndex("AppUserId");
 
-                    b.ToTable("Orders", (string)null);
+                    b.ToTable("Orders");
                 });
 
             modelBuilder.Entity("Final_Project_Travel.Entities.OrderItem", b =>
@@ -243,7 +245,7 @@ namespace Final_Project_Travel.Migrations
 
                     b.HasIndex("ToursId");
 
-                    b.ToTable("OrderItems", (string)null);
+                    b.ToTable("OrderItems");
                 });
 
             modelBuilder.Entity("Final_Project_Travel.Entities.Setting", b =>
@@ -266,7 +268,7 @@ namespace Final_Project_Travel.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Settings", (string)null);
+                    b.ToTable("Settings");
                 });
 
             modelBuilder.Entity("Final_Project_Travel.Entities.Slider", b =>
@@ -306,7 +308,7 @@ namespace Final_Project_Travel.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Sliders", (string)null);
+                    b.ToTable("Sliders");
                 });
 
             modelBuilder.Entity("Final_Project_Travel.Entities.Tour", b =>
@@ -381,7 +383,7 @@ namespace Final_Project_Travel.Migrations
 
                     b.HasIndex("DestinationId");
 
-                    b.ToTable("Tours", (string)null);
+                    b.ToTable("Tours");
                 });
 
             modelBuilder.Entity("Final_Project_Travel.Entities.TourImage", b =>
@@ -407,7 +409,7 @@ namespace Final_Project_Travel.Migrations
 
                     b.HasIndex("TourId");
 
-                    b.ToTable("TourImages", (string)null);
+                    b.ToTable("TourImages");
                 });
 
             modelBuilder.Entity("Final_Project_Travel.Entities.TourReview", b =>
@@ -440,7 +442,7 @@ namespace Final_Project_Travel.Migrations
 
                     b.HasIndex("TourId");
 
-                    b.ToTable("TourReviews", (string)null);
+                    b.ToTable("TourReviews");
                 });
 
             modelBuilder.Entity("Final_Project_Travel.Entities.WishlistItem", b =>
@@ -463,7 +465,7 @@ namespace Final_Project_Travel.Migrations
 
                     b.HasIndex("TourId");
 
-                    b.ToTable("WishlistItems", (string)null);
+                    b.ToTable("WishlistItems");
                 });
 
             modelBuilder.Entity("Final_Project_Travel.Entities.Worker", b =>
@@ -489,7 +491,7 @@ namespace Final_Project_Travel.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Workers", (string)null);
+                    b.ToTable("Workers");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

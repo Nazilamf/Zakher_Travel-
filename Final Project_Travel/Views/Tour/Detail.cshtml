@@ -1,0 +1,216 @@
+﻿@using Final_Project_Travel.ViewModels;
+
+@model TourDetailViewModel
+ 
+<!-- Hero header -->
+<div class="container-fluid bg-primary py-5 mb-5 hero-header">
+    <div class="container py-5">
+        <div class="row justify-content-center py-5">
+            <div class="col-lg-10 pt-lg-5 mt-lg-5 text-center">
+                <h1 class="display-3 text-white animated slideInDown">Details</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Hero header end -->
+<!-- product details wrapper start -->
+<div class="product-details-wrapper section-padding">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-12">
+
+                <div class="col-lg-6 mb-3">
+                    <div class="tour-title ">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <h2>@Model.Tour.Name</h2>
+                            </div>
+                            <div class="col-lg-6 mt-2">
+                                <h4 style="font-size: 18px;">
+                                    Code:<span style="font-size: 16px; color: gray;">
+                                        @Model.Tour.Code
+                                    </span>
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tour-title-bottom">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <i class="fa-solid fa-hourglass-half"
+                                   style="color: #DBA337;font-size: 16px;"></i> <span>@(Model.Tour.EndDate.Subtract(Model.Tour.StartDate).Days+1) DAYS - @Model.Tour.EndDate.Subtract(Model.Tour.StartDate).Days NIGHTS</span>
+                            </div>
+                            <div class="col-lg-6">
+                                <h4 style="font-size: 16px; margin-left: -16px;">
+                                    <i class="fa-solid fa-tag"
+                                       style="color: #DBA337; font-weight: 800;"></i> Category:<span style="font-size: 16px; color: gray;"> @Model.Tour.Category.Name</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- product details inner end -->
+                <div class="product-details-inner mb-5">
+                    <div class="row">
+                        <div class="col-lg-5">
+
+                            <div class="product-large-slider h-50">
+                                @foreach (var item in Model.Tour.TourImages.Where(x => x.PosterStatus==false))
+                                {
+                                    <div class="pro-large-img img-zoom">
+                                    <img src="~/manage/assets/uploads/tours/@item.ImageName" alt="" />
+                                    </div>
+                                }
+                              
+                            </div>
+
+                            <div class="pro-nav slick-row-5">
+
+                             @foreach(var item in Model.Tour.TourImages.Where(x=>x.PosterStatus==false)){
+                             
+                                <div class="pro-nav-thumb"><img src="~/manage/assets/uploads/tours/@item.ImageName" alt="" /></div>
+                             }
+                                
+                            </div>
+                        </div>
+                        <div class="col-lg-7">
+                            <!-- product details reviews start -->
+                            <div class="product-details-reviews section-padding">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="product-review-info">
+                                            <ul class="nav review-tab">
+                                                <li>
+                                                    <a class="active" data-toggle="tab"
+                                                       href="#tab_one">description</a>
+                                                </li>
+
+                                                <li>
+                                                    <a data-toggle="tab" href="#tab_three">Reviews (@Model.Tour.TourReviews.Count)</a>
+                                                </li>
+                                            </ul>
+                                            <div class="tab-content reviews-tab">
+                                                <div class="tab-pane fade show active" id="tab_one">
+                                                    <div class="tab-one">
+
+                                                        <p>
+                                                           @Model.Tour.Desc
+                                                        </p>
+
+                                                        <div class="ratings">
+                                                            @for (int i = 1; i<=5; i++)
+                                                            {
+                                                                <span class=" fa-regular fa-star @(i<=Model.Tour.Rate?"fa-solid fa-star":"")"></span>
+                                                            }
+                                                                 
+                                                        </div>
+
+                                                        <div class="review-description">
+
+                                                            <div class="price-box">
+                                                                <span class="regular-price">@Model.Tour.DiscountPrice AZN</span>
+                                                                <span class="old-price"><del>@Model.Tour.SalePrice</del></span>
+                                                            </div>
+
+                                                        </div>
+
+
+
+                                                        <div class="col-lg-6">
+                                                            <h4 style="font-size: 16px;">
+                                                                <i class="fa-solid fa-users-line"
+                                                                   style="color: #DBA337; font-weight: 800;"></i>
+                                                                Count:<span style="font-size: 16px; color: gray;">
+                                                                    @Model.Tour.PersonCount
+                                                                </span>
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <h4 style="font-size: 16px; ">
+                                                                <i class="fa-solid fa-location-dot"
+                                                                   style="color: #DBA337; font-weight: 800;"></i>
+                                                                Departure Location:<span style="font-size: 16px; color: gray;">
+                                                                    @Model.Tour.DepartureLocation.Name
+                                                                </span>
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <h4 style="font-size: 16px; ">
+                                                                <i class="fa-solid fa-plane"
+                                                                   style="color: #DBA337; font-weight: 800;"></i>
+                                                                Destination:<span style="font-size: 16px; color: gray;">
+                                                                    @Model.Tour.Destination.Name
+                                                                </span>
+                                                        </div>
+
+
+                                                        <div class="col-lg-6">
+                                                            <h4 style="font-size: 16px; ">
+                                                                <i class="fa-solid fa-heart-circle-check"
+                                                                   style="color: #DBA337; font-weight: 800;"></i>
+                                                                Insurance:<span style="font-size: 16px; color: gray;">
+                                                                    @(Model.Tour.Insurance ? "Included" : "Not Included")
+                                                                </span>
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <h4 style="font-size: 16px; ">
+                                                                <i class="fa-solid fa-taxi"
+                                                                   style="color: #DBA337; font-weight: 800;"></i>
+                                                                Transfer:<span style="font-size: 16px; color: gray;">
+                                                                    @(Model.Tour.Transfer ? "Included" : "Not Included")
+                                                                </span>
+                                                        </div>
+
+                                                        <a href="cart.html" class="btn btn-default"
+                                                           style="background-color: #DBA337; margin-left: 50%;">
+                                                            Booking
+                                                            Now
+                                                        </a>
+
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="tab-pane fade" id="tab_three">
+                                                    
+                                                        @foreach (var item in Model.Tour.TourReviews)
+                                                        {
+                                                            <h5>1 review for <span>@item.AppUser.FullName</span></h5>
+                                                            <div class="total-reviews">
+
+                                                                <div class="review-box">
+                                                                    <div class="ratings">
+                                                                         @for (int i = 1; i<=5; i++)
+                                                            {
+                                                                <span class=" fa-regular fa-star @(i<=item.Rate? "fa-solid fa-star":"")"></span>
+                                                            }
+                                                                    </div>
+                                                                    <div class="post-author">
+                                                                        <p><span> -</span> @item.ReviewDate.ToString("dd-mm-yyyy")</p>
+                                                                    </div>
+                                                                    <p>
+                                                                       @item.Text
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        }
+
+                                                        @Html.Partial("_TourReviewPartial",Model.tourReview)
+                                                    <!-- end of review-form -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- product details reviews end -->
+
+
+                        </div>
+                    </div>
+                </div>
+                <!-- product details inner end -->
+            </div>
+
+        </div>
+
+    </div>
+</div>

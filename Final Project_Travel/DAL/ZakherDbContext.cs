@@ -40,6 +40,8 @@ namespace Final_Project_Travel.DAL
 
         public DbSet<ContactUs> ContactUs { get; set; }
 
-        public DbSet<Branch> Branches { get; set; } 
+        public DbSet<Branch> Branches { get; set; }
+
+        public DbSet<TourReview> TourReviews { get; set; }
     }
 }

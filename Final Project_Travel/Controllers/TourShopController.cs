@@ -25,8 +25,8 @@ namespace Final_Project_Travel.Controllers
 
             TourShopViewModel vm = new TourShopViewModel();
 
-            vm.MaxPrice=query.Max(x => x.SalePrice);
-            vm.MinPrice=query.Min(x => x.SalePrice);
+            vm.MaxPrice=query.Max(x => x.DiscountPrice);
+            vm.MinPrice=query.Min(x => x.DiscountPrice);
 
             if (categoryId != null)
             {

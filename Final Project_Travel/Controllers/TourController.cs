@@ -1,9 +1,11 @@
 ﻿using Final_Project_Travel.DAL;
 using Final_Project_Travel.Entities;
 using Final_Project_Travel.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
+using System.Data;
 using System.Security.Claims;
 
 namespace Final_Project_Travel.Controllers
@@ -123,10 +125,66 @@ namespace Final_Project_Travel.Controllers
             var data = JsonConvert.DeserializeObject<List<WishlistCookieItemViewModel>>(datastr);
             return Json(data);
         }
+
+
+        public IActionResult Detail(int id)
+        {
+            var vm = _getTourDetailVm(id);
+            if (vm.Tour == null)
+            {
+                return View("error");
+            }
+
+            return View(vm);
+        }
+
+        [Authorize(Roles = "Member")]
+        [HttpPost]
+        public IActionResult Review(TourReview tourReview)
+        {
+
+
+            if (!ModelState.IsValid)
+            {
+                var vm = _getTourDetailVm(tourReview.TourId);
+                vm.tourReview = tourReview;
+
+                return View("Detail", vm);
+            }
+            Tour tour = _context.Tours.Include(x => x.TourReviews).FirstOrDefault(x => x.Id == tourReview.TourId);
+            if (tour== null) { return View("error"); }
+
+
+            string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            tourReview.AppUserId= userId;
+            tourReview.ReviewDate = DateTime.UtcNow.AddHours(4);
+            tour.TourReviews.Add(tourReview);
+            tour.Rate =(byte)Math.Ceiling(tour.TourReviews.Average(x => x.Rate));
+            _context.SaveChanges();
+            return RedirectToAction("detail", new { id = tourReview.TourId });
+
+
+        }
+
+        private TourDetailViewModel _getTourDetailVm(int id)
+        {
+            var tour = _context.Tours.Include(x => x.TourReviews).ThenInclude(x => x.AppUser).Include(x => x.Category).Include(x => x.Destination).Include(x => x.DepartureLocation).Include(x => x.TourImages).FirstOrDefault(x => x.Id == id);
+
+            var vm = new TourDetailViewModel
+            {
+                Tour = tour,
+                tourReview = new TourReview
+                {
+                    TourId = id,
+                }
+            };
+
+            return vm;
+        }
+
+
+
     }
-
-
-   
 }
 
 

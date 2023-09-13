@@ -63,5 +63,8 @@ namespace Final_Project_Travel.Entities
 
         public bool IsDeleted { get; set; }
 
+        public ICollection<WishlistItem> WishlistItems { get; set; }
+        public ICollection<TourReview> TourReviews { get; set; } = new List<TourReview>();
+
     }
 }

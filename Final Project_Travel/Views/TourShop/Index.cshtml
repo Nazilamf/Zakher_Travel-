@@ -46,28 +46,29 @@
                             </div>
                         </div>
                         <!-- single sidebar end -->
-
-                        <!-- single sidebar start -->
-                        <div class="sidebar-single">
-                            <div class="sidebar-title">
-                                <h3>filter by price</h3>
-                            </div>
-                            <div class="sidebar-body">
-                                <div class="price-range-wrap">
-                                    <div class="price-range" data-min="20" data-max="400"></div>
-                                    <div class="range-slider">
-                                        <form action="#">
-                                            <div class="price-input">
-                                                <label for="amount">Price: </label>
-                                                <input type="text" id="amount">
-                                            </div>
-                                            <button class="filter-btn">filter</button>
-                                        </form>
-                                    </div>
+                    <!-- single sidebar start -->
+                    <div class="sidebar-single">
+                        <div class="sidebar-title">
+                            <h3>filter by price</h3>
+                        </div>
+                        <div class="sidebar-body">
+                            <div class="price-range-wrap">
+                                <div class="price-range" data-min="" data-max="@Model.MaxPrice"></div>
+                                <div class="range-slider">
+                                    <form action="#">
+                                        <div class="price-input">
+                                            <label for="amount">Price: </label>
+                                            <input type="text" id="amount">
+                                        </div>
+                                        <button form="filterForm" name="amount" class="filter-btn">filter</button>
+                                        <input type="hidden" id="minPriceInput" form="filterForm" name="minPrice" value="@Model.SelectedMinPrice" />
+                                        <input type="hidden" id="maxPriceInput" form="filterForm" name="maxPrice" value="@Model.SelectedMaxPrice" />
+                                    </form>
                                 </div>
                             </div>
                         </div>
-                        <!-- single sidebar end -->
+                    </div>
+                    <!-- single sidebar end -->
 
                         <!-- single sidebar start -->
                         <div class="sidebar-single">
@@ -91,21 +92,7 @@
                         </div>
                         <!-- single sidebar end -->
 
-                        <!-- single sidebar start -->
-                        <div class="sidebar-single">
-                            <div class="sidebar-title">
-                                <h3>Month</h3>
-                            </div>
-                            <div class="sidebar-body">
-                                <ul class="size-list">
-                                    <li><a href="#">L <span>(05)</span></a></li>
-                                    <li><a href="#">M <span>(06)</span></a></li>
-                                    <li><a href="#">S <span>(02)</span></a></li>
-                                    <li><a href="#">XL <span>(01)</span></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <!-- single sidebar end -->
+                       
                     <!-- single sidebar start -->
                     <div class="sidebar-single">
                         <div class="sidebar-title">
@@ -115,11 +102,10 @@
                             <ul class="color-list">
                                 @foreach (var item in Model.MonthNames)
                                 {
-
                                     <div class="form-check">
-                                        <input class="form-check-input" @(item.Id==Model.SelectedMonth?"checked" :"") form="filterForm" type="radio" name="month" value="@item.Id" id="month-@item.Id">
-                                        <label class="form-check-label" for="month-@item.Id">
-                                            @item.Name <span>(@item.Tours.Count)
+                                        <input class="form-check-input" @(item==Model.SelectedMonth?"checked" :"") form="filterForm" type="radio" name="month" value="@item" id="month-@item">
+                                        <label class="form-check-label" for="month-@item">
+                                            @item.ToUpper()
                                         </label>
                                     </div>
 
@@ -130,15 +116,7 @@
                     </div>
                     <!-- single sidebar end -->
 
-                        <!-- single sidebar start -->
-                        <div class="sidebar-single">
-                            <div class="sidebar-banner">
-                                <a href="#">
-                                    <img src="~/assets/image/slider1.jpg" alt="">
-                                </a>
-                            </div>
-                        </div>
-                        <!-- single sidebar end -->
+                        
                     </div>
                 </div>
                 <!-- sidebar area end -->
@@ -154,11 +132,12 @@
                                     <div class="top-bar-right">
                                         <div class="product-short ">
                                             <p>Sort By : </p>
-                                            <select class="nice-select" name="sortby">
-                                                <option value="trending">Relevance</option>
+                                        <select class="form-control nice-select sort-select" name="sortby">
+                                            <option value="" selected="selected">Default Sorting</option>
                                                 <option value="sales">Name (A - Z)</option>
                                                 <option value="sales">Name (Z - A)</option>
-                                                <option value="rating">Price (Low &gt; High)</option>
+                                                <option value="">Sort By Price:(Low &gt; High)</option>
+                                            <option value="">Sort By:Price (High &gt; Low)</option>
 
                                             </select>
                                         </div>
@@ -172,219 +151,52 @@
                         <section id="tour-count" >
                             <div class="items d-flex row" style="width: 120%;">
 
+                              @foreach (var item in Model.Tours)
+                            {
                                 <!-- product grid item start -->
                                 <div class="count-item item mb-5 col-lg-4 col-12 ">
                                     <div class="icon-wishlist"></div>
-                                    <div class="image" style=" background-image: url(./assets/image/slider1.jpg);">
-                                        <span>$82.00</span>
+                                    
+                                    <div class="image" style="background-image:url(~/wwwroot/manage/assets/uploads/tours/@item.ImageName">
+                                       
+                                        <span>@item.DiscountPrice <del>@item.SalePrice</del></span>
                                         <div class="img-icons">
-                                            <a href="#" data-toggle="tooltip" title="Add To Cart"><i
-                                                    style="background-color: rgba(43, 42, 42, 0.344); color: white!important;"
-                                                    class="fa-solid fa-plane"></i></a>
-                                            <a href="#" data-toggle="modal" data-target="#quick_view"> <span
-                                                    data-toggle="tooltip" title="Quick View"><i
-                                                        style="background-color: rgba(43, 42, 42, 0.344); color: white!important;"
-                                                        class="fa-solid fa-eye"></i></span> </a>
+                                            <a href="#" data-toggle="tooltip" title="Add To Cart">
+                                                <i style="background-color: rgba(43, 42, 42, 0.344); color: white!important;"
+                                               class="fa-solid fa-plane"></i>
+                                            </a>
+                                                <a asp-controller="tour" asp-action="getdetail" asp-route-id="@item.Id" class="modal-btn" data-target="#quick_view">
+                                                <span data-toggle="tooltip" title="Quick View">
+                                                    <i style="background-color: rgba(43, 42, 42, 0.344); color: white!important;"
+                                                   class="fa-solid fa-eye"></i>
+                                                </span>
+                                            </a>
                                         </div>
+                                            
+                                    
                                     </div>
                                     <div class="slide-text">
-                                        <h2>Kiwiana Panorama</h2>
-                                        <p><i class="fa-regular fa-clock"></i>2 DAYS - 1 NIGHTS</p>
-                                        <p>Aliquam lacus nisl, viverra convallis sit amet penatibus nunc luctus</p>
+                                        <a asp-controller="tour" asp-action="detail" asp-route-id="@item.Id"> <h2>@item.Name</h2></a>
+                                        <p><i class="fa-regular fa-clock"></i>@(@item.EndDate.Subtract(item.StartDate).Days+1) DAYS - @item.EndDate.Subtract(item.StartDate).Days NIGHTS</p>
+                                        <p>@item.Desc</p>
                                     </div>
                                     <div class="read-more">
-                                        <div class="icons">
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
+                                        <div class="ratings">
+                                            @for (int i = 1; i<=5; i++)
+                                            {
+                                                <span class=" fa-regular fa-star @(i<=item.Rate?"fa-solid fa-star":"")"></span>
+                                            }
                                         </div>
                                         <div class="read">
                                             <span></span>
-                                            READ MORE
+                                             <a  style="color:white;" asp-controller="tour" asp-action="detail" asp-route-id="@item.Id">READ MORE</a>
                                         </div>
                                     </div>
-                                </div>
+                             
                                 <!-- product grid item end -->
-                                <!-- Items section start -->
-                                <div class="count-item item mb-5 col-lg-4 col-12">
-                                    <div class="icon-wishlist"></div>
-                                    <div class="image" style=" background-image: url(./assets/image/slider1.jpg);">
-                                        <span>$82.00</span>
-                                        <div class="img-icons">
-                                            <a href="#" data-toggle="tooltip" title="Add To Cart"><i
-                                                    style="background-color: rgba(43, 42, 42, 0.344); color: white!important;"
-                                                    class="fa-solid fa-plane"></i></a>
-                                            <a href="#" data-toggle="modal" data-target="#quick_view"> <span
-                                                    data-toggle="tooltip" title="Quick View"><i
-                                                        style="background-color: rgba(43, 42, 42, 0.344); color: white!important;"
-                                                        class="fa-solid fa-eye"></i></span> </a>
-                                        </div>
-                                    </div>
-                                    <div class="slide-text">
-                                        <h2>Kiwiana Panorama</h2>
-                                        <p><i class="fa-regular fa-clock"></i>2 DAYS - 1 NIGHTS</p>
-                                        <p>Aliquam lacus nisl, viverra convallis sit amet penatibus nunc luctus</p>
-                                    </div>
-                                    <div class="read-more">
-                                        <div class="icons">
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                        </div>
-                                        <div class="read">
-                                            <span></span>
-                                            READ MORE
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- product grid item end  -->
-                                  <!-- Items section start -->
-                                  <div class="count-item item mb-5 col-lg-4 col-12">
-                                    <div class="icon-wishlist"></div>
-                                    <div class="image" style=" background-image: url(./assets/image/slider1.jpg);">
-                                        <span>$82.00</span>
-                                        <div class="img-icons">
-                                            <a href="#" data-toggle="tooltip" title="Add To Cart"><i
-                                                    style="background-color: rgba(43, 42, 42, 0.344); color: white!important;"
-                                                    class="fa-solid fa-plane"></i></a>
-                                            <a href="#" data-toggle="modal" data-target="#quick_view"> <span
-                                                    data-toggle="tooltip" title="Quick View"><i
-                                                        style="background-color: rgba(43, 42, 42, 0.344); color: white!important;"
-                                                        class="fa-solid fa-eye"></i></span> </a>
-                                        </div>
-                                    </div>
-                                    <div class="slide-text">
-                                        <h2>Kiwiana Panorama</h2>
-                                        <p><i class="fa-regular fa-clock"></i>2 DAYS - 1 NIGHTS</p>
-                                        <p>Aliquam lacus nisl, viverra convallis sit amet penatibus nunc luctus</p>
-                                    </div>
-                                    <div class="read-more">
-                                        <div class="icons">
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                        </div>
-                                        <div class="read">
-                                            <span></span>
-                                            READ MORE
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- product grid item end  -->
-                                  <!-- Items section start -->
-                                  <div class="count-item item mb-5 col-lg-4 col-12 ">
-                                    <div class="icon-wishlist"></div>
-                                    <div class="image" style=" background-image: url(./assets/image/slider1.jpg);">
-                                        <span>$82.00</span>
-                                        <div class="img-icons">
-                                            <a href="#" data-toggle="tooltip" title="Add To Cart"><i
-                                                    style="background-color: rgba(43, 42, 42, 0.344); color: white!important;"
-                                                    class="fa-solid fa-plane"></i></a>
-                                            <a href="#" data-toggle="modal" data-target="#quick_view"> <span
-                                                    data-toggle="tooltip" title="Quick View"><i
-                                                        style="background-color: rgba(43, 42, 42, 0.344); color: white!important;"
-                                                        class="fa-solid fa-eye"></i></span> </a>
-                                        </div>
-                                    </div>
-                                    <div class="slide-text">
-                                        <h2>Kiwiana Panorama</h2>
-                                        <p><i class="fa-regular fa-clock"></i>2 DAYS - 1 NIGHTS</p>
-                                        <p>Aliquam lacus nisl, viverra convallis sit amet penatibus nunc luctus</p>
-                                    </div>
-                                    <div class="read-more">
-                                        <div class="icons">
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                        </div>
-                                        <div class="read">
-                                            <span></span>
-                                            READ MORE
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- product grid item end  -->
-                                  <!-- Items section start -->
-                                  <div class="count-item item mb-5 col-lg-4 col-12">
-                                    <div class="icon-wishlist"></div>
-                                    <div class="image" style=" background-image: url(./assets/image/slider1.jpg);">
-                                        <span>$82.00</span>
-                                        <div class="img-icons">
-                                            <a href="#" data-toggle="tooltip" title="Add To Cart"><i
-                                                    style="background-color: rgba(43, 42, 42, 0.344); color: white!important;"
-                                                    class="fa-solid fa-plane"></i></a>
-                                            <a href="#" data-toggle="modal" data-target="#quick_view"> <span
-                                                    data-toggle="tooltip" title="Quick View"><i
-                                                        style="background-color: rgba(43, 42, 42, 0.344); color: white!important;"
-                                                        class="fa-solid fa-eye"></i></span> </a>
-                                        </div>
-                                    </div>
-                                    <div class="slide-text">
-                                        <h2>Kiwiana Panorama</h2>
-                                        <p><i class="fa-regular fa-clock"></i>2 DAYS - 1 NIGHTS</p>
-                                        <p>Aliquam lacus nisl, viverra convallis sit amet penatibus nunc luctus</p>
-                                    </div>
-                                    <div class="read-more">
-                                        <div class="icons">
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                        </div>
-                                        <div class="read">
-                                            <span></span>
-                                            READ MORE
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- product grid item end  -->
-
-
-                                <!-- product grid item start -->
-                                <div class="count-item item mb-5 col-lg-4 col-12">
-                                    <div class="icon-wishlist"></div>
-                                    <div class="image" style=" background-image: url(./assets/image/slider1.jpg);">
-                                        <span>$82.00</span>
-                                        <div class="img-icons">
-                                            <a href="#" data-toggle="tooltip" title="Add To Cart"><i
-                                                    style="background-color: rgba(43, 42, 42, 0.344); color: white!important;"
-                                                    class="fa-solid fa-plane"></i></a>
-                                            <a href="#" data-toggle="modal" data-target="#quick_view"> <span
-                                                    data-toggle="tooltip" title="Quick View"><i
-                                                        style="background-color: rgba(43, 42, 42, 0.344); color: white!important;"
-                                                        class="fa-solid fa-eye"></i></span> </a>
-                                        </div>
-                                    </div>
-                                    <div class="slide-text">
-                                        <h2>Kiwiana Panorama</h2>
-                                        <p><i class="fa-regular fa-clock"></i>2 DAYS - 1 NIGHTS</p>
-                                        <p>Aliquam lacus nisl, viverra convallis sit amet penatibus nunc luctus</p>
-                                    </div>
-                                    <div class="read-more">
-                                        <div class="icons">
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                        </div>
-                                        <div class="read">
-                                            <span></span>
-                                            READ MORE
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- product grid item end -->
+                            
                             </div>
+                            }
 
                         </section>
 
@@ -445,13 +257,12 @@
                                         edirik.Bütün əyləncələr sizi gözləyir. Yerlər məhdud
                                         saydadir.</p>
 
-                                    <div class="ratings">
-                                        <span class="good"><i class="fa fa-star"></i></span>
-                                        <span class="good"><i class="fa fa-star"></i></span>
-                                        <span class="good"><i class="fa fa-star"></i></span>
-                                        <span class="good"><i class="fa fa-star"></i></span>
-                                        <span><i class="fa fa-star"></i></span>
-                                    </div>
+                                <div class="ratings">
+                                   @* @for (int i = 1; i<=5; i++)
+                                    {
+                                        <span class=" fa-regular fa-star @(i<=item.Rate?"star-on":"")"></span>
+                                    }*@
+                                </div>
 
                                     <div class="review-description">
 
@@ -510,3 +321,34 @@
         </div>
     </div>
     <!-- Quick view modal end -->
+
+
+                                    
+      <script>
+          // pricing filter
+    var rangeSlider = $(".price-range"),
+        amount = $("#amount"),
+        minPrice = rangeSlider.data('min'),
+        maxPrice = rangeSlider.data('max');
+    rangeSlider.slider({
+        range: true,
+            min: @Model.MinPrice,
+            max: @Model.MaxPrice],
+        values: [@Model.SelectedMinPrice, @Model.SelectedMaxPrice],
+        slide: function (event, ui) {
+            amount.val("$" + ui.values[0] + " - $" + ui.values[1]);
+                $(#minPriceInput).val(ui.values[0]);
+                $(#maxPriceInput).val(ui.values[1])
+
+        },
+            change: function (event, ui) {
+                amount.val("$" + ui.values[0] + " - $" + ui.values[1]);
+                $(#minPriceInput).val(ui.values[0]);
+                $(#maxPriceInput).val(ui.values[1])
+
+    });
+    amount.val(" $" + rangeSlider.slider("values", 0) +
+        " - $" + rangeSlider.slider("values", 1));
+
+      </script>
+    
