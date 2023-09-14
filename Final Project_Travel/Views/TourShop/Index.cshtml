@@ -53,7 +53,7 @@
                         </div>
                         <div class="sidebar-body">
                             <div class="price-range-wrap">
-                                <div class="price-range" data-min="" data-max="@Model.MaxPrice"></div>
+                                <div class="price-range" data-min="20" data-max="400"></div>
                                 <div class="range-slider">
                                     <form action="#">
                                         <div class="price-input">
@@ -132,7 +132,7 @@
                                     <div class="top-bar-right">
                                         <div class="product-short ">
                                             <p>Sort By : </p>
-                                        <select class="form-control nice-select sort-select" name="sortby">
+                                        <select class= name="sort" onchange="this.form.submit()" form="filterForm" class="form-control nice-select sort-select" asp-items="@Model.SortItems">
                                             <option value="" selected="selected">Default Sorting</option>
                                                 <option value="sales">Name (A - Z)</option>
                                                 <option value="sales">Name (Z - A)</option>
@@ -155,8 +155,12 @@
                             {
                                 <!-- product grid item start -->
                                 <div class="count-item item mb-5 col-lg-4 col-12 ">
-                                    <div class="icon-wishlist"></div>
-                                    
+                                 
+                                            <a asp-controller="tour" asp-action="addtowishlist" asp-route-id="@item.Id" class="wishlist-btn" data-toggle="tooltip" title="Add To Cart">
+                                                <div class="icon-wishlist addwish "></div>
+                                            </a>
+
+                                   
                                     <div class="image" style="background-image:url(~/wwwroot/manage/assets/uploads/tours/@item.ImageName">
                                        
                                         <span>@item.DiscountPrice <del>@item.SalePrice</del></span>
@@ -322,7 +326,7 @@
     </div>
     <!-- Quick view modal end -->
 
-
+    @section Scripts{
                                     
       <script>
           // pricing filter
@@ -351,4 +355,4 @@
         " - $" + rangeSlider.slider("values", 1));
 
       </script>
-    
+    }

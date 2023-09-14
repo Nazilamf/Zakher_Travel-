@@ -3,7 +3,7 @@
 @model WishlistViewModel
 
 
-<div class="minicart-inner-content">
+<div class="minicart-inner-content" style="z-index:11111">
     <div class="minicart-close">
         <i class="fa fa-close"></i>
     </div>
@@ -15,8 +15,8 @@
                     <li class="minicart-item">
                     <div class="minicart-thumb">
                         <a href="product-details.html">
-                                <img style="width: 100%;" src="~/manage/assets/uploads/tours/@item.Tour.TourImages.FirstOrDefault(x=>x.PosterStatus==true).ImageName"
-                                 alt="product" />
+                                <img style="width: 100%;" src="~/manage/assets/uploads/tours/@item.Tour.ImageName"
+                                 alt="tour" />
                         </a>
                     </div>
                     <div class="minicart-content">

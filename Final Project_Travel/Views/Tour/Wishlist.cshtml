@@ -1,0 +1,205 @@
+﻿@using Final_Project_Travel.ViewModels;
+@model WishlistViewModel
+<!-- cart main wrapper start -->
+<div class="cart-main-wrapper section-padding">
+    <div class="container">
+        <div class="section-bg-color">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!-- Cart Table Area -->
+                    <section id="tour-count">
+                        <div class="items d-flex row container" style="width: 120%;">
+@foreach (var item in Model.Wishlist)
+                            {
+
+                                <!-- product grid item start -->
+                                <div class="count-item item mb-5 col-lg-4 col-12 ">
+                                    <div class="icon-wishlist"></div>
+                                    <div class="image" style=" background-image: url(~/wwwroot/manage/assets/uploads/tours/@item.Tour.ImageName);">
+                                       
+                                        <span>@item.Tour.DiscountPrice <del>@item.Tour.SalePrice</del></span>
+                                        <div class="img-icons">
+                                            <a href="#" data-toggle="tooltip" title="Add To Cart">
+                                                <i style="background-color: rgba(43, 42, 42, 0.344); color: white!important;"
+                                               class="fa-solid fa-plane"></i>
+                                            </a>
+                                            <a href="#" data-toggle="modal" data-target="#quick_view">
+                                                <span data-toggle="tooltip" title="Quick View">
+                                                    <i style="background-color: rgba(43, 42, 42, 0.344); color: white!important;"
+                                                   class="fa-solid fa-eye"></i>
+                                                </span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="slide-text">
+                                        <h2>@item.Tour.Name</h2>
+                                        <p><i class="fa-regular fa-clock"></i>@(@item.Tour.EndDate.Subtract(item.Tour.StartDate).Days+1) DAYS - @item.Tour.EndDate.Subtract(item.Tour.StartDate).Days NIGHTS</p>
+                                        <p>@item.Tour.Desc</p>
+                                    </div>
+                                    <div class="read-more">
+                                        <div class="icons">
+                                            @for (int i = 1; i<=5; i++)
+                                            {
+                                                <span class=" fa-regular fa-star @(i<=item.Tour.Rate? "fa-solid fa-star":"")"></span>
+                                            }
+                                        </div>
+                                        <div class="read">
+                                            <span></span>
+                                            READ MORE
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- product grid item end -->
+                            }
+
+
+
+                        </div>
+
+                    </section>
+                </div>
+
+
+                <!-- Quick view modal start -->
+                <div class="modal" id="quick_view">
+                    <div class="modal-dialog modal-lg modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="col-lg-6 mb-3">
+                                    <div class="tour-title ">
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <h2>Sheki Tour</h2>
+                                            </div>
+                                            <div class="col-lg-6 mt-2">
+                                                <h4 style="font-size: 18px;">
+                                                    Code:<span style="font-size: 16px; color: gray;">
+                                                        ZK1001
+                                                    </span>
+                                                </h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tour-title-bottom">
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <i class="fa-solid fa-hourglass-half"
+                                                   style="color: #DBA337;font-size: 16px;"></i> <span>
+                                                    6 DAYS - 5
+                                                    NIGHTS
+                                                </span>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <h4 style="font-size: 16px; margin-left: -16px;">
+                                                    <i class="fa-solid fa-tag"
+                                                       style="color: #DBA337; font-weight: 800;"></i>
+                                                    Category:<span style="font-size: 16px; color: gray;">
+                                                        Historical
+                                                    </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- product details inner end -->
+                                <div class="product-details-inner mb-5">
+                                    <div class="row">
+                                        <div class="col-lg-5">
+                                            <img style="width: 100%;" src="./assets/image/azerbaijan.jpeg" alt="">
+                                        </div>
+                                        <div class="col-lg-7">
+                                            <div class="product-details-des">
+                                                <p>
+                                                    Hörmətli səyahət sevənlər artiq 4 cü dəfə təşkil
+                                                    etdiyimiz novbeti Sheki turuna sizləri dəvət
+                                                    edirik.Bütün əyləncələr sizi gözləyir. Yerlər məhdud
+                                                    saydadir.
+                                                </p>
+
+                                                <div class="ratings">
+                                                    <span class="good"><i class="fa fa-star"></i></span>
+                                                    <span class="good"><i class="fa fa-star"></i></span>
+                                                    <span class="good"><i class="fa fa-star"></i></span>
+                                                    <span class="good"><i class="fa fa-star"></i></span>
+                                                    <span><i class="fa fa-star"></i></span>
+                                                </div>
+
+                                                <div class="review-description">
+
+                                                    <div class="price-box">
+                                                        <span class="regular-price">$70.00</span>
+                                                        <span class="old-price"><del>$80.00</del></span>
+                                                    </div>
+
+                                                </div>
+
+
+
+                                                <div class="col-lg-6">
+                                                    <h4 style="font-size: 16px;">
+                                                        <i class="fa-solid fa-users-line"
+                                                           style="color: #DBA337; font-weight: 800;"></i>
+                                                        Count:<span style="font-size: 16px; color: gray;">
+                                                            1
+                                                        </span>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <h4 style="font-size: 16px; ">
+                                                        <i class="fa-solid fa-location-dot"
+                                                           style="color: #DBA337; font-weight: 800;"></i>
+                                                        Departure Location:<span style="font-size: 16px; color: gray;">
+                                                            Baku
+                                                        </span>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <h4 style="font-size: 16px; ">
+                                                        <i class="fa-solid fa-plane"
+                                                           style="color: #DBA337; font-weight: 800;"></i>
+                                                        Destination:<span style="font-size: 16px; color: gray;">
+                                                            Sheki
+                                                        </span>
+                                                </div>
+
+
+                                                <div class="col-lg-6">
+                                                    <h4 style="font-size: 16px; ">
+                                                        <i class="fa-solid fa-heart-circle-check"
+                                                           style="color: #DBA337; font-weight: 800;"></i>
+                                                        Insurance:<span style="font-size: 16px; color: gray;">
+                                                            Included
+                                                        </span>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <h4 style="font-size: 16px; ">
+                                                        <i class="fa-solid fa-taxi"
+                                                           style="color: #DBA337; font-weight: 800;"></i>
+                                                        Transfer:<span style="font-size: 16px; color: gray;">
+                                                            Included
+                                                        </span>
+                                                </div>
+
+                                                <a href="cart.html" class="btn btn-default"
+                                                   style="background-color: #DBA337; margin-left: 50%;">
+                                                    Booking
+                                                    Now
+                                                </a>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- product details inner end -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Quick view modal end -->
+
+            </div>
+
+        </div>
+        <!-- cart main wrapper end -->
+        </main>
+        <!-- main wrapper end -->

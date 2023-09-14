@@ -50,6 +50,7 @@ namespace Final_Project_Travel.Controllers
                 {
                     _context.WishlistItems.Remove(wishlistitem);
                 }
+               
 
                 _context.SaveChanges();
 
@@ -92,7 +93,7 @@ namespace Final_Project_Travel.Controllers
                 }
                 else
                 {
-                    cookieitems.Remove(cookieitem);
+                   
                 }
 
 
@@ -114,10 +115,20 @@ namespace Final_Project_Travel.Controllers
 
             }
 
-            return PartialView("_WishlistPartialView", wishlistVM);
+            return RedirectToAction("wishlist");
+            
         }
 
+        public IActionResult Wishlist()
+        {
+            WishlistViewModel vm = new WishlistViewModel
+            {
+                Wishlist = _context.WishlistItems.Include(x => x.Tour).ThenInclude(x=>x.TourImages.Where(x=>x.PosterStatus==true)).ToList()
+            };
+            return View(vm);
+        }
 
+    
 
         public IActionResult ShowWishlist()
         {
@@ -186,5 +197,3 @@ namespace Final_Project_Travel.Controllers
 
     }
 }
-
-

@@ -24,7 +24,7 @@ namespace Final_Project_Travel.Controllers
 
 
             TourShopViewModel vm = new TourShopViewModel();
-
+            vm.Wishlist =  _context.WishlistItems.Include(x => x.Tour).ThenInclude(x => x.TourImages.Where(x => x.PosterStatus==true)).ToList();
             vm.MaxPrice=query.Max(x => x.DiscountPrice);
             vm.MinPrice=query.Min(x => x.DiscountPrice);
 

@@ -38,28 +38,4 @@ $(document).on("click", ".wishlist-btn", function (e) {
 
 })
 
-function addToWishList(id) {
-    var json = {
-        id: id
-    };
-
-    $.ajax({
-        type: 'POST',
-        url: "@Url.Action(".wishlist-btn", "Tour")",
-        dataType: "json",
-        data: { "json": JSON.stringify(json) },
-        success: function (data) {
-            if (data.status == "true") {
-                alert(data.msg);
-                var urlToRedirect = '@Url.Action("Index","Home")';
-                window.location.href = urlToRedirect; //Redirect here
-            }
-        },
-        error: function (data) {
-            alert('Some error');
-            window.location.reload();
-        }
-    });
-}
-
 
