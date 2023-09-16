@@ -4,7 +4,7 @@
     {
         public int Id { get; set; }
         public int OrderId { get; set; }
-        public int ProductId { get; set; }
+        public int TourId { get; set; }
         public decimal UnitDiscountPrice { get; set; }
         public decimal UnitCostPrice { get; set; }
 

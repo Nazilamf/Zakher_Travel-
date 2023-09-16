@@ -24,7 +24,8 @@ namespace Final_Project_Travel.Entities
         public OrderStatus Status { get; set; }
 
         public AppUser AppUser { get; set; }
-        public List<OrderItem> OrderItems { get; set; }
+        
+        public OrderItem OrderItem { get; set; }    
 
     }
 }

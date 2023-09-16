@@ -36,7 +36,8 @@ namespace Final_Project_Travel.Controllers
                 FullName= memberVM.FullName,
                 Email= memberVM.Email,
                 UserName= memberVM.UserName,
-                PhoneNumber = memberVM.Phone
+                PhoneNumber = memberVM.Phone,
+                IsAdmin =false,
 
             };
 
@@ -104,7 +105,7 @@ namespace Final_Project_Travel.Controllers
 
 
 
-                    Orders= _context.Orders.Include(x => x.OrderItems).Where(x => x.AppUserId == member.Id).ToList()
+                    Orders= _context.Orders.Include(x => x.OrderItem).Where(x => x.AppUserId == member.Id).ToList()
                 };
                 return View(vm);
 

@@ -14,8 +14,10 @@
 
                                 <!-- product grid item start -->
                                 <div class="count-item item mb-5 col-lg-4 col-12 ">
-                                    <div class="icon-wishlist"></div>
-                                    <div class="image" style=" background-image: url(~/wwwroot/manage/assets/uploads/tours/@item.Tour.ImageName);">
+                                    <a asp-controller="tour" asp-action="addtowishlist" asp-route-id="@item.Id" class="wishlist-btn" data-toggle="tooltip" title="Add To Cart">
+                                        <div class="icon-wishlist addwish "></div>
+                                    </a>
+                                    <div class="image" style=" background-image: url(~/wwwroot/manage/assets/uploads/tours/.FirstOrDefault(x=>x.PosterStatus==true).ImageName);">
                                        
                                         <span>@item.Tour.DiscountPrice <del>@item.Tour.SalePrice</del></span>
                                         <div class="img-icons">

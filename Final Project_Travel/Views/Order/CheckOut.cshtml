@@ -1,0 +1,61 @@
+﻿@using Final_Project_Travel.ViewModels;
+ @model CheckOutViewModel
+
+<!-- Hero header -->
+<div class="container-fluid bg-primary py-5 mb-5 hero-header">
+    <div class="container py-5">
+        <div class="row justify-content-center py-5">
+            <div class="col-lg-10 pt-lg-5 mt-lg-5 text-center">
+                <h1 class="display-3 text-white animated slideInDown">CheckOut</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Hero header end -->
+<!-- Main section start -->
+<!-- Billing Details start -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6">
+            <h1 class="title">Billing Details</h1>
+            <div class="card mb-5">
+                @Html.Partial("_OrderCreateFormPartial", Model.Order)
+                <div class="buttons">
+                    <button type="submit" form="orderform" class="login-button">Proceed To Order</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Billing Details end -->
+        <!-- Cart Calculation Area start -->
+        <div class="col-lg-6 ">
+
+
+            <div class="cart-calculator-wrapper mt-5">
+                <div class="cart-calculate-items">
+                    <h3>Cart Totals</h3>
+                    <div class="table-responsive">
+                        <table class="table">
+
+                            <tr class="total">
+                                <td>@Model.Item.TourName</td>
+                                <td>Total</td>
+                                <td class="total-amount">@Model.TotalAmount</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <a href="checkout.html" class="btn btn-warning" style="margin-left: 250px;">Proceed Checkout</a>
+            </div>
+
+
+        </div>
+
+        <!-- Cart Calculation Area end-->
+    </div>
+
+</div>
+
+<!-- main section end -->

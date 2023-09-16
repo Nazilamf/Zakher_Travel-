@@ -33,9 +33,4 @@ $(document).on("click", ".wishlist-btn", function (e) {
         var value = $(".minicart-inner-content").attr("data-count");
         $(".notification").html(value);
     })
-    })
-
-
-})
-
-
+});

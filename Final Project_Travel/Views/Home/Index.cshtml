@@ -53,20 +53,22 @@
         <p>Take a Look at Our</p>
         <h1>MOST POPULAR TOURS</h1>
         <hr>
-        <div class="nature-slide js-flickity" data-flickity-options='{"wrapAround": true,"freeScroll": true }'>
+    <div class="nature-slide js-flickity" data-flickity-options='{"wrapAround": true , "freeScroll": true }'>
             @foreach (var item in Model.PopularTours)
             {
-            <div class="item ">
-                <div class="icon-wishlist"> <a asp-controller="tour" asp-action="addtoWishlist" asp-route-id="@item.Id" data-toggle="tooltip" class="wishlist-btn" title="Add To wishlist"></a></div>
-                <div class="image" style=" background-image: url(../manage/assets/uploads/tours/@item.ImageName);">
+            <div class="item">
+                <a asp-controller="tour" asp-action="addtowishlist" asp-route-id="@item.Id" class="wishlist-btn" data-toggle="tooltip" title="Add To Cart">
+                    <div class="icon-wishlist addwish "></div>
+                </a>
+                <div class="image" style=" background-image: url(../../manage/assets/uploads/tours/@item.TourImages.FirstOrDefault(x=>x.PosterStatus==true).ImageName)">
                   
                     <span>@item.SalePrice AZN</span>
                     <div class="img-icons">
-                        <a asp-action="index" asp-controller="checkout" data-toggle="tooltip" title="Add To Cart">
+                        <a asp-action="checkout" asp-controller="order"asp-route-id="@item.Id" data-toggle="tooltip" title="Add To Cart">
                             <i style="background-color: rgba(43, 42, 42, 0.344); color: white!important;"
                            class="fa-solid fa-plane"></i>
                         </a>
-                        <a asp-controller="tour" asp-action="getdetail" asp-route-id="@item.Id" class="modal-btn">
+                        <a asp-controller="tour" asp-action="detail" asp-route-id="@item.Id" class="modal-btn">
                             <span data-toggle="tooltip"
                               title="Quick View">
                                 <i style="background-color: rgba(43, 42, 42, 0.344); color: white!important;"
@@ -118,37 +120,38 @@
     </section>
     <!-- Service end-->
 
-    <!-- Counters start -->
-    <section id="counters">
-        <p>Some statistics about Travel WP</p>
-        <h2>CENTER ACHIEVEMENTS</h2>
-        <hr>
-        <div class="counter">
-            <div class="count">
-                <i class="fa-solid fa-plane"></i>
-                <p class="number" id="projectcount">94,532</p>
-                <p class="count-text">CUSTOMERS</p>
-            </div>
-            <div class="count">
-                <i class="fa-brands fa-pagelines"></i>
-                <p class="number" id="clientount">1021</p>
-                <p class="count-text">DESTINATIONS</p>
-            </div>
-            <div class="count">
-                <i class="fa-solid fa-globe"></i>
-                <p class="number" id="branchcount">20,096</p>
-                <p class="count-text">TOURS</p>
-            </div>
-            <div class="count">
-                <i class="fa-solid fa-person-walking-luggage"></i>
-                <p class="number" id="yearcount">121</p>
-                <p class="count-text">TOUR TYPES</p>
-            </div>
-        </div>
-        <a href=""><i class="fa-solid fa-plane"></i> BOOKING NOW</a>
-    </section>
 
-    <!-- Counters end -->
+<!-- Counters start -->
+<section id="counters">
+    <p>Some statistics about Travel WP</p>
+    <h2>CENTER ACHIEVEMENTS</h2>
+    <hr>
+    <div class="counter">
+        <div class="count">
+            <i class="fa-solid fa-plane"></i>
+            <p class="number" id="projectcount">94,532</p>
+            <p class="count-text">CUSTOMERS</p>
+        </div>
+        <div class="count">
+            <i class="fa-brands fa-pagelines"></i>
+            <p class="number" id="clientount">1021</p>
+            <p class="count-text">DESTINATIONS</p>
+        </div>
+        <div class="count">
+            <i class="fa-solid fa-globe"></i>
+            <p class="number" id="branchcount">20,096</p>
+            <p class="count-text">TOURS</p>
+        </div>
+        <div class="count">
+            <i class="fa-solid fa-person-walking-luggage"></i>
+            <p class="number" id="yearcount">121</p>
+            <p class="count-text">TOUR TYPES</p>
+        </div>
+    </div>
+    <a href=""><i class="fa-solid fa-plane"></i> BOOKING NOW</a>
+</section>
+
+<!-- Counters end -->
 
     <!-- Discount section start -->
     <section id="tour-count">
@@ -158,15 +161,17 @@
             @foreach (var item in Model.DiscountTours)
             {
             <div class="item">
-                <div class="icon-wishlist"><a asp-controller="tour" asp-action="addtoWishlist" asp-route-id="@item.Id" data-toggle="tooltip" class="wishlist-btn" title="Add To wishlist"></a></div>
-                <div class="image" style=" background-image:url('/assets/image/uploads/tours/@item.ImageName');">
+             <a asp-controller="tour" asp-action="addtowishlist" asp-route-id="@item.Id" class="wishlist-btn" data-toggle="tooltip" title="Add To Cart">
+                    <div class="icon-wishlist addwish "></div>
+                </a>
+                 <div class="image" style=" background-image: url(../../manage/assets/uploads/tours/@item.TourImages.FirstOrDefault(x=>x.PosterStatus==true).ImageName)">
                     <span><del>@item.SalePrice AZN</del> @item.DiscountPrice AZN</span>
                     <div class="img-icons">
-                        <a asp-action="index" asp-controller="checkout" data-toggle="tooltip" title="Add To Cart">
+                        <a asp-action="checkout" asp-controller="order" asp-route-id="@item.Id" data-toggle="tooltip" title="Add To Cart">
                             <i style="background-color: rgba(43, 42, 42, 0.344); color: white!important;"
                            class="fa-solid fa-plane"></i>
                         </a>
-                        <a asp-controller="tour" asp-action="getdetail" asp-route-id="@item.Id" class="modal-btn" >
+                        <a asp-controller="tour" asp-action="detail" asp-route-id="@item.Id" class="modal-btn" >
                             <span data-toggle="tooltip"
                               title="Quick View">
                                 <i style="background-color: rgba(43, 42, 42, 0.344); color: white!important;"
@@ -256,8 +261,43 @@
     <!-- Blog section end-->
 
     <!-- Quick view modal start -->
-    <div class="modal" id="quick_view">
+   <!-- <div class="modal" id="quick_view">
         <div class="modal-dialog modal-lg modal-dialog-centered">
         </div>
-    </div>
+    </div> -->
     <!-- Quick view modal end -->
+
+
+
+                        @section Scripts{
+
+
+    window.addEventListener("scroll", function () {
+        // console.log(this.window.scrollY)
+
+        if (
+            this.document.querySelector("#nature-slider").getBoundingClientRect().top < 2000
+    ) {
+        counter("projectcount", 0, 332, 4000 );
+        counter("clientount", 0, 121, 4000);
+        counter("branchcount", 0, 296, 4000);
+        counter("yearcount", 0, 121, 4000);
+    }
+});
+
+
+function counter(id, start, end, duration) {
+    let obj = document.getElementById(id),
+        current = start,
+        range = end - start,
+        increment = end > start ? 1 : -1,
+        step = Math.abs(Math.floor(duration / range)),
+        timer = setInterval(() => {
+            current += increment;
+            obj.textContent = current;
+            if (current == end) {
+                clearInterval(timer);
+            }
+        }, step);
+}
+                        }

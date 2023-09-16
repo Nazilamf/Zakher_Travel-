@@ -93,7 +93,7 @@ namespace Final_Project_Travel.Controllers
                 }
                 else
                 {
-                   
+                   cookieitems.Remove(cookieitem);
                 }
 
 

@@ -34,7 +34,7 @@
                                 {
 
                                     <div class="form-check">
-                                        <input class="form-check-input" @(item.Id==Model.SelectedCategoryId?"checked" :"") form="filterForm" type="radio" name="categoryId" value="@item.Id" id="category-@item.Id">
+                                        <input form="filterForm" id="category-@item.Id" type="radio" name="categoryId" value="@item.Id" class="form-check-input" @(item.Id==Model.SelectedCategoryId?"checked" :"")>
                                         <label class="form-check-label" for="category-@item.Id">
                                             @item.Name <span>(@item.Tours.Count)
                                         </label>
@@ -49,7 +49,7 @@
                     <!-- single sidebar start -->
                     <div class="sidebar-single">
                         <div class="sidebar-title">
-                            <h3>filter by price</h3>
+                            <h3>Filter by price</h3>
                         </div>
                         <div class="sidebar-body">
                             <div class="price-range-wrap">
@@ -81,7 +81,7 @@
                                 {
 
                                     <div class="form-check">
-                                        <input class="form-check-input" @(Model.SelectedDestinationId.Contains(@item.Id)?"checked" :"") form="filterForm" type="checkbox" name="destinationId" value="@item.Id" id="destination-@item.Id">
+                                        <input form="filterForm" class="form-check-input" @(Model.SelectedDestinationId.Contains(@item.Id)?"checked" :"") type="checkbox" name="destinationId" value="@item.Id" id="destination-@item.Id">
                                         <label class="form-check-label" for="destination-@item.Id">
                                             @item.Name <span>(@item.Tours.Count)
                                         </label>
@@ -103,7 +103,7 @@
                                 @foreach (var item in Model.MonthNames)
                                 {
                                     <div class="form-check">
-                                        <input class="form-check-input" @(item==Model.SelectedMonth?"checked" :"") form="filterForm" type="radio" name="month" value="@item" id="month-@item">
+                                        <input form="filterForm" class="form-check-input" @(item==Model.SelectedMonth?"checked" :"") type="radio" name="month" value="@item" id="month-@item">
                                         <label class="form-check-label" for="month-@item">
                                             @item.ToUpper()
                                         </label>
@@ -132,13 +132,7 @@
                                     <div class="top-bar-right">
                                         <div class="product-short ">
                                             <p>Sort By : </p>
-                                        <select class= name="sort" onchange="this.form.submit()" form="filterForm" class="form-control nice-select sort-select" asp-items="@Model.SortItems">
-                                            <option value="" selected="selected">Default Sorting</option>
-                                                <option value="sales">Name (A - Z)</option>
-                                                <option value="sales">Name (Z - A)</option>
-                                                <option value="">Sort By Price:(Low &gt; High)</option>
-                                            <option value="">Sort By:Price (High &gt; Low)</option>
-
+                                        <select  name="sort" onchange="this.form.submit()" form="filterForm" class="form-control nice-select sort-select" asp-items="@Model.SortItems">
                                             </select>
                                         </div>
 
@@ -160,16 +154,16 @@
                                                 <div class="icon-wishlist addwish "></div>
                                             </a>
 
-                                   
-                                    <div class="image" style="background-image:url(~/wwwroot/manage/assets/uploads/tours/@item.ImageName">
+
+                                   <div class="image" style=" background-image: url(../../manage/assets/uploads/tours/@item.TourImages.FirstOrDefault(x=>x.PosterStatus==true).ImageName)">
                                        
                                         <span>@item.DiscountPrice <del>@item.SalePrice</del></span>
                                         <div class="img-icons">
-                                            <a href="#" data-toggle="tooltip" title="Add To Cart">
+                                          <a asp-action="checkout" asp-controller="order" asp-route-id="@item.Id" data-toggle="tooltip" title="Add To Cart">
                                                 <i style="background-color: rgba(43, 42, 42, 0.344); color: white!important;"
                                                class="fa-solid fa-plane"></i>
                                             </a>
-                                                <a asp-controller="tour" asp-action="getdetail" asp-route-id="@item.Id" class="modal-btn" data-target="#quick_view">
+                                                <a asp-controller="tour" asp-action="detail" asp-route-id="@item.Id" class="modal-btn" data-target="#quick_view">
                                                 <span data-toggle="tooltip" title="Quick View">
                                                     <i style="background-color: rgba(43, 42, 42, 0.344); color: white!important;"
                                                    class="fa-solid fa-eye"></i>
@@ -215,7 +209,7 @@
     <!-- page main wrapper end -->
 
     <!-- Quick view modal start -->
-    <div class="modal" id="quick_view">
+   <div class="modal" id="quick_view">
         <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
@@ -337,21 +331,22 @@
     rangeSlider.slider({
         range: true,
             min: @Model.MinPrice,
-            max: @Model.MaxPrice],
+            max: @Model.MaxPrice,
         values: [@Model.SelectedMinPrice, @Model.SelectedMaxPrice],
         slide: function (event, ui) {
             amount.val("$" + ui.values[0] + " - $" + ui.values[1]);
-                $(#minPriceInput).val(ui.values[0]);
-                $(#maxPriceInput).val(ui.values[1])
+                $("#minPriceInput").val(ui.values[0]);
+                $("#maxPriceInput").val(ui.values[1]);
 
         },
             change: function (event, ui) {
                 amount.val("$" + ui.values[0] + " - $" + ui.values[1]);
-                $(#minPriceInput).val(ui.values[0]);
-                $(#maxPriceInput).val(ui.values[1])
+                $("#minPriceInput").val(ui.values[0]);
+                $("#maxPriceInput").val(ui.values[1]);
+            },
 
     });
-    amount.val(" $" + rangeSlider.slider("values", 0) +
+    $("#amount").val(" $" + rangeSlider.slider("values", 0) +
         " - $" + rangeSlider.slider("values", 1));
 
       </script>

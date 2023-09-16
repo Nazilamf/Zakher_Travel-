@@ -64,8 +64,8 @@ namespace Final_Project_Travel.Controllers
                     break;
             }
             vm.Tours= query.ToList();
-            vm.Categories = _context.Categories.Include(x => x.Tours).ToList();
-            vm.Destinations = _context.Destinations.Include(x => x.Tours).ToList();
+            vm.Categories = _context.Categories.Include(x => x.Tours).ThenInclude(x=>x.TourImages.Where(x=>x.PosterStatus==true)).ToList();
+            vm.Destinations = _context.Destinations.Include(x => x.Tours).ThenInclude(x => x.TourImages.Where(x => x.PosterStatus==true)).ToList();
             vm.MonthNames = DateTimeFormatInfo.CurrentInfo.MonthNames;
             vm.SelectedCategoryId= categoryId;
             vm.SelectedDestinationId= destinationId;

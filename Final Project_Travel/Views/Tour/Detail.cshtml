@@ -58,7 +58,7 @@
                                 @foreach (var item in Model.Tour.TourImages.Where(x => x.PosterStatus==false))
                                 {
                                     <div class="pro-large-img img-zoom">
-                                    <img src="~/manage/assets/uploads/tours/@item.ImageName" alt="" />
+                                        <img src="~/manage/assets/uploads/tours/@item.Tour.TourImages.FirstOrDefault(x=>x.PosterStatus==false).ImageName" alt="" />
                                     </div>
                                 }
                               
@@ -68,7 +68,7 @@
 
                              @foreach(var item in Model.Tour.TourImages.Where(x=>x.PosterStatus==false)){
                              
-                                <div class="pro-nav-thumb"><img src="~/manage/assets/uploads/tours/@item.ImageName" alt="" /></div>
+                                    <div class="pro-nav-thumb"><img src="~/manage/assets/uploads/tours/@item.Tour.TourImages.FirstOrDefault(x=>x.PosterStatus==false).ImageName" alt="" /></div>
                              }
                                 
                             </div>

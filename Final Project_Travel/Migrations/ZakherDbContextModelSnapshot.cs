@@ -22,6 +22,34 @@ namespace Final_Project_Travel.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
+            modelBuilder.Entity("Final_Project_Travel.Entities.Admin", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("FullName")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Admins");
+                });
+
             modelBuilder.Entity("Final_Project_Travel.Entities.Advantage", b =>
                 {
                     b.Property<int>("Id")
@@ -45,7 +73,7 @@ namespace Final_Project_Travel.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Advantages", (string)null);
+                    b.ToTable("Advantages");
                 });
 
             modelBuilder.Entity("Final_Project_Travel.Entities.Branch", b =>
@@ -66,7 +94,7 @@ namespace Final_Project_Travel.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Branches", (string)null);
+                    b.ToTable("Branches");
                 });
 
             modelBuilder.Entity("Final_Project_Travel.Entities.Category", b =>
@@ -83,7 +111,7 @@ namespace Final_Project_Travel.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Categories", (string)null);
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("Final_Project_Travel.Entities.ContactUs", b =>
@@ -122,7 +150,7 @@ namespace Final_Project_Travel.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ContactUs", (string)null);
+                    b.ToTable("ContactUs");
                 });
 
             modelBuilder.Entity("Final_Project_Travel.Entities.DepartureLocation", b =>
@@ -139,7 +167,7 @@ namespace Final_Project_Travel.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("DepartureLocations", (string)null);
+                    b.ToTable("DepartureLocations");
                 });
 
             modelBuilder.Entity("Final_Project_Travel.Entities.Destination", b =>
@@ -161,7 +189,7 @@ namespace Final_Project_Travel.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Destinations", (string)null);
+                    b.ToTable("Destinations");
                 });
 
             modelBuilder.Entity("Final_Project_Travel.Entities.Order", b =>
@@ -208,7 +236,7 @@ namespace Final_Project_Travel.Migrations
 
                     b.HasIndex("AppUserId");
 
-                    b.ToTable("Orders", (string)null);
+                    b.ToTable("Orders");
                 });
 
             modelBuilder.Entity("Final_Project_Travel.Entities.OrderItem", b =>
@@ -222,10 +250,7 @@ namespace Final_Project_Travel.Migrations
                     b.Property<int>("OrderId")
                         .HasColumnType("int");
 
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ToursId")
+                    b.Property<int>("TourId")
                         .HasColumnType("int");
 
                     b.Property<decimal>("UnitCostPrice")
@@ -239,11 +264,12 @@ namespace Final_Project_Travel.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("OrderId");
+                    b.HasIndex("OrderId")
+                        .IsUnique();
 
-                    b.HasIndex("ToursId");
+                    b.HasIndex("TourId");
 
-                    b.ToTable("OrderItems", (string)null);
+                    b.ToTable("OrderItems");
                 });
 
             modelBuilder.Entity("Final_Project_Travel.Entities.Setting", b =>
@@ -266,7 +292,7 @@ namespace Final_Project_Travel.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Settings", (string)null);
+                    b.ToTable("Settings");
                 });
 
             modelBuilder.Entity("Final_Project_Travel.Entities.Slider", b =>
@@ -306,7 +332,7 @@ namespace Final_Project_Travel.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Sliders", (string)null);
+                    b.ToTable("Sliders");
                 });
 
             modelBuilder.Entity("Final_Project_Travel.Entities.Tour", b =>
@@ -343,10 +369,6 @@ namespace Final_Project_Travel.Migrations
                     b.Property<DateTime>("EndDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("ImageName")
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
                     b.Property<bool>("Insurance")
                         .HasColumnType("bit");
 
@@ -381,7 +403,7 @@ namespace Final_Project_Travel.Migrations
 
                     b.HasIndex("DestinationId");
 
-                    b.ToTable("Tours", (string)null);
+                    b.ToTable("Tours");
                 });
 
             modelBuilder.Entity("Final_Project_Travel.Entities.TourImage", b =>
@@ -397,7 +419,7 @@ namespace Final_Project_Travel.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<bool?>("PosterStatus")
+                    b.Property<bool>("PosterStatus")
                         .HasColumnType("bit");
 
                     b.Property<int>("TourId")
@@ -407,7 +429,7 @@ namespace Final_Project_Travel.Migrations
 
                     b.HasIndex("TourId");
 
-                    b.ToTable("TourImages", (string)null);
+                    b.ToTable("TourImages");
                 });
 
             modelBuilder.Entity("Final_Project_Travel.Entities.TourReview", b =>
@@ -440,7 +462,7 @@ namespace Final_Project_Travel.Migrations
 
                     b.HasIndex("TourId");
 
-                    b.ToTable("TourReviews", (string)null);
+                    b.ToTable("TourReviews");
                 });
 
             modelBuilder.Entity("Final_Project_Travel.Entities.WishlistItem", b =>
@@ -463,7 +485,7 @@ namespace Final_Project_Travel.Migrations
 
                     b.HasIndex("TourId");
 
-                    b.ToTable("WishlistItems", (string)null);
+                    b.ToTable("WishlistItems");
                 });
 
             modelBuilder.Entity("Final_Project_Travel.Entities.Worker", b =>
@@ -489,7 +511,7 @@ namespace Final_Project_Travel.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Workers", (string)null);
+                    b.ToTable("Workers");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -703,6 +725,9 @@ namespace Final_Project_Travel.Migrations
                     b.Property<string>("FullName")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("IsAdmin")
+                        .HasColumnType("bit");
+
                     b.HasDiscriminator().HasValue("AppUser");
                 });
 
@@ -718,14 +743,16 @@ namespace Final_Project_Travel.Migrations
             modelBuilder.Entity("Final_Project_Travel.Entities.OrderItem", b =>
                 {
                     b.HasOne("Final_Project_Travel.Entities.Order", "Order")
-                        .WithMany("OrderItems")
-                        .HasForeignKey("OrderId")
+                        .WithOne("OrderItem")
+                        .HasForeignKey("Final_Project_Travel.Entities.OrderItem", "OrderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Final_Project_Travel.Entities.Tour", "Tours")
                         .WithMany()
-                        .HasForeignKey("ToursId");
+                        .HasForeignKey("TourId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Order");
 
@@ -777,7 +804,7 @@ namespace Final_Project_Travel.Migrations
                         .HasForeignKey("AppUserId");
 
                     b.HasOne("Final_Project_Travel.Entities.Tour", "Tour")
-                        .WithMany()
+                        .WithMany("TourReviews")
                         .HasForeignKey("TourId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -794,7 +821,7 @@ namespace Final_Project_Travel.Migrations
                         .HasForeignKey("AppUserId");
 
                     b.HasOne("Final_Project_Travel.Entities.Tour", "Tour")
-                        .WithMany()
+                        .WithMany("WishlistItems")
                         .HasForeignKey("TourId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -872,12 +899,16 @@ namespace Final_Project_Travel.Migrations
 
             modelBuilder.Entity("Final_Project_Travel.Entities.Order", b =>
                 {
-                    b.Navigation("OrderItems");
+                    b.Navigation("OrderItem");
                 });
 
             modelBuilder.Entity("Final_Project_Travel.Entities.Tour", b =>
                 {
                     b.Navigation("TourImages");
+
+                    b.Navigation("TourReviews");
+
+                    b.Navigation("WishlistItems");
                 });
 #pragma warning restore 612, 618
         }

@@ -24,9 +24,9 @@ namespace Final_Project_Travel.Controllers
             {
                 Sliders = _context.Sliders.OrderBy(x => x.Order).ToList(),
                 Destinations = _context.Destinations.ToList(),
-                PopularTours = _context.Tours.Include(x => x.TourImages.Where(x => x.PosterStatus==true)).Where(x => x.Rate>4).ToList(),
+                PopularTours = _context.Tours.Include(x => x.TourImages).Where(x => x.Rate>4).ToList(),
                 Advantages = _context.Advantages.ToList(),
-                DiscountTours = _context.Tours.Include(x => x.TourImages.Where(x => x.PosterStatus==true)).Where(x => x.DiscountPrice>0).ToList(),
+                DiscountTours = _context.Tours.Include(x => x.TourImages).Where(x => x.DiscountPrice>0).ToList(),
                 
             };
             return View(vm);

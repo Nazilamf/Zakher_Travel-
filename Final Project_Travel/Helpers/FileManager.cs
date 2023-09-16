@@ -28,7 +28,7 @@
         {
             foreach (var fileName in fileNames)
             {
-                string path = Path.Combine(rootPath, folder, fileName);
+                var path = Path.Combine(rootPath, folder, fileName);
 
                 if (File.Exists(path))
                 {

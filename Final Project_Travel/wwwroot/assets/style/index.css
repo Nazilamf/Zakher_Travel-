@@ -372,7 +372,7 @@ nav .navbar li a {
 
 }
 #nature-slider .img-icons{
-    width: 35%;
+    width: auto%;
     display: flex;
     justify-content: space-between;
     background-color: rgba(43, 42, 42, 0.344);
@@ -380,7 +380,7 @@ nav .navbar li a {
     right: 0;
     bottom: 0;
     font-size: 17px;
-    padding: 7px 10px;
+    padding: 7px 3px;
     color: white;
 }
 #nature-slider .slide-text{

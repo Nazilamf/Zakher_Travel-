@@ -3040,6 +3040,22 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\manage\assets\uploads\tours\35a3c4c7-8cae-4298-93f4-b378a249d11cБез названия.jpeg))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\manage\assets\uploads\tours\40adbfa7-5d27-45f2-87ea-b0dc6411b7c9kazaxstan.jpeg))">
+      <SourceType>Package</SourceType>
+      <SourceId>Final Project_Travel</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/Final Project_Travel</BasePath>
+      <RelativePath>manage/assets/uploads/tours/40adbfa7-5d27-45f2-87ea-b0dc6411b7c9kazaxstan.jpeg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\manage\assets\uploads\tours\40adbfa7-5d27-45f2-87ea-b0dc6411b7c9kazaxstan.jpeg))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\manage\assets\uploads\tours\48cf81e2-5196-416b-a858-7aec4b8b3c1dpoland.jpeg))">
       <SourceType>Package</SourceType>
       <SourceId>Final Project_Travel</SourceId>
@@ -3071,6 +3087,22 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\manage\assets\uploads\tours\4da5cfe9-960f-4eb4-ac92-effc936f62571.jpeg))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\manage\assets\uploads\tours\53f07b57-1ef8-45ba-97f0-27cc17887ceckyrgyzstan.jpeg))">
+      <SourceType>Package</SourceType>
+      <SourceId>Final Project_Travel</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/Final Project_Travel</BasePath>
+      <RelativePath>manage/assets/uploads/tours/53f07b57-1ef8-45ba-97f0-27cc17887ceckyrgyzstan.jpeg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\manage\assets\uploads\tours\53f07b57-1ef8-45ba-97f0-27cc17887ceckyrgyzstan.jpeg))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\manage\assets\uploads\tours\6e6f0eab-76d4-4d22-9d97-73ac764487f52.jpeg))">
       <SourceType>Package</SourceType>
@@ -3119,6 +3151,38 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\manage\assets\uploads\tours\a34aa67a-cbe2-4ec3-a04f-447b7f0f2f51slider1.jpg))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\manage\assets\uploads\tours\c1ed87b1-02fb-47dc-a493-a56639fa4e39azerbaijan.jpeg))">
+      <SourceType>Package</SourceType>
+      <SourceId>Final Project_Travel</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/Final Project_Travel</BasePath>
+      <RelativePath>manage/assets/uploads/tours/c1ed87b1-02fb-47dc-a493-a56639fa4e39azerbaijan.jpeg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\manage\assets\uploads\tours\c1ed87b1-02fb-47dc-a493-a56639fa4e39azerbaijan.jpeg))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\manage\assets\uploads\tours\eab230b9-c233-4fc4-a376-771200d2a0bfkyrgyzstan.jpeg))">
+      <SourceType>Package</SourceType>
+      <SourceId>Final Project_Travel</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/Final Project_Travel</BasePath>
+      <RelativePath>manage/assets/uploads/tours/eab230b9-c233-4fc4-a376-771200d2a0bfkyrgyzstan.jpeg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\manage\assets\uploads\tours\eab230b9-c233-4fc4-a376-771200d2a0bfkyrgyzstan.jpeg))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\manage\assets\uploads\workers\2204ded6-395b-4369-a4bc-883081f72329team-2.jpg))">
       <SourceType>Package</SourceType>

@@ -34,13 +34,16 @@
                
                 <div class="mdc-list-group">
                     <nav class="mdc-list mdc-drawer-menu">
-                         <div class="mdc-list-item mdc-drawer-item">
-                            <a class="mdc-drawer-link" href="index.html">
-                                <i class="fa-solid fa-user-gear mr-2 ml-1" aria-hidden="true"></i>
-                                 Admin
-                            </a>
-                        </div>
+                        @if (User.Identity.IsAuthenticated && User.IsInRole("SuperAdmin"))
+                        {
 
+                            <div class="mdc-list-item mdc-drawer-item">
+                                <a class="mdc-drawer-link" asp-action="admin" asp-controller="account">
+                                    <i class="fa-solid fa-user-gear mr-2 ml-1" aria-hidden="true"></i>
+                                    Admin
+                                </a>
+                            </div>
+                        }
                         <div class="mdc-list-item mdc-drawer-item">
                             <a class="mdc-drawer-link" href="index.html">
                                 <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">home</i>
@@ -146,10 +149,23 @@
                         <div class="menu-button-container menu-profile d-none d-md-block">
                             <button class="mdc-button mdc-menu-button">
                                 <span class="d-flex align-items-center">
-                                    <span class="figure">
-                                        <img src="~/manage/assets/images/faces/face1.jpg" alt="user" class="user">
-                                    </span>
-                                    <span class="user-name">Clyde Miles</span>
+                                    <p>
+                                        @if (User.Identity.IsAuthenticated && User.IsInRole("Admin") || User.IsInRole("SuperAdmin"))
+                                        {
+                                            <a href="#">
+                                                @User.Identity.Name
+                                            </a>
+                                            <a asp-action="login" asp-controller="account">Logout</a>
+
+                                        }
+
+                                        else
+                                        {
+                                            
+                                           
+                                        }
+
+                                    </p>
                                 </span>
                             </button>
                             <div class="mdc-menu mdc-menu-surface" tabindex="-1">

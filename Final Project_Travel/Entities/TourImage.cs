@@ -9,7 +9,7 @@ namespace Final_Project_Travel.Entities
         [Required]
         [MaxLength(100)]
         public string ImageName { get; set; }
-        public bool? PosterStatus { get; set; }
+        public bool PosterStatus { get; set; }
 
         public Tour Tour { get; set; }
     }

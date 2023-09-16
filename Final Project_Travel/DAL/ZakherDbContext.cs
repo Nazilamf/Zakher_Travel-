@@ -43,5 +43,7 @@ namespace Final_Project_Travel.DAL
         public DbSet<Branch> Branches { get; set; }
 
         public DbSet<TourReview> TourReviews { get; set; }
+
+        public DbSet<Admin> Admins { get; set; }    
     }
 }

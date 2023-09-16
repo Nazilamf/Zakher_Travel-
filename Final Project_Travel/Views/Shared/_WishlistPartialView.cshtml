@@ -15,7 +15,7 @@
                     <li class="minicart-item">
                     <div class="minicart-thumb">
                         <a href="product-details.html">
-                                <img style="width: 100%;" src="~/manage/assets/uploads/tours/@item.Tour.ImageName"
+                                <img style="width: 100%;" src="~/manage/assets/uploads/tours/@item.Tour.TourImages.FirstOrDefault(x=>x.PosterStatus==true).ImageName"
                                  alt="tour" />
                         </a>
                     </div>
@@ -37,7 +37,7 @@
 
 
         <div class="minicart-button">
-            <a href="cart.html"><i class="fa fa-heart"></i>View Wishlist</a>
+            <a asp-controller="tour" asp-action="wishlist"><i class="fa fa-heart"></i>View Wishlist</a>
 
         </div>
     </div>
