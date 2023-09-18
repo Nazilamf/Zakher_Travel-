@@ -80,7 +80,7 @@
                 <div class="slide-text">
                     <h2>@item.Name</h2>
                     <p><i class="fa-regular fa-clock"></i>@(@item.EndDate.Subtract(item.StartDate).Days+1) DAYS - @item.EndDate.Subtract(item.StartDate).Days NIGHTS </p>
-                    <p>@item.Desc</p>
+                   
                 </div>
                 <div class="read-more">
                     <div class="icons">
@@ -110,7 +110,7 @@
            @foreach (var item in Model.Advantages)
             {
             <div class="item">
-                <img src="~/manage/assets/uploads/icon/@item.Icon" alt="">
+                <img style="width:50%" src="~/manage/assets/uploads/icon/@item.Icon" alt="">
                 <h2>@item.Title</h2>
                 <p>@item.Desc</p>
             </div>
@@ -183,7 +183,7 @@
                 <div class="slide-text">
                     <h2>@item.Name</h2>
                     <p><i class="fa-regular fa-clock"></i>@(@item.EndDate.Subtract(item.StartDate).Days+1) DAYS - @item.EndDate.Subtract(item.StartDate).Days NIGHTS</p>
-                    <p>@item.Desc</p>
+                  
                 </div>
                 <div class="read-more">
                     <div class="icons">
@@ -268,36 +268,3 @@
     <!-- Quick view modal end -->
 
 
-
-                        @section Scripts{
-
-
-    window.addEventListener("scroll", function () {
-        // console.log(this.window.scrollY)
-
-        if (
-            this.document.querySelector("#nature-slider").getBoundingClientRect().top < 2000
-    ) {
-        counter("projectcount", 0, 332, 4000 );
-        counter("clientount", 0, 121, 4000);
-        counter("branchcount", 0, 296, 4000);
-        counter("yearcount", 0, 121, 4000);
-    }
-});
-
-
-function counter(id, start, end, duration) {
-    let obj = document.getElementById(id),
-        current = start,
-        range = end - start,
-        increment = end > start ? 1 : -1,
-        step = Math.abs(Math.floor(duration / range)),
-        timer = setInterval(() => {
-            current += increment;
-            obj.textContent = current;
-            if (current == end) {
-                clearInterval(timer);
-            }
-        }, step);
-}
-                        }

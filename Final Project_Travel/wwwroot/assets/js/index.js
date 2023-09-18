@@ -123,3 +123,33 @@ $(".offcanvas-close, .minicart-close,.offcanvas-overlay").on('click', function()
   $("body").removeClass('fix');
   $(".offcanvas-search-inner, .minicart-inner").removeClass('show')
 })
+
+
+window.addEventListener("scroll", function () {
+    // console.log(this.window.scrollY)
+
+    if (
+        this.document.querySelector("#nature-slider").getBoundingClientRect().top < 2000
+    ) {
+        counter("projectcount", 0, 332, 4000);
+        counter("clientount", 0, 121, 4000);
+        counter("branchcount", 0, 296, 4000);
+        counter("yearcount", 0, 121, 4000);
+    }
+});
+
+
+function counter(id, start, end, duration) {
+    let obj = document.getElementById(id),
+        current = start,
+        range = end - start,
+        increment = end > start ? 1 : -1,
+        step = Math.abs(Math.floor(duration / range)),
+        timer = setInterval(() => {
+            current += increment;
+            obj.textContent = current;
+            if (current == end) {
+                clearInterval(timer);
+            }
+        }, step);
+}

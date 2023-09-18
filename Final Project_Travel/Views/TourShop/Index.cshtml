@@ -34,9 +34,9 @@
                                 {
 
                                     <div class="form-check">
-                                        <input form="filterForm" id="category-@item.Id" type="radio" name="categoryId" value="@item.Id" class="form-check-input" @(item.Id==Model.SelectedCategoryId?"checked" :"")>
+                                        <input form="filterForm" class="form-check-input" @(item.Id==Model.SelectedCategoryId?"checked" :"") type="radio" name="categoryId" value="@item.Id" id="category-@item.Id">
                                         <label class="form-check-label" for="category-@item.Id">
-                                            @item.Name <span>(@item.Tours.Count)
+                                            @item.Name <span>(@item.Tours.Count)</span>
                                         </label>
                                     </div>
 
@@ -83,7 +83,7 @@
                                     <div class="form-check">
                                         <input form="filterForm" class="form-check-input" @(Model.SelectedDestinationId.Contains(@item.Id)?"checked" :"") type="checkbox" name="destinationId" value="@item.Id" id="destination-@item.Id">
                                         <label class="form-check-label" for="destination-@item.Id">
-                                            @item.Name <span>(@item.Tours.Count)
+                                            @item.Name <span>(@item.Tours.Count)</span>
                                         </label>
                                     </div>
                                 }
@@ -98,7 +98,7 @@
                         <div class="sidebar-title">
                             <h3>Month</h3>
                         </div>
-                        <div class="sidebar-body">
+                       @* <div class="sidebar-body">
                             <ul class="color-list">
                                 @foreach (var item in Model.MonthNames)
                                 {
@@ -112,7 +112,7 @@
                                 }
 
                             </ul>
-                        </div>
+                        </div>*@
                     </div>
                     <!-- single sidebar end -->
 
@@ -176,7 +176,7 @@
                                     <div class="slide-text">
                                         <a asp-controller="tour" asp-action="detail" asp-route-id="@item.Id"> <h2>@item.Name</h2></a>
                                         <p><i class="fa-regular fa-clock"></i>@(@item.EndDate.Subtract(item.StartDate).Days+1) DAYS - @item.EndDate.Subtract(item.StartDate).Days NIGHTS</p>
-                                        <p>@item.Desc</p>
+                                        
                                     </div>
                                     <div class="read-more">
                                         <div class="ratings">

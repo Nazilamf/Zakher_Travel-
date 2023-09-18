@@ -15,7 +15,7 @@ namespace Final_Project_Travel.Entities
         [MaxLength(20)]
         public string Code { get; set; }
 
-        [MaxLength(200)]
+        [MaxLength(1000)]
         public string Desc { get; set; }
 
 
@@ -48,7 +48,7 @@ namespace Final_Project_Travel.Entities
         public DepartureLocation DepartureLocation { get; set; }
 
         [NotMapped]
-        [MaxFileLength(2097152)]
+        [MaxFileLength(4194304)]
         [AllowedTypes("image/png", "image/jpeg")]
         public IFormFile PosterFile { get; set; }
         [NotMapped]

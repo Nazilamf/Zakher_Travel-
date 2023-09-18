@@ -115,7 +115,7 @@ namespace Final_Project_Travel.Controllers
 
             }
 
-            return RedirectToAction("wishlist");
+            return View(wishlistVM);
             
         }
 

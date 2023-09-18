@@ -320,8 +320,8 @@ namespace Final_Project_Travel.Migrations
                         .HasColumnType("nvarchar(200)");
 
                     b.Property<string>("ImageName")
-                        .HasMaxLength(150)
-                        .HasColumnType("nvarchar(150)");
+                        .HasMaxLength(300)
+                        .HasColumnType("nvarchar(300)");
 
                     b.Property<int>("Order")
                         .HasColumnType("int");
@@ -357,8 +357,8 @@ namespace Final_Project_Travel.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Desc")
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)");
 
                     b.Property<int>("DestinationId")
                         .HasColumnType("int");
@@ -416,8 +416,8 @@ namespace Final_Project_Travel.Migrations
 
                     b.Property<string>("ImageName")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasMaxLength(300)
+                        .HasColumnType("nvarchar(300)");
 
                     b.Property<bool>("PosterStatus")
                         .HasColumnType("bit");
@@ -502,8 +502,8 @@ namespace Final_Project_Travel.Migrations
                         .HasColumnType("nvarchar(25)");
 
                     b.Property<string>("ImageName")
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasMaxLength(300)
+                        .HasColumnType("nvarchar(300)");
 
                     b.Property<string>("Position")
                         .HasMaxLength(25)

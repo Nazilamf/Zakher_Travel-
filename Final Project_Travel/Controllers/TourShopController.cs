@@ -17,6 +17,8 @@ namespace Final_Project_Travel.Controllers
         {
             _context=context;
         }
+
+        
         public IActionResult Index(int ? categoryId = null, List<int> destinationId = null,string? month = null, decimal? minPrice = null, decimal? maxPrice = null, string sort = "A_to_Z")
 
         {
@@ -24,7 +26,6 @@ namespace Final_Project_Travel.Controllers
 
 
             TourShopViewModel vm = new TourShopViewModel();
-            vm.Wishlist =  _context.WishlistItems.Include(x => x.Tour).ThenInclude(x => x.TourImages.Where(x => x.PosterStatus==true)).ToList();
             vm.MaxPrice=query.Max(x => x.DiscountPrice);
             vm.MinPrice=query.Min(x => x.DiscountPrice);
 
@@ -64,8 +65,8 @@ namespace Final_Project_Travel.Controllers
                     break;
             }
             vm.Tours= query.ToList();
-            vm.Categories = _context.Categories.Include(x => x.Tours).ThenInclude(x=>x.TourImages.Where(x=>x.PosterStatus==true)).ToList();
-            vm.Destinations = _context.Destinations.Include(x => x.Tours).ThenInclude(x => x.TourImages.Where(x => x.PosterStatus==true)).ToList();
+            vm.Categories = _context.Categories.Include(x => x.Tours).ToList();
+            vm.Destinations = _context.Destinations.Include(x => x.Tours).ToList();
             vm.MonthNames = DateTimeFormatInfo.CurrentInfo.MonthNames;
             vm.SelectedCategoryId= categoryId;
             vm.SelectedDestinationId= destinationId;

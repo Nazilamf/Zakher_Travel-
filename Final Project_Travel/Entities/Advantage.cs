@@ -17,7 +17,7 @@ namespace Final_Project_Travel.Entities
         public string Icon { get; set; }
 
         [NotMapped]
-        [MaxFileLength(2097152)]
+        [MaxFileLength(4194304)]
         [AllowedTypes("image/png", "image/jpeg")]
         public IFormFile ImageFile { get; set; }
 

@@ -15,11 +15,11 @@ namespace Final_Project_Travel.Entities
         [MaxLength(25)]
         public string Position { get; set; }    
 
-        [MaxLength(100)]
+        [MaxLength(300)]
         public string ImageName { get; set; }
 
         [NotMapped]
-        [MaxFileLength(2097152)]
+        [MaxFileLength(4194304)]
         [AllowedTypes("image/png", "image/jpeg")]
         public IFormFile ImageFile { get; set; }
     }

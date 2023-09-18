@@ -23,12 +23,12 @@ namespace Final_Project_Travel.Entities
         [MaxLength(30)]
         public string ButtonBackgroundColor { get; set; }
 
-        [MaxLength(150)]
+        [MaxLength(300)]
         [AllowedTypes("image/png", "image/jpeg")]
         public string ImageName { get; set; }
 
         [NotMapped]
-        //[MaxFileLength(2097152)]
+        [MaxFileLength(4194304)]
 
         public IFormFile ImageFile { get; set; }
 
