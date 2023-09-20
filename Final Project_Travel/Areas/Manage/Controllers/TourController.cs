@@ -2,6 +2,7 @@
 using Final_Project_Travel.DAL;
 using Final_Project_Travel.Entities;
 using Final_Project_Travel.Helpers;
+using Final_Project_Travel.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -32,6 +33,8 @@ namespace Final_Project_Travel.Areas.Manage.Controllers
 
             return View(PaginatedList<Tour>.Create(query, page, 4));
         }
+
+
 
         public IActionResult Create()
         {

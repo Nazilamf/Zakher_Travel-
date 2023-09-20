@@ -10,5 +10,6 @@ namespace Final_Project_Travel.ViewModels
         public string TourName { get; set; }
 
         public decimal Price { get; set; }
+       
     }
 }

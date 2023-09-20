@@ -1,4 +1,6 @@
-﻿namespace Final_Project_Travel.Areas.Manage.ViewModels
+﻿using Final_Project_Travel.Entities;
+
+namespace Final_Project_Travel.Areas.Manage.ViewModels
 {
     public class PaginatedList<T>
     {
@@ -20,6 +22,11 @@
             var items = query.Skip((pageIndex-1)*pageSize).Take(pageSize).ToList();
             var totalPage = (int)Math.Ceiling(query.Count() / (double)pageSize);
             return new PaginatedList<T>(items, pageIndex, totalPage);
+        }
+
+        internal static Task<List<Tour>> CreateAsync(IQueryable<Tour> tours, int v, int pageSize)
+        {
+            throw new NotImplementedException();
         }
     }
 }

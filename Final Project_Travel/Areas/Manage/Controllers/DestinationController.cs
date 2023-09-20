@@ -1,9 +1,12 @@
-﻿using Final_Project_Travel.Areas.Manage.ViewModels;
+﻿using ClosedXML.Excel;
+using DocumentFormat.OpenXml.Drawing.Charts;
+using Final_Project_Travel.Areas.Manage.ViewModels;
 using Final_Project_Travel.DAL;
 using Final_Project_Travel.Entities;
 using Final_Project_Travel.Helpers;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Data;
 
 namespace Final_Project_Travel.Areas.Manage.Controllers
 {
@@ -122,6 +125,40 @@ namespace Final_Project_Travel.Areas.Manage.Controllers
             _context.SaveChanges();
 
             return RedirectToAction("index");
+        }
+
+        [HttpGet]
+        public async Task<FileResult> ExportExcel()
+        {
+            var report = await _context.Destinations.ToListAsync();
+            var fileName = "report.xlsx";
+            return GenerateExcel(fileName, report);
+        }
+
+        private FileResult GenerateExcel(string filename, IEnumerable<Destination> destinations)
+        {
+            System.Data.DataTable dataTable = new System.Data.DataTable("Destinations");
+            dataTable.Columns.AddRange(new DataColumn[]
+             {
+                 new DataColumn("Id"),
+                 new DataColumn("Name")
+            });
+
+            foreach (var item in destinations)
+            {
+                dataTable.Rows.Add(item.Id, item.Name);
+            }
+
+            using (XLWorkbook wb = new XLWorkbook()) 
+            {
+                wb.Worksheets.Add(dataTable);
+                using (MemoryStream stream= new MemoryStream())
+                {
+                    wb.SaveAs(stream);
+                    return File(stream.ToArray(),
+                        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", filename);
+                }
+            }
         }
     }
 }

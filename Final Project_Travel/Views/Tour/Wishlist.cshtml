@@ -17,15 +17,15 @@
                                     <a asp-controller="tour" asp-action="addtowishlist" asp-route-id="@item.Id" class="wishlist-btn" data-toggle="tooltip" title="Add To Cart">
                                         <div class="icon-wishlist addwish "></div>
                                     </a>
-                                    <div class="image" style=" background-image: url(~/wwwroot/manage/assets/uploads/tours/.FirstOrDefault(x=>x.PosterStatus==true).ImageName);">
+                                    <div class="image" style=" background-image: url(~/../manage/assets/uploads/tours/@item.Tour.TourImages.FirstOrDefault(x=>x.PosterStatus==true).ImageName));">
                                        
                                         <span>@item.Tour.DiscountPrice <del>@item.Tour.SalePrice</del></span>
                                         <div class="img-icons">
-                                            <a href="#" data-toggle="tooltip" title="Add To Cart">
+                                            <a asp-action="order" asp-action="checkout" data-toggle="tooltip" title="Add To Cart">
                                                 <i style="background-color: rgba(43, 42, 42, 0.344); color: white!important;"
                                                class="fa-solid fa-plane"></i>
                                             </a>
-                                            <a href="#" data-toggle="modal" data-target="#quick_view">
+                                            <a asp-action="detail" asp-controller="tour" data-toggle="modal" data-target="#quick_view">
                                                 <span data-toggle="tooltip" title="Quick View">
                                                     <i style="background-color: rgba(43, 42, 42, 0.344); color: white!important;"
                                                    class="fa-solid fa-eye"></i>
@@ -36,7 +36,7 @@
                                     <div class="slide-text">
                                         <h2>@item.Tour.Name</h2>
                                         <p><i class="fa-regular fa-clock"></i>@(@item.Tour.EndDate.Subtract(item.Tour.StartDate).Days+1) DAYS - @item.Tour.EndDate.Subtract(item.Tour.StartDate).Days NIGHTS</p>
-                                        <p>@item.Tour.Desc</p>
+                                      
                                     </div>
                                     <div class="read-more">
                                         <div class="icons">

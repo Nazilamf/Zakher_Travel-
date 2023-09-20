@@ -1,4 +1,6 @@
-﻿using Final_Project_Travel.DAL;
+﻿using DocumentFormat.OpenXml.Office.CustomUI;
+using DocumentFormat.OpenXml.Vml.Spreadsheet;
+using Final_Project_Travel.DAL;
 using Final_Project_Travel.Entities;
 using Final_Project_Travel.ViewModels;
 using Microsoft.AspNetCore.Identity;
@@ -29,13 +31,7 @@ namespace Final_Project_Travel.Controllers
             {
                 
                 Vm.Order= new OrderCreateViewModel();
-                Vm.Item = new CheckOutItemViewModel()
-
-                {
-                    TourName = tour.Name,
-                    Price= tour.DiscountPrice,
-                    
-                };
+                Vm.Item = _generateCheckoutItem(id);
                 Vm.TotalAmount = Vm.Item.Price;
 
 
@@ -61,9 +57,7 @@ namespace Final_Project_Travel.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(int id,OrderCreateViewModel orderVm)
-
-
+        public async Task<IActionResult> Create(OrderCreateViewModel orderVm)
         {
             string userId = (User.Identity.IsAuthenticated && User.IsInRole("Member")) ? User.FindFirstValue(ClaimTypes.NameIdentifier) : null;
 
@@ -77,21 +71,32 @@ namespace Final_Project_Travel.Controllers
                 return View("Checkout", vm);
             }
 
-         
-            Order order = new Order
-            {
-                FullName= user== null ? orderVm.FullName : user.FullName,
-                Email=user== null ? orderVm.Email : user.Email,
-                Phone=user== null ? orderVm.Phone : user.PhoneNumber,
-                Adress= orderVm.Adress,
-                CreatedDate = DateTime.UtcNow.AddHours(4),
-                Status= Enums.OrderStatus.Pending,
-                Note= orderVm.Note,
-                AppUserId = userId,
-                OrderItem = _generateOrderItem(id)
-                };
 
-            order.TotalAmount =order.TotalAmount;
+            Order order = new Order();
+
+            order.FullName=user== null ? orderVm.FullName : user.FullName;
+            order.Email=user== null ? orderVm.Email : user.Email;
+            order.Phone=user== null ? orderVm.Phone : user.PhoneNumber;
+            order.Adress=orderVm.Adress;
+            order.CreatedDate=DateTime.UtcNow.AddHours(4);
+            order.Status=Enums.OrderStatus.Pending;
+            order.Note=orderVm.Note;
+            order.AppUserId=user.Id;
+            order.OrderItem= new OrderItem()
+            {
+                TourId=orderVm.TourId,
+                UnitSalePrice = orderVm.TotalAmount,
+                TourName= orderVm.TourName
+                
+
+            };
+
+           
+
+            order.TotalAmount =order.OrderItem.UnitSalePrice;
+           
+          
+            
 
 
             _context.Orders.Add(order);
@@ -117,7 +122,8 @@ namespace Final_Project_Travel.Controllers
                         TourId=tour.Id,
                         UnitDiscountPrice =tour.DiscountPrice,
                         UnitCostPrice =tour.CostPrice,
-                        UnitSalePrice =tour.SalePrice
+                        UnitSalePrice =tour.SalePrice,
+                        TourName = tour.Name
                         
 
                     };
@@ -129,8 +135,22 @@ namespace Final_Project_Travel.Controllers
         }
 
 
+        private CheckOutItemViewModel _generateCheckoutItem(int id)
+        {
+            var item = _context.Tours.FirstOrDefault(x => x.Id== id);
 
 
+            var vm = new CheckOutItemViewModel
+            {
+
+                Tour=item,
+                TourName=item.Name,
+                Price=item.DiscountPrice
+            };
+            return vm;
+        }
+            
+        
 
         
     }

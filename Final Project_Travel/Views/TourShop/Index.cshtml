@@ -1,35 +1,35 @@
+﻿
 ﻿@using Final_Project_Travel.ViewModels;
-   @model TourShopViewModel
+@model TourShopViewModel
 
 
 
 <!-- Hero header -->
-    <div class="container-fluid bg-primary py-5 mb-5 hero-header">
-        <div class="container py-5">
-            <div class="row justify-content-center py-5">
-                <div class="col-lg-10 pt-lg-5 mt-lg-5 text-center">
-                    <h1 class="display-3 text-white animated slideInDown">Tours</h1>
-                </div>
+<div class="container-fluid bg-primary py-5 mb-5 hero-header">
+    <div class="container py-5">
+        <div class="row justify-content-center py-5">
+            <div class="col-lg-10 pt-lg-5 mt-lg-5 text-center">
+                <h1 class="display-3 text-white animated slideInDown">Tours</h1>
             </div>
         </div>
     </div>
+</div>
 
-    <!-- Hero header end -->
-
-    <!-- page main wrapper start -->
-    <div class="shop-main-wrapper section-padding">
-        <div class="container">
-            <div class="row">
-                <!-- sidebar area start -->
-                <div class="col-lg-3 order-2 order-lg-1">
-                    <div class="sidebar-wrapper">
-                        <!-- single sidebar start -->
-                        <div class="sidebar-single">
-                            <div class="sidebar-title">
-                                <h3>Categories</h3>
-                            </div>
-                            <div class="sidebar-body">
-                                <ul class="color-list">
+<!-- Hero header end -->
+<!-- page main wrapper start -->
+<div class="shop-main-wrapper section-padding">
+    <div class="container">
+        <div class="row">
+            <!-- sidebar area start -->
+            <div class="col-lg-3 order-2 order-lg-1">
+                <div class="sidebar-wrapper">
+                    <!-- single sidebar start -->
+                    <div class="sidebar-single">
+                        <div class="sidebar-title">
+                            <h3>Categories</h3>
+                        </div>
+                        <div class="sidebar-body">
+                            <ul class="color-list">
                                 @foreach (var item in Model.Categories)
                                 {
 
@@ -43,9 +43,9 @@
                                 }
 
                             </ul>
-                            </div>
                         </div>
-                        <!-- single sidebar end -->
+                    </div>
+                    <!-- single sidebar end -->
                     <!-- single sidebar start -->
                     <div class="sidebar-single">
                         <div class="sidebar-title">
@@ -69,14 +69,13 @@
                         </div>
                     </div>
                     <!-- single sidebar end -->
-
-                        <!-- single sidebar start -->
-                        <div class="sidebar-single">
-                            <div class="sidebar-title">
-                                <h3>Destination</h3>
-                            </div>
-                            <div class="sidebar-body">
-                                <ul class="color-list">
+                    <!-- single sidebar start -->
+                    <div class="sidebar-single">
+                        <div class="sidebar-title">
+                            <h3>Destination</h3>
+                        </div>
+                        <div class="sidebar-body">
+                            <ul class="color-list">
                                 @foreach (var item in Model.Destinations)
                                 {
 
@@ -87,96 +86,93 @@
                                         </label>
                                     </div>
                                 }
-                                </ul>
-                            </div>
+                            </ul>
                         </div>
-                        <!-- single sidebar end -->
-
-                       
+                    </div>
+                    <!-- single sidebar end -->
                     <!-- single sidebar start -->
                     <div class="sidebar-single">
                         <div class="sidebar-title">
                             <h3>Month</h3>
                         </div>
-                       @* <div class="sidebar-body">
-                            <ul class="color-list">
-                                @foreach (var item in Model.MonthNames)
-                                {
-                                    <div class="form-check">
-                                        <input form="filterForm" class="form-check-input" @(item==Model.SelectedMonth?"checked" :"") type="radio" name="month" value="@item" id="month-@item">
-                                        <label class="form-check-label" for="month-@item">
-                                            @item.ToUpper()
-                                        </label>
-                                    </div>
+                        @* <div class="sidebar-body">
+                        <ul class="color-list">
+                        @foreach (var item in Model.MonthNames)
+                        {
+                        <div class="form-check">
+                        <input form="filterForm" class="form-check-input" @(item==Model.SelectedMonth?"checked" :"") type="radio" name="month" value="@item" id="month-@item">
+                        <label class="form-check-label" for="month-@item">
+                        @item.ToUpper()
+                        </label>
+                        </div>
 
-                                }
+                        }
 
-                            </ul>
+                        </ul>
                         </div>*@
                     </div>
                     <!-- single sidebar end -->
 
-                        
-                    </div>
+
                 </div>
-                <!-- sidebar area end -->
+            </div>
+            <!-- sidebar area end -->
+            <!-- shop main wrapper start -->
+            <div class="col-lg-9 order-1 order-lg-2">
+                <div class="shop-product-wrapper ">
+                    <!-- shop product top wrap start -->
+                    <div class="shop-top-bar">
+                        <div class="row">
 
-                <!-- shop main wrapper start -->
-                <div class="col-lg-9 order-1 order-lg-2">
-                    <div class="shop-product-wrapper ">
-                        <!-- shop product top wrap start -->
-                        <div class="shop-top-bar">
-                            <div class="row">
-
-                                <div class="col-xl-7 col-lg-8 col-md-9 order-1 order-md-2">
-                                    <div class="top-bar-right">
-                                        <div class="product-short ">
-                                            <p>Sort By : </p>
-                                        <select  name="sort" onchange="this.form.submit()" form="filterForm" class="form-control nice-select sort-select" asp-items="@Model.SortItems">
-                                            </select>
-                                        </div>
-
+                            <div class="col-xl-7 col-lg-8 col-md-9 order-1 order-md-2">
+                                <div class="top-bar-right">
+                                    <div class="product-short ">
+                                        <p>Sort By : </p>
+                                        <select name="sort" onchange="this.form.submit()" form="filterForm" class="form-control nice-select sort-select" asp-items="@Model.SortItems">
+                                        </select>
                                     </div>
+
                                 </div>
                             </div>
                         </div>
-                        <!-- shop product top wrap start -->
-                        <!-- product item list start -->
-                        <section id="tour-count" >
-                            <div class="items d-flex row" style="width: 120%;">
+                    </div>
+                    <!-- shop product top wrap start -->
+                    <!-- product item list start -->
+                    <section id="tour-count">
+                        <div class="items d-flex row" style="width: 120%;">
 
-                              @foreach (var item in Model.Tours)
+                            @foreach (var item in Model.Tours)
                             {
                                 <!-- product grid item start -->
                                 <div class="count-item item mb-5 col-lg-4 col-12 ">
-                                 
-                                            <a asp-controller="tour" asp-action="addtowishlist" asp-route-id="@item.Id" class="wishlist-btn" data-toggle="tooltip" title="Add To Cart">
-                                                <div class="icon-wishlist addwish "></div>
-                                            </a>
+
+                                    <a asp-controller="tour" asp-action="addtowishlist" asp-route-id="@item.Id" class="wishlist-btn" data-toggle="tooltip" title="Add To Cart">
+                                        <div class="icon-wishlist addwish "></div>
+                                    </a>
 
 
-                                   <div class="image" style=" background-image: url(../../manage/assets/uploads/tours/@item.TourImages.FirstOrDefault(x=>x.PosterStatus==true).ImageName)">
-                                       
+                                    <div class="image" style=" background-image: url(../../manage/assets/uploads/tours/@item.TourImages.FirstOrDefault(x=>x.PosterStatus==true).ImageName)">
+
                                         <span>@item.DiscountPrice <del>@item.SalePrice</del></span>
                                         <div class="img-icons">
-                                          <a asp-action="checkout" asp-controller="order" asp-route-id="@item.Id" data-toggle="tooltip" title="Add To Cart">
+                                            <a asp-action="checkout" asp-controller="order" asp-route-id="@item.Id" data-toggle="tooltip" title="Add To Cart">
                                                 <i style="background-color: rgba(43, 42, 42, 0.344); color: white!important;"
                                                class="fa-solid fa-plane"></i>
                                             </a>
-                                                <a asp-controller="tour" asp-action="detail" asp-route-id="@item.Id" class="modal-btn" data-target="#quick_view">
+                                            <a asp-controller="tour" asp-action="detail" asp-route-id="@item.Id" class="modal-btn" data-target="#quick_view">
                                                 <span data-toggle="tooltip" title="Quick View">
                                                     <i style="background-color: rgba(43, 42, 42, 0.344); color: white!important;"
                                                    class="fa-solid fa-eye"></i>
                                                 </span>
                                             </a>
                                         </div>
-                                            
-                                    
+
+
                                     </div>
                                     <div class="slide-text">
                                         <a asp-controller="tour" asp-action="detail" asp-route-id="@item.Id"> <h2>@item.Name</h2></a>
                                         <p><i class="fa-regular fa-clock"></i>@(@item.EndDate.Subtract(item.StartDate).Days+1) DAYS - @item.EndDate.Subtract(item.StartDate).Days NIGHTS</p>
-                                        
+
                                     </div>
                                     <div class="read-more">
                                         <div class="ratings">
@@ -187,167 +183,182 @@
                                         </div>
                                         <div class="read">
                                             <span></span>
-                                             <a  style="color:white;" asp-controller="tour" asp-action="detail" asp-route-id="@item.Id">READ MORE</a>
+                                            <a style="color:white;" asp-controller="tour" asp-action="detail" asp-route-id="@item.Id">READ MORE</a>
                                         </div>
                                     </div>
-                             
-                                <!-- product grid item end -->
-                            
-                            </div>
+
+                                    <!-- product grid item end -->
+
+                                </div>
                             }
 
-                        </section>
+                    </section>
 
 
 
-                    </div>
                 </div>
-                <!-- shop main wrapper end -->
             </div>
+            <!-- shop main wrapper end -->
         </div>
     </div>
-    <!-- page main wrapper end -->
-
-    <!-- Quick view modal start -->
-   <div class="modal" id="quick_view">
-        <div class="modal-dialog modal-lg modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <div class="col-lg-6 mb-3">
-                        <div class="tour-title ">
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <h2>Sheki Tour</h2>
-                                </div>
-                                <div class="col-lg-6 mt-2">
-                                    <h4 style="font-size: 18px;">Code:<span style="font-size: 16px; color: gray;">
-                                            ZK1001</span> </h4>
-                                </div>
+</div>
+<!-- page main wrapper end -->
+<!-- Quick view modal start -->
+<div class="modal" id="quick_view">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="col-lg-6 mb-3">
+                    <div class="tour-title ">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <h2>Sheki Tour</h2>
                             </div>
-                        </div>
-                        <div class="tour-title-bottom">
-                            <div class="row">
-                                <div class="col-lg-6"><i class="fa-solid fa-hourglass-half"
-                                        style="color: #DBA337;font-size: 16px;"></i> <span>6 DAYS - 5 NIGHTS</span>
-                                </div>
-                                <div class="col-lg-6">
-                                    <h4 style="font-size: 16px; margin-left: -16px;"><i class="fa-solid fa-tag"
-                                            style="color: #DBA337; font-weight: 800;"></i> Category:<span
-                                            style="font-size: 16px; color: gray;"> Historical</span>
-                                </div>
+                            <div class="col-lg-6 mt-2">
+                                <h4 style="font-size: 18px;">
+                                    Code:<span style="font-size: 16px; color: gray;">
+                                        ZK1001
+                                    </span>
+                                </h4>
                             </div>
                         </div>
                     </div>
-                    <!-- product details inner end -->
-                    <div class="product-details-inner mb-5">
+                    <div class="tour-title-bottom">
                         <div class="row">
-                            <div class="col-lg-5">
-
-                                <img style="width: 100%;" src="./assets/image/azerbaijan.jpeg" alt="">
+                            <div class="col-lg-6">
+                                <i class="fa-solid fa-hourglass-half"
+                                   style="color: #DBA337;font-size: 16px;"></i> <span>6 DAYS - 5 NIGHTS</span>
                             </div>
-                            <div class="col-lg-7">
-                                <div class="product-details-des">
-                                    <p>Hörmətli səyahət sevənlər artiq 4 cü dəfə təşkil
-                                        etdiyimiz novbeti Sheki turuna sizləri dəvət
-                                        edirik.Bütün əyləncələr sizi gözləyir. Yerlər məhdud
-                                        saydadir.</p>
+                            <div class="col-lg-6">
+                                <h4 style="font-size: 16px; margin-left: -16px;">
+                                    <i class="fa-solid fa-tag"
+                                       style="color: #DBA337; font-weight: 800;"></i> Category:<span style="font-size: 16px; color: gray;"> Historical</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- product details inner end -->
+                <div class="product-details-inner mb-5">
+                    <div class="row">
+                        <div class="col-lg-5">
+
+                            <img style="width: 100%;" src="./assets/image/azerbaijan.jpeg" alt="">
+                        </div>
+                        <div class="col-lg-7">
+                            <div class="product-details-des">
+                                <p>
+                                    Hörmətli səyahət sevənlər artiq 4 cü dəfə təşkil
+                                    etdiyimiz novbeti Sheki turuna sizləri dəvət
+                                    edirik.Bütün əyləncələr sizi gözləyir. Yerlər məhdud
+                                    saydadir.
+                                </p>
 
                                 <div class="ratings">
-                                   @* @for (int i = 1; i<=5; i++)
+                                    @* @for (int i = 1; i<=5; i++)
                                     {
-                                        <span class=" fa-regular fa-star @(i<=item.Rate?"star-on":"")"></span>
+                                    <span class=" fa-regular fa-star @(i<=item.Rate?"star-on":"")"></span>
                                     }*@
                                 </div>
 
-                                    <div class="review-description">
+                                <div class="review-description">
 
-                                        <div class="price-box">
-                                            <span class="regular-price">$70.00</span>
-                                            <span class="old-price"><del>$80.00</del></span>
-                                        </div>
-
+                                    <div class="price-box">
+                                        <span class="regular-price">$70.00</span>
+                                        <span class="old-price"><del>$80.00</del></span>
                                     </div>
-
-
-
-                                    <div class="col-lg-6">
-                                        <h4 style="font-size: 16px;"><i class="fa-solid fa-users-line"
-                                                style="color: #DBA337; font-weight: 800;"></i>
-                                            Count:<span style="font-size: 16px; color: gray;">
-                                                1</span>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <h4 style="font-size: 16px; "><i class="fa-solid fa-location-dot"
-                                                style="color: #DBA337; font-weight: 800;"></i>
-                                            Departure Location:<span style="font-size: 16px; color: gray;">
-                                                Baku</span>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <h4 style="font-size: 16px; "><i class="fa-solid fa-plane"
-                                                style="color: #DBA337; font-weight: 800;"></i>
-                                            Destination:<span style="font-size: 16px; color: gray;">
-                                                Sheki</span>
-                                    </div>
-
-
-                                    <div class="col-lg-6">
-                                        <h4 style="font-size: 16px; "><i class="fa-solid fa-heart-circle-check"
-                                                style="color: #DBA337; font-weight: 800;"></i>
-                                            Insurance:<span style="font-size: 16px; color: gray;">
-                                                Included</span>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <h4 style="font-size: 16px; "><i class="fa-solid fa-taxi"
-                                                style="color: #DBA337; font-weight: 800;"></i>
-                                            Transfer:<span style="font-size: 16px; color: gray;">
-                                                Included</span>
-                                    </div>
-
-                                    <a href="cart.html" class="btn btn-default"
-                                        style="background-color: #DBA337; margin-left: 50%;">Booking Now</a>
 
                                 </div>
+
+
+
+                                <div class="col-lg-6">
+                                    <h4 style="font-size: 16px;">
+                                        <i class="fa-solid fa-users-line"
+                                           style="color: #DBA337; font-weight: 800;"></i>
+                                        Count:<span style="font-size: 16px; color: gray;">
+                                            1
+                                        </span>
+                                </div>
+                                <div class="col-lg-6">
+                                    <h4 style="font-size: 16px; ">
+                                        <i class="fa-solid fa-location-dot"
+                                           style="color: #DBA337; font-weight: 800;"></i>
+                                        Departure Location:<span style="font-size: 16px; color: gray;">
+                                            Baku
+                                        </span>
+                                </div>
+                                <div class="col-lg-6">
+                                    <h4 style="font-size: 16px; ">
+                                        <i class="fa-solid fa-plane"
+                                           style="color: #DBA337; font-weight: 800;"></i>
+                                        Destination:<span style="font-size: 16px; color: gray;">
+                                            Sheki
+                                        </span>
+                                </div>
+
+
+                                <div class="col-lg-6">
+                                    <h4 style="font-size: 16px; ">
+                                        <i class="fa-solid fa-heart-circle-check"
+                                           style="color: #DBA337; font-weight: 800;"></i>
+                                        Insurance:<span style="font-size: 16px; color: gray;">
+                                            Included
+                                        </span>
+                                </div>
+                                <div class="col-lg-6">
+                                    <h4 style="font-size: 16px; ">
+                                        <i class="fa-solid fa-taxi"
+                                           style="color: #DBA337; font-weight: 800;"></i>
+                                        Transfer:<span style="font-size: 16px; color: gray;">
+                                            Included
+                                        </span>
+                                </div>
+
+                                <a href="cart.html" class="btn btn-default"
+                                   style="background-color: #DBA337; margin-left: 50%;">Booking Now</a>
+
                             </div>
                         </div>
                     </div>
-                    <!-- product details inner end -->
                 </div>
+                <!-- product details inner end -->
             </div>
         </div>
     </div>
-    <!-- Quick view modal end -->
+</div>
+<!-- Quick view modal end -->
+@section Scripts{
 
-    @section Scripts{
-                                    
-      <script>
-          // pricing filter
-    var rangeSlider = $(".price-range"),
-        amount = $("#amount"),
-        minPrice = rangeSlider.data('min'),
-        maxPrice = rangeSlider.data('max');
-    rangeSlider.slider({
-        range: true,
+    <script>
+        // pricing filter
+        var rangeSlider = $(".price-range"),
+            amount = $("#amount"),
+            minPrice = rangeSlider.data('min'),
+            maxPrice = rangeSlider.data('max');
+        rangeSlider.slider({
+            range: true,
             min: @Model.MinPrice,
             max: @Model.MaxPrice,
-        values: [@Model.SelectedMinPrice, @Model.SelectedMaxPrice],
-        slide: function (event, ui) {
-            amount.val("$" + ui.values[0] + " - $" + ui.values[1]);
+            values: [@Model.SelectedMinPrice, @Model.SelectedMaxPrice],
+            slide: function (event, ui) {
+                amount.val("$" + ui.values[0] + " - $" + ui.values[1]);
                 $("#minPriceInput").val(ui.values[0]);
                 $("#maxPriceInput").val(ui.values[1]);
 
-        },
+            },
             change: function (event, ui) {
                 amount.val("$" + ui.values[0] + " - $" + ui.values[1]);
                 $("#minPriceInput").val(ui.values[0]);
                 $("#maxPriceInput").val(ui.values[1]);
             },
 
-    });
-    $("#amount").val(" $" + rangeSlider.slider("values", 0) +
-        " - $" + rangeSlider.slider("values", 1));
+        });
+        $("#amount").val(" $" + rangeSlider.slider("values", 0) +
+            " - $" + rangeSlider.slider("values", 1));
 
-      </script>
+    </script>
     }
+    

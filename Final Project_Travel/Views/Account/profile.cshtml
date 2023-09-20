@@ -29,6 +29,7 @@
                  <tr>
                    <th style="background-color: #DBA337; color: white;" scope="col">No</th>
                    <th style="background-color: #DBA337;color: white;"scope="col">Date</th>
+                    <th style="background-color: #DBA337;color: white;" scope="col">TourName</th>
                    <th style="background-color: #DBA337;color: white;"scope="col">Status</th>
                    <th style="background-color: #DBA337;color: white;"scope="col">Total Price</th>
                    <th style="background-color: #DBA337;color: white;" scope="col">Action</th>
@@ -41,7 +42,8 @@
                      dataOrder++;
                    <tr>
                    <th scope="row">@dataOrder</th>
-                   <td>@item.CreatedDate</td>
+                    <td>@item.CreatedDate</td>
+                    <td>@item.OrderItem.TourName</td>
                    <td>@item.Status</td>
                    <td>@item.TotalAmount</td>
                     <td><a asp-action="getdetail" asp-controller="tour" asp-route-id="@item.Id" class="btn" style="background-color: #DBA337; color: white;">View</a></td>

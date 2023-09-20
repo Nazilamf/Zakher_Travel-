@@ -1,4 +1,5 @@
-﻿using Final_Project_Travel.Entities;
+﻿using Final_Project_Travel.Areas.Manage.ViewModels;
+using Final_Project_Travel.Entities;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Drawing;
 
@@ -24,7 +25,9 @@ namespace Final_Project_Travel.ViewModels
         public decimal SelectedMinPrice { get; set; }
         public decimal SelectedMaxPrice { get; set; }
         public List<SelectListItem> SortItems { get; set; }
-
-        
+       
     }
+
+
 }
+

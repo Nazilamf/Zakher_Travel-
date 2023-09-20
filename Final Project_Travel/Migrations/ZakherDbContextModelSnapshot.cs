@@ -253,6 +253,10 @@ namespace Final_Project_Travel.Migrations
                     b.Property<int>("TourId")
                         .HasColumnType("int");
 
+                    b.Property<string>("TourName")
+                        .HasMaxLength(35)
+                        .HasColumnType("nvarchar(35)");
+
                     b.Property<decimal>("UnitCostPrice")
                         .HasColumnType("decimal(18,2)");
 

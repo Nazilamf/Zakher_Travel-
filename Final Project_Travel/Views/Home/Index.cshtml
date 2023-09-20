@@ -160,7 +160,8 @@
         <div class="items js-flickity" data-flickity-options='{"wrapAround": true,"freeScroll": true }'>
             @foreach (var item in Model.DiscountTours)
             {
-            <div class="item">
+            <div class="item 
+">
              <a asp-controller="tour" asp-action="addtowishlist" asp-route-id="@item.Id" class="wishlist-btn" data-toggle="tooltip" title="Add To Cart">
                     <div class="icon-wishlist addwish "></div>
                 </a>
@@ -207,56 +208,48 @@
     <!-- Discount section end -->
 
     <!-- Blog section start-->
-    <section id="blogs">
-        <div class="blog-1">
+    <section id="blogs" class="container">
+        <div>
+        <div class="blog-1 m-auto">
             <h2>TOURS REVIEWS</h2>
             <hr>
-            <div class="items">
-                <div class="item">
-                    <img src="./image/blog-1.jpeg" alt="">
-                    <p style="font-weight: 900;">PhysCode</p>
-                    <p>
-                        <i class="fa-regular fa-star"></i>
-                        <i class="fa-regular fa-star"></i>
-                        <i class="fa-regular fa-star"></i>
-                        <i class="fa-regular fa-star"></i>
-                        <i class="fa-regular fa-star"></i>
-                    </p>
-                    <h3>Anchorage to Santiago</h3>
-                    <p>Mattis interdum nunc massa. Velit. Nonummy penatibus luctus. Aliquam. Massa aptent senectus
-                        elementum taciti</p>
-                    <p style="font-size: 12px;">
-                        <i class="fa-solid fa-circle"></i>
-                        <i class="fa-solid fa-circle"></i>
-                        <i class="fa-solid fa-circle"></i>
-                    </p>
-                </div>
-            </div>
         </div>
-        <div class="blog-2">
-            <h2>LATEST POST</h2>
-            <hr>
-            <div class="blogs">
-                <div class="blog">
-                    <img src="./image/blog-1.jpg" alt="">
-                    <h3>Love advice from experts</h3>
-                    <p class="icon-p">
-                        <span><i class="fa-solid fa-calendar-days"></i>September 6, 2016</span>
-                        <span><i class="fa-solid fa-tags"></i>Technology</span>
-                    </p>
-                    <p class="blog-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam efficitur</p>
+        
+            
+            
+                <div class="row text-center justify-content-between">
+                   @foreach (var item in Model.Reviews)
+                    {
+                        <div class="col-md-4 mb-4 mb-md-0">
+                            <div class="card g-2 px-1" style="width:350px ;">
+                                <div class="card-body ">
+                                    <div class="d-flex justify-content-center mb-4">
+                                        <img src="~/manage/assets/uploads/tours/@item.Tour.TourImages.FirstOrDefault(x=>x.PosterStatus==true).ImageName
+"
+                                         class="rounded-circle shadow-1-strong" width="100" height="100"/>
+                                    </div>
+                                    <h5 class="font-weight-bold">@item.AppUser.FullName</h5>
+                                    <h6 class="font-weight-bold my-3">@item.Tour.Name</h6>
+                                    <ul class="list-unstyled d-flex justify-content-center">
+                                    @for (int i = 1; i<=5; i++)
+                                     {
+                                    <li class=" fa-regular fa-star @(i<=item.Tour.Rate?"fa-solid fa-star":"")"></li>
+                                    }
+                                    </ul>
+                                    <p class="mb-2">
+                                        <i class="fas fa-quote-left pe-2"></i>@item.Text
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                  
                 </div>
-                <div class="blog">
-                    <img src="./image/blog-2.jpg" alt="">
-                    <h3>World’s hottest destinations for vegans</h3>
-                    <p class="icon-p">
-                        <span><i class="fa-solid fa-calendar-days"></i>September 6, 2016</span>
-                        <span><i class="fa-solid fa-tags"></i>Technology</span>
-                    </p>
-                    <p class="blog-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam efficitur</p>
-                </div>
-            </div>
+           
+        </section>
         </div>
+        
     </section>
     <!-- Blog section end-->
 

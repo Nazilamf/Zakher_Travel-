@@ -4,7 +4,7 @@ namespace Final_Project_Travel.ViewModels
 {
     public class CheckOutViewModel
     {
-
+       
         public CheckOutItemViewModel Item { get; set; } = new CheckOutItemViewModel();
         public decimal TotalAmount { get; set; }
 

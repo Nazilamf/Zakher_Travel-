@@ -1,5 +1,11 @@
 ﻿@using Final_Project_Travel.ViewModels;
+
  @model CheckOutViewModel
+ @{
+    ViewData["TourId"] = Model.Item.Tour.Id;
+    ViewData["TourName"] = Model.Item.Tour.Name;
+    ViewData["TotalAmount"] = Model.Item.Tour.DiscountPrice;
+ }
 
 <!-- Hero header -->
 <div class="container-fluid bg-primary py-5 mb-5 hero-header">
@@ -22,9 +28,7 @@
             <h1 class="title">Billing Details</h1>
             <div class="card mb-5">
                 @Html.Partial("_OrderCreateFormPartial", Model.Order)
-                <div class="buttons">
-                    <button type="submit" form="orderform" class="login-button">Proceed To Order</button>
-                </div>
+                
             </div>
         </div>
 
@@ -32,7 +36,10 @@
         <!-- Cart Calculation Area start -->
         <div class="col-lg-6 ">
 
-
+            <form id="orderform" asp-action="create" asp-controller="order" >
+                <input name="TourId" type="hidden" value="@Model.Item.Tour.Id"/>
+                <input name="TourName" type="hidden" value="@Model.Item.Tour.Name" />
+                <input name="TotalAmount" type="hidden" value="@Model.Item.Tour.DiscountPrice" />
             <div class="cart-calculator-wrapper mt-5">
                 <div class="cart-calculate-items">
                     <h3>Cart Totals</h3>
@@ -47,10 +54,12 @@
                         </table>
                     </div>
                 </div>
-                <a href="checkout.html" class="btn btn-warning" style="margin-left: 250px;">Proceed Checkout</a>
+                  <div class="buttons">
+                    <button type="submit" form="orderform" class="login-button">Proceed To Order</button>
+                </div>
             </div>
 
-
+            </form>
         </div>
 
         <!-- Cart Calculation Area end-->

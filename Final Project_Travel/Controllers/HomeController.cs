@@ -27,7 +27,8 @@ namespace Final_Project_Travel.Controllers
                 PopularTours = _context.Tours.Include(x => x.TourImages).Where(x => x.Rate>4).ToList(),
                 Advantages = _context.Advantages.ToList(),
                 DiscountTours = _context.Tours.Include(x => x.TourImages).Where(x => x.DiscountPrice>0).ToList(),
-                
+                Reviews=_context.TourReviews.Include(x => x.Tour).ThenInclude(x => x.TourImages).Include(x => x.AppUser).Where(x => x.Rate>3).Take(3).ToList(),
+                Categories = _context.Categories.ToList()
             };
             return View(vm);
         }

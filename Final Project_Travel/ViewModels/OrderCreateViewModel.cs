@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Final_Project_Travel.Entities;
+using System.ComponentModel.DataAnnotations;
 
 namespace Final_Project_Travel.ViewModels
 {
@@ -19,5 +20,10 @@ namespace Final_Project_Travel.ViewModels
 
         [MaxLength(300)]
         public string Note { get; set; }
+        public int TourId { get; set; }
+        public string TourName { get; set; }    
+        public decimal TotalAmount { get; set; }
+
+        public CheckOutItemViewModel CheckOutItemViewModel { get; set; }
     }
 }

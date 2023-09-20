@@ -5,6 +5,10 @@
 <form id ="orderform" asp-action="create" asp-controller="order" method="post">
     @if (User.Identity.IsAuthenticated && User.IsInRole("Member"))
     {
+        <input asp-for="TourId" type="hidden" value=@ViewData["TourId"] />
+        <input asp-for="TourName" type="hidden" value=@ViewData["TourName"] />
+        <input asp-for="TotalAmount" type="hidden" value=@ViewData["TotalAmount"] />
+         
         <div class="single-input-item">
             <label for="FullName" >FullName</label>
             <input style="color:black" id="FullMame"disabled value="@Model.FullName" />
@@ -26,6 +30,8 @@
     }
     else
     {
+        <input asp-for="TourId" type="hidden" value=@ViewData["TourId"] />
+
         <div class="single-input-item">
             <label asp-for="FullName" class="required">FullName</label>
             <input style="color:black" type="text" asp-for="FullName" placeholder="FullName" />
@@ -52,7 +58,7 @@
 
             <div class="single-input-item">
                 <label asp-for="Note"> Note</label>
-        <textarea style="color:black" name="ordernote" asp-for="Note" cols="30" rows="3" placeholder="Note"></textarea>
+        <textarea style="color:black" name="note" asp-for="Note" cols="30" rows="3" placeholder="Note"></textarea>
                 <span class="text-danger" asp-validation-for="Note"></span>
             </div>
     
