@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "mi1jMT8A05JSBoRJa0JOARoLaI/8XUZggb1ehmNdwDI=",
+  "Hash": "s1J0UuI1MXaMLh2mYAGEu8dpcX3OKhGqr043/LxezBs=",
   "Source": "Final Project_Travel",
   "BasePath": "_content/Final Project_Travel",
   "Mode": "Default",
@@ -2788,6 +2788,23 @@
       "OriginalItemSpec": "wwwroot\\manage\\assets\\uploads\\branches\\f1c96fa0-07fc-4424-a6ce-3edc5039013bPoland-.jpg"
     },
     {
+      "Identity": "C:\\Users\\HP\\Desktop\\API\\API-Project\\Final Project_Travel\\Zakher_Travel-\\Final Project_Travel\\wwwroot\\manage\\assets\\uploads\\destination\\01760222-f6e2-4578-8dc3-34d663ed7569thumb.jpg",
+      "SourceId": "Final Project_Travel",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\HP\\Desktop\\API\\API-Project\\Final Project_Travel\\Zakher_Travel-\\Final Project_Travel\\wwwroot\\",
+      "BasePath": "_content/Final Project_Travel",
+      "RelativePath": "manage/assets/uploads/destination/01760222-f6e2-4578-8dc3-34d663ed7569thumb.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\manage\\assets\\uploads\\destination\\01760222-f6e2-4578-8dc3-34d663ed7569thumb.jpg"
+    },
+    {
       "Identity": "C:\\Users\\HP\\Desktop\\API\\API-Project\\Final Project_Travel\\Zakher_Travel-\\Final Project_Travel\\wwwroot\\manage\\assets\\uploads\\destination\\0237d24a-9586-480f-99eb-ac12a678257c95154.jpg",
       "SourceId": "Final Project_Travel",
       "SourceType": "Discovered",
@@ -3262,6 +3279,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\manage\\assets\\uploads\\destination\\853aafa6-c77e-4d09-b222-f6a04d36593c1.jpeg"
+    },
+    {
+      "Identity": "C:\\Users\\HP\\Desktop\\API\\API-Project\\Final Project_Travel\\Zakher_Travel-\\Final Project_Travel\\wwwroot\\manage\\assets\\uploads\\destination\\893b13c9-ed0f-4fbf-a5af-5a03eb3fc760thumb.jpg",
+      "SourceId": "Final Project_Travel",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\HP\\Desktop\\API\\API-Project\\Final Project_Travel\\Zakher_Travel-\\Final Project_Travel\\wwwroot\\",
+      "BasePath": "_content/Final Project_Travel",
+      "RelativePath": "manage/assets/uploads/destination/893b13c9-ed0f-4fbf-a5af-5a03eb3fc760thumb.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\manage\\assets\\uploads\\destination\\893b13c9-ed0f-4fbf-a5af-5a03eb3fc760thumb.jpg"
     },
     {
       "Identity": "C:\\Users\\HP\\Desktop\\API\\API-Project\\Final Project_Travel\\Zakher_Travel-\\Final Project_Travel\\wwwroot\\manage\\assets\\uploads\\destination\\8e220463-e172-4235-beef-36d122b6baa04444.jpg",
@@ -4197,23 +4231,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\manage\\assets\\uploads\\tours\\144e2207-d9ce-4020-b065-6b66329f63d2155194295815310043105c80c52e7b266.jpg"
-    },
-    {
-      "Identity": "C:\\Users\\HP\\Desktop\\API\\API-Project\\Final Project_Travel\\Zakher_Travel-\\Final Project_Travel\\wwwroot\\manage\\assets\\uploads\\tours\\14be8f50-9b5e-41f8-bda6-213d75618401Без названия.jpeg",
-      "SourceId": "Final Project_Travel",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\HP\\Desktop\\API\\API-Project\\Final Project_Travel\\Zakher_Travel-\\Final Project_Travel\\wwwroot\\",
-      "BasePath": "_content/Final Project_Travel",
-      "RelativePath": "manage/assets/uploads/tours/14be8f50-9b5e-41f8-bda6-213d75618401Без названия.jpeg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\manage\\assets\\uploads\\tours\\14be8f50-9b5e-41f8-bda6-213d75618401Без названия.jpeg"
     },
     {
       "Identity": "C:\\Users\\HP\\Desktop\\API\\API-Project\\Final Project_Travel\\Zakher_Travel-\\Final Project_Travel\\wwwroot\\manage\\assets\\uploads\\tours\\159ef328-7b8a-4f0a-a4ab-ac4e3bca10f1Без названия.jpeg",
@@ -6254,6 +6271,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\manage\\assets\\uploads\\tours\\c7e37494-fe10-4b6a-a167-d46623b29b78150_149225210581.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\HP\\Desktop\\API\\API-Project\\Final Project_Travel\\Zakher_Travel-\\Final Project_Travel\\wwwroot\\manage\\assets\\uploads\\tours\\cae0e426-050d-49d2-89f0-f494ad979b09images.jpeg",
+      "SourceId": "Final Project_Travel",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\HP\\Desktop\\API\\API-Project\\Final Project_Travel\\Zakher_Travel-\\Final Project_Travel\\wwwroot\\",
+      "BasePath": "_content/Final Project_Travel",
+      "RelativePath": "manage/assets/uploads/tours/cae0e426-050d-49d2-89f0-f494ad979b09images.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\manage\\assets\\uploads\\tours\\cae0e426-050d-49d2-89f0-f494ad979b09images.jpeg"
     },
     {
       "Identity": "C:\\Users\\HP\\Desktop\\API\\API-Project\\Final Project_Travel\\Zakher_Travel-\\Final Project_Travel\\wwwroot\\manage\\assets\\uploads\\tours\\cc7615f4-ef5c-4b82-b07a-ad57f570cf59View-Of-Antalya-Old-Town-Kaleici-Antalya-Turkey.jpg",

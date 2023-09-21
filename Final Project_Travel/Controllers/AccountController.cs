@@ -177,6 +177,7 @@ namespace Final_Project_Travel.Controllers
             await _mailService.SendEmailAsync(new MailRequest { ToEmail=user.Email,Subject="ResetPassword",Body=$"<a href={url}>Click Here</a>"
             });
             TempData["Message"] = "Please Check Your Email";
+
             return RedirectToAction("login");
         }
 

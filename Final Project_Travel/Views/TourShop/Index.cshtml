@@ -55,12 +55,12 @@
                             <div class="price-range-wrap">
                                 <div class="price-range" data-min="20" data-max="400"></div>
                                 <div class="range-slider">
-                                    <form action="#">
+                                    <form action="#" id="filterForm">
                                         <div class="price-input">
                                             <label for="amount">Price: </label>
                                             <input type="text" id="amount">
                                         </div>
-                                        <button form="filterForm" name="amount" class="filter-btn">filter</button>
+                                        <button type="submit" form="filterForm" name="amount" class="filter-btn">filter</button>
                                         <input type="hidden" id="minPriceInput" form="filterForm" name="minPrice" value="@Model.SelectedMinPrice" />
                                         <input type="hidden" id="maxPriceInput" form="filterForm" name="maxPrice" value="@Model.SelectedMaxPrice" />
                                     </form>
@@ -95,21 +95,21 @@
                         <div class="sidebar-title">
                             <h3>Month</h3>
                         </div>
-                        @* <div class="sidebar-body">
+                         <div class="sidebar-body">
                         <ul class="color-list">
-                        @foreach (var item in Model.MonthNames)
+                        @foreach (var item in Model.Months)
                         {
                         <div class="form-check">
-                        <input form="filterForm" class="form-check-input" @(item==Model.SelectedMonth?"checked" :"") type="radio" name="month" value="@item" id="month-@item">
-                        <label class="form-check-label" for="month-@item">
-                        @item.ToUpper()
-                        </label>
+                            <input form="filterForm" class="form-check-input" @(item.Id==Model.SelectedMonth?"checked" :"") type="radio" name="month" value="@item.Id" id="month-@item.Id">
+                            <label class="form-check-label" for="month-@item.Id">
+                                @item.Name.ToUpper()
+                            </label>
                         </div>
 
                         }
 
                         </ul>
-                        </div>*@
+                        </div>
                     </div>
                     <!-- single sidebar end -->
 

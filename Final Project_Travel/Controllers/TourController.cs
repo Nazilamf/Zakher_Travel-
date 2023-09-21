@@ -27,115 +27,115 @@ namespace Final_Project_Travel.Controllers
             return PartialView("_TourModalPartial", tour);
         }
 
-        //public IActionResult AddToWishlist(int id)
-        //{
-        //    WishlistViewModel wishlistVM = new WishlistViewModel();
-        //    if (User.Identity.IsAuthenticated)
-        //    {
-        //        string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-        //        var wishlistitems = _context.WishlistItems.Where(x => x.AppUserId ==userId);
+        public IActionResult AddToWishlist(int id)
+        {
+            WishlistViewModel wishlistVM = new WishlistViewModel();
+            if (User.Identity.IsAuthenticated)
+            {
+                string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                var wishlistitems = _context.WishlistItems.Where(x => x.AppUserId ==userId);
 
-        //        var wishlistitem = wishlistitems.FirstOrDefault(x => x.TourId==id);
-        //        if (wishlistitem ==null)
-        //        {
-        //            wishlistitem = new WishlistItem
-        //            {
-        //                TourId = id,
-        //                AppUserId =userId
+                var wishlistitem = wishlistitems.FirstOrDefault(x => x.TourId==id);
+                if (wishlistitem ==null)
+                {
+                    wishlistitem = new WishlistItem
+                    {
+                        TourId = id,
+                        AppUserId =userId
 
-        //            };
-        //            _context.WishlistItems.Add(wishlistitem);
-        //        }
-        //        else
-        //        {
-        //            _context.WishlistItems.Remove(wishlistitem);
-        //        }
-               
-
-        //        _context.SaveChanges();
-
-        //        var items = _context.WishlistItems.Include(x => x.Tour).ThenInclude(x => x.TourImages.Where(x => x.PosterStatus==true)).Where(x => x.AppUserId ==userId);
-        //        foreach (var wishlist in items)
-        //        {
-        //            WishlistItemViewModel item = new WishlistItemViewModel()
-        //            {
-        //                Tour = wishlist.Tour,
-        //            };
-
-        //            wishlistVM.Items.Add(item);
+                    };
+                    _context.WishlistItems.Add(wishlistitem);
+                }
+                else
+                {
+                    _context.WishlistItems.Remove(wishlistitem);
+                }
 
 
-        //        }
-        //    }
-        //    else
-        //    {
-        //        var wishliststr = Request.Cookies["wishlist"];
-        //        List<WishlistCookieItemViewModel> cookieitems = null;
-        //        if (wishliststr== null)
-        //        {
+                _context.SaveChanges();
 
-        //            cookieitems = new List<WishlistCookieItemViewModel>();
-        //        }
-        //        else
-        //        {
-        //            cookieitems= JsonConvert.DeserializeObject<List<WishlistCookieItemViewModel>>(wishliststr);
+                var items = _context.WishlistItems.Include(x => x.Tour).ThenInclude(x => x.TourImages.Where(x => x.PosterStatus==true)).Where(x => x.AppUserId ==userId);
+                foreach (var wishlist in items)
+                {
+                    WishlistItemViewModel item = new WishlistItemViewModel()
+                    {
+                        Tour = wishlist.Tour,
+                    };
 
-        //        }
-
-        //        WishlistCookieItemViewModel cookieitem = cookieitems.FirstOrDefault(x => x.TourId== id);
-        //        if (cookieitem==null)
-        //        {
-        //            cookieitem = new WishlistCookieItemViewModel()
-        //            {
-        //                TourId= id,
-        //            };
-        //            cookieitems.Add(cookieitem);
-        //        }
-        //        else
-        //        {
-        //           cookieitems.Remove(cookieitem);
-        //        }
+                    wishlistVM.Items.Add(item);
 
 
-        //        HttpContext.Response.Cookies.Append("wishlist", JsonConvert.SerializeObject(cookieitems));
+                }
+            }
+            else
+            {
+                var wishliststr = Request.Cookies["wishlist"];
+                List<WishlistCookieItemViewModel> cookieitems = null;
+                if (wishliststr== null)
+                {
+
+                    cookieitems = new List<WishlistCookieItemViewModel>();
+                }
+                else
+                {
+                    cookieitems= JsonConvert.DeserializeObject<List<WishlistCookieItemViewModel>>(wishliststr);
+
+                }
+
+                WishlistCookieItemViewModel cookieitem = cookieitems.FirstOrDefault(x => x.TourId== id);
+                if (cookieitem==null)
+                {
+                    cookieitem = new WishlistCookieItemViewModel()
+                    {
+                        TourId= id,
+                    };
+                    cookieitems.Add(cookieitem);
+                }
+                else
+                {
+                    cookieitems.Remove(cookieitem);
+                }
 
 
-        //        foreach (var ci in cookieitems)
-        //        {
-        //            WishlistItemViewModel wishlistItem = new WishlistItemViewModel()
-        //            {
-
-        //                Tour = _context.Tours.Include(x => x.TourImages.Where(x => x.PosterStatus==true)).FirstOrDefault(x => x.Id == ci.TourId)
-        //            };
-
-        //            wishlistVM.Items.Add(wishlistItem);
-        //        }
+                HttpContext.Response.Cookies.Append("wishlist", JsonConvert.SerializeObject(cookieitems));
 
 
+                foreach (var ci in cookieitems)
+                {
+                    WishlistItemViewModel wishlistItem = new WishlistItemViewModel()
+                    {
 
-        //    }
+                        Tour = _context.Tours.Include(x => x.TourImages.Where(x => x.PosterStatus==true)).FirstOrDefault(x => x.Id == ci.TourId)
+                    };
 
-        //    return RedirectToAction("wishlist");
+                    wishlistVM.Items.Add(wishlistItem);
+                }
 
-        //}
 
-        //public IActionResult Wishlist()
-        //{
-        //    WishlistViewModel vm = new WishlistViewModel
-        //    {
-        //        Wishlist = _context.WishlistItems.Include(x => x.Tour).ThenInclude(x=>x.TourImages).ToList()
-        //    };
-        //    return View(vm);
-        //}
 
-    
+            }
 
-        //public IActionResult ShowWishlist()
-        //{
-        //    var datastr = HttpContext.Request.Cookies["wishlist"];
-        //    var data = JsonConvert.DeserializeObject<List<WishlistCookieItemViewModel>>(datastr);
-        //    return Json(data);
-        //}
+            return RedirectToAction("wishlist");
+
+        }
+
+        public IActionResult Wishlist()
+        {
+            WishlistViewModel vm = new WishlistViewModel
+            {
+                Wishlist = _context.WishlistItems.Include(x => x.Tour).ThenInclude(x => x.TourImages).ToList()
+            };
+            return View(vm);
+        }
+
+
+
+        public IActionResult ShowWishlist()
+        {
+            var datastr = HttpContext.Request.Cookies["wishlist"];
+            var data = JsonConvert.DeserializeObject<List<WishlistCookieItemViewModel>>(datastr);
+            return Json(data);
+        }
 
 
         public IActionResult Detail(int id)

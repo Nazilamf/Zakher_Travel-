@@ -1,4 +1,5 @@
-﻿using Final_Project_Travel.Areas.Manage.ViewModels;
+﻿using DocumentFormat.OpenXml.InkML;
+using Final_Project_Travel.Areas.Manage.ViewModels;
 using Final_Project_Travel.DAL;
 using Final_Project_Travel.Entities;
 using Final_Project_Travel.ViewModels;
@@ -19,7 +20,7 @@ namespace Final_Project_Travel.Controllers
         }
 
         
-        public IActionResult Index(int ? categoryId = null, List<int> destinationId = null,string? month = null, decimal? minPrice = null, decimal? maxPrice = null, string sort = "A_to_Z")
+        public IActionResult Index(int ? categoryId = null, List<int> destinationId = null, int? month = null, decimal? minPrice = null, decimal? maxPrice = null, string sort = "A_to_Z")
 
         {
             var query = _context.Tours.Where(x => x.IsDeleted ==false).Include(x => x.TourImages.Where(x => x.PosterStatus ==true)).Include(x => x.Category).Include(x => x.Destination).AsQueryable();
@@ -37,11 +38,15 @@ namespace Final_Project_Travel.Controllers
             {
                 query = query.Where(x => destinationId.Contains(x.DestinationId));
             }
-            if (month !=null)
+
+            if (month != null)
             {
-                query=query.Where(x => (x.StartDate.Month.ToString() ==month || x.EndDate.Month.ToString()==month)); 
+
+
+                query=query.Where(x => x.StartDate.Month == month || x.EndDate.Month == month);
             }
-           
+
+
 
             if (minPrice != null && maxPrice!=null)
             {
@@ -67,9 +72,13 @@ namespace Final_Project_Travel.Controllers
             vm.Tours= query.ToList();
             vm.Categories = _context.Categories.Include(x => x.Tours).ToList();
             vm.Destinations = _context.Destinations.Include(x => x.Tours).ToList();
-            vm.MonthNames = DateTimeFormatInfo.CurrentInfo.MonthNames;
+
+            vm.Months= _context.Months.ToList();
+
+            
             vm.SelectedCategoryId= categoryId;
             vm.SelectedDestinationId= destinationId;
+           
             vm.SelectedMonth = month;
             vm.SelectedMinPrice = minPrice==null ? vm.MinPrice : (decimal)minPrice;
             vm.SelectedMaxPrice =maxPrice==null ? vm.MaxPrice : (decimal)maxPrice;

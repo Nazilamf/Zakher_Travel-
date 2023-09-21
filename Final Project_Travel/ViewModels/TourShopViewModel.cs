@@ -12,13 +12,13 @@ namespace Final_Project_Travel.ViewModels
 
         public List<Destination> Destinations { get; set; }
 
-        public string[] MonthNames { get; set; }
+        public List<Month>Months { get; set; }
 
 
         public int? SelectedCategoryId { get; set; }
         public List<int> SelectedDestinationId { get; set; }
 
-        public string? SelectedMonth { get; set; }
+        public int? SelectedMonth { get; set; }
        
         public decimal MinPrice { get; set; }
         public decimal MaxPrice { get; set; }

@@ -45,5 +45,7 @@ namespace Final_Project_Travel.DAL
         public DbSet<TourReview> TourReviews { get; set; }
 
         public DbSet<Admin> Admins { get; set; }    
+
+        public DbSet<Month> Months { get; set; }
     }
 }

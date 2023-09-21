@@ -1,4 +1,5 @@
-﻿using DocumentFormat.OpenXml.Spreadsheet;
+﻿using ClosedXML.Excel;
+using DocumentFormat.OpenXml.Spreadsheet;
 using Final_Project_Travel.Areas.Manage.ViewModels;
 using Final_Project_Travel.DAL;
 using Final_Project_Travel.Email;
@@ -7,6 +8,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Data;
 using System.Security.Policy;
 
 namespace Final_Project_Travel.Areas.Manage.Controllers
@@ -45,12 +47,9 @@ namespace Final_Project_Travel.Areas.Manage.Controllers
             return View(order);
         }
 
-        public async Task<IActionResult >Accept(int id,string email)
+        public async Task<IActionResult >Accept(int id)
         {
-            AppUser user = await _userManager.FindByEmailAsync(email);
-
-            if (user == null) return View("error");
-
+            
             Order order = _context.Orders.Find(id);
               
             if (order == null || order.Status != Enums.OrderStatus.Pending) return View("error");
@@ -81,5 +80,43 @@ namespace Final_Project_Travel.Areas.Manage.Controllers
 
             return RedirectToAction("Index");
         }
+
+        [HttpGet]
+        public async Task<FileResult> ExportExcel()
+        {
+            var report = await _context.Orders.Include(x=>x.OrderItem).ThenInclude(x=>x.Tours).ToListAsync();
+            var fileName = "report.xlsx";
+            return GenerateExcel(fileName, report);
+        }
+
+        private FileResult GenerateExcel(string filename, IEnumerable<Order> Orders)
+        {
+            System.Data.DataTable dataTable = new System.Data.DataTable("Orders");
+            dataTable.Columns.AddRange(new DataColumn[]
+             {
+                 new DataColumn("Id"),
+                 new DataColumn("AppUserFullNameme"),
+                 new DataColumn("TourName"),
+                 new DataColumn("CreatedDate"),
+                 new DataColumn("Status")
+            });
+
+            foreach (var item in Orders)
+            {
+                dataTable.Rows.Add(item.Id, item.FullName,item.OrderItem.TourName,item.CreatedDate,item.Status);
+            }
+
+            using (XLWorkbook wb = new XLWorkbook())
+            {
+                wb.Worksheets.Add(dataTable);
+                using (MemoryStream stream = new MemoryStream())
+                {
+                    wb.SaveAs(stream);
+                    return File(stream.ToArray(),
+                        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", filename);
+                }
+            }
+        }
+
     }
 }

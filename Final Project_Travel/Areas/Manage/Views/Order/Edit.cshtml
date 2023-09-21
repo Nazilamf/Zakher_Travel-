@@ -10,8 +10,11 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-body">
+
+                    <input asp-for="Email" type="hidden" value=@ViewData["Email"] />
+
                     <h6 class="card-subtitle mb-2">FullName: @Model.FullName</h6>
-                    <input type="hidden" name="Email" value="@TempData["Email"]" />
+                    
                     <h6 class="card-subtitle mb-2">Email: @Model.Email</h6>
                     <h6 class="card-subtitle mb-2">Phone: @Model.Phone</h6>
                     <h6 class="card-subtitle mb-2">Address: @Model.Adress</h6>

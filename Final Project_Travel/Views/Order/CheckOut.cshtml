@@ -1,11 +1,12 @@
 ﻿@using Final_Project_Travel.ViewModels;
 
  @model CheckOutViewModel
- @{
+@{
     ViewData["TourId"] = Model.Item.Tour.Id;
     ViewData["TourName"] = Model.Item.Tour.Name;
     ViewData["TotalAmount"] = Model.Item.Tour.DiscountPrice;
- }
+    ViewData["Email"] = Model.Order.Email;
+}
 
 <!-- Hero header -->
 <div class="container-fluid bg-primary py-5 mb-5 hero-header">
@@ -40,6 +41,7 @@
                 <input name="TourId" type="hidden" value="@Model.Item.Tour.Id"/>
                 <input name="TourName" type="hidden" value="@Model.Item.Tour.Name" />
                 <input name="TotalAmount" type="hidden" value="@Model.Item.Tour.DiscountPrice" />
+                <input name="Email" type="hidden" value="@Model.Order.Email" />
             <div class="cart-calculator-wrapper mt-5">
                 <div class="cart-calculate-items">
                     <h3>Cart Totals</h3>
