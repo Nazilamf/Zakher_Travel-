@@ -90,16 +90,16 @@
                         <li><a asp-action="index" asp-controller="contactus">CONTACT US</a></li>
                     </ul>
                     <div class="search">
-                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <i class="fa-solid fa-magnifying-glass pt-1"></i>
                     </div>
                     <div style="transform: translate(60px,-35px);" class="search">
-                        <i class="fa-solid fa-heart"></i>
+                        <a asp-action="wishlist" asp-controller="tour"><i class="fa-solid fa-heart pt-1"></i></a>
                     </div>
                 </div>
             </div>
             <img src="~/assets/image/@settings["Logo"]" alt="">
             <div class="navbar">
-                <ul>
+                <ul class="mt-4">
                     <li><a asp-action="index" asp-controller="home">HOME</a></li>
                     <li><a asp-action="index" asp-controller="aboutus">ABOUT US</a></li>
                     <li><a asp-action="index" asp-controller="tourshop">TOURS</a></li>
@@ -107,10 +107,11 @@
                     <li><a asp-action="index" asp-controller="contactus">CONTACT US</a></li>
                 </ul>
                 <div class="search">
-                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <i class="fa-solid fa-magnifying-glass pt-1"></i>
                 </div>
-                <div style="margin-left: 10px;" class="search">
-                    <i class="fa-solid fa-heart"></i>
+                <div id="wishlistcard"  style=" margin-left: 10px;" class="minicart-btn">
+                    <a asp-action="wishlist" asp-controller="tour" style="color:#FFA500;"><i class="fa-solid fa-heart pt-1"></i></a>
+            
                 </div>
             </div>
         </nav>

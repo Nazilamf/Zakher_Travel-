@@ -2,6 +2,7 @@
 using Final_Project_Travel.Areas.Manage.ViewModels;
 using Final_Project_Travel.DAL;
 using Final_Project_Travel.Entities;
+using Final_Project_Travel.Migrations;
 using Final_Project_Travel.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -70,6 +71,8 @@ namespace Final_Project_Travel.Controllers
                     break;
             }
             vm.Tours= query.ToList();
+            vm.WishlistItems = _context.WishlistItems.Include(x => x.Tour).ThenInclude(x => x.TourImages.Where(x => x.PosterStatus==true)).ToList();
+
             vm.Categories = _context.Categories.Include(x => x.Tours).ToList();
             vm.Destinations = _context.Destinations.Include(x => x.Tours).ToList();
 

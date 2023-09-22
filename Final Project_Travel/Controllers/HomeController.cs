@@ -1,4 +1,5 @@
-﻿using Final_Project_Travel.DAL;
+﻿using DocumentFormat.OpenXml.Spreadsheet;
+using Final_Project_Travel.DAL;
 using Final_Project_Travel.Entities;
 using Final_Project_Travel.ViewModels;
 using Microsoft.AspNetCore.Mvc;
@@ -28,8 +29,10 @@ namespace Final_Project_Travel.Controllers
                 Advantages = _context.Advantages.ToList(),
                 DiscountTours = _context.Tours.Include(x => x.TourImages).Where(x => x.DiscountPrice>0).ToList(),
                 Reviews=_context.TourReviews.Include(x => x.Tour).ThenInclude(x => x.TourImages).Include(x => x.AppUser).Where(x => x.Rate>3).Take(3).ToList(),
-                Categories = _context.Categories.ToList()
-            };
+                Categories = _context.Categories.ToList(),
+                WishlistItems = _context.WishlistItems.Include(x => x.Tour).ThenInclude(x => x.TourImages.Where(x => x.PosterStatus==true)).ToList(),
+
+        };
             return View(vm);
         }
     }

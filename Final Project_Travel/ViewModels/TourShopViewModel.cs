@@ -25,6 +25,7 @@ namespace Final_Project_Travel.ViewModels
         public decimal SelectedMinPrice { get; set; }
         public decimal SelectedMaxPrice { get; set; }
         public List<SelectListItem> SortItems { get; set; }
+        public List<WishlistItem> WishlistItems { get; set; }
        
     }
 

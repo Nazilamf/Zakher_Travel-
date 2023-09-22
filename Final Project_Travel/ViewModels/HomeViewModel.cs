@@ -13,6 +13,7 @@ namespace Final_Project_Travel.ViewModels
         public List <Tour> Tours { get; set; }
         public List<TourReview> Reviews { get; set; }
         public List<Category> Categories { get; set; }
+        public List<WishlistItem> WishlistItems { get; set; }
 
         
 
