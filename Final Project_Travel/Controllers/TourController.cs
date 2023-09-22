@@ -1,8 +1,13 @@
-﻿using Final_Project_Travel.DAL;
+﻿using DocumentFormat.OpenXml.InkML;
+using DocumentFormat.OpenXml.Office2010.Excel;
+using DocumentFormat.OpenXml.Spreadsheet;
+using Final_Project_Travel.DAL;
 using Final_Project_Travel.Entities;
 using Final_Project_Travel.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using System.Data;
@@ -36,6 +41,7 @@ namespace Final_Project_Travel.Controllers
                 var wishlistitems = _context.WishlistItems.Where(x => x.AppUserId ==userId);
 
                 var wishlistitem = wishlistitems.FirstOrDefault(x => x.TourId==id);
+
                 if (wishlistitem ==null)
                 {
                     wishlistitem = new WishlistItem
@@ -46,26 +52,10 @@ namespace Final_Project_Travel.Controllers
                     };
                     _context.WishlistItems.Add(wishlistitem);
                 }
-                else
-                {
-                    _context.WishlistItems.Remove(wishlistitem);
-                }
-
 
                 _context.SaveChanges();
 
-                var items = _context.WishlistItems.Include(x => x.Tour).ThenInclude(x => x.TourImages.Where(x => x.PosterStatus==true)).Where(x => x.AppUserId ==userId);
-                foreach (var wishlist in items)
-                {
-                    WishlistItemViewModel item = new WishlistItemViewModel()
-                    {
-                        Tour = wishlist.Tour,
-                    };
 
-                    wishlistVM.Items.Add(item);
-
-
-                }
             }
             else
             {
@@ -83,18 +73,13 @@ namespace Final_Project_Travel.Controllers
                 }
 
                 WishlistCookieItemViewModel cookieitem = cookieitems.FirstOrDefault(x => x.TourId== id);
-                if (cookieitem==null)
+
+                cookieitem = new WishlistCookieItemViewModel()
                 {
-                    cookieitem = new WishlistCookieItemViewModel()
-                    {
-                        TourId= id,
-                    };
-                    cookieitems.Add(cookieitem);
-                }
-                else
-                {
-                    cookieitems.Remove(cookieitem);
-                }
+                    TourId= id,
+                };
+                cookieitems.Add(cookieitem);
+
 
 
                 HttpContext.Response.Cookies.Append("wishlist", JsonConvert.SerializeObject(cookieitems));
@@ -121,21 +106,107 @@ namespace Final_Project_Travel.Controllers
 
         public IActionResult Wishlist()
         {
-            WishlistViewModel vm = new WishlistViewModel
-            {
-                Wishlist = _context.WishlistItems.Include(x => x.Tour).ThenInclude(x => x.TourImages).ToList()
-            };
-            return View(vm);
+           
+            return View(_showWishlist());
         }
 
-
-
-        public IActionResult ShowWishlist()
+        public IActionResult RemoveWishlist(int id)
         {
-            var datastr = HttpContext.Request.Cookies["wishlist"];
-            var data = JsonConvert.DeserializeObject<List<WishlistCookieItemViewModel>>(datastr);
-            return Json(data);
+            WishlistViewModel wishlistVM = new WishlistViewModel();
+
+            if (User.Identity.IsAuthenticated)
+            {
+                string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                var wishlistitems = _context.WishlistItems.Where(x => x.AppUserId ==userId);
+                var wishlistitem = wishlistitems.FirstOrDefault(x => x.TourId==id);
+
+                if (wishlistitem== null) return View("error");
+                else
+                {
+                    _context.WishlistItems.Remove(wishlistitem);
+                    _context.SaveChanges();
+                }
+                var items = _context.WishlistItems.Include(x => x.Tour).ThenInclude(x => x.TourImages.Where(x => x.PosterStatus==true)).Where(x => x.AppUserId ==userId);
+                foreach (var tr in items)
+                {
+                    WishlistItemViewModel item = new WishlistItemViewModel()
+                    {
+                        Tour = tr.Tour
+                    };
+
+                    wishlistVM.Items.Add(item);
+
+                }
+            }
+
+            else
+            {
+                var wishliststr = Request.Cookies["wishlist"];
+                List<WishlistCookieItemViewModel> cookieitems = null;
+                cookieitems= JsonConvert.DeserializeObject<List<WishlistCookieItemViewModel>>(wishliststr);
+                WishlistCookieItemViewModel cookieitem = cookieitems.FirstOrDefault(x => x.TourId== id);
+
+                cookieitems.Remove(cookieitem);
+                HttpContext.Response.Cookies.Append("wishlist", JsonConvert.SerializeObject(cookieitems));
+
+
+            }
+            return RedirectToAction("wishlist");
         }
+
+        //public IActionResult ShowWishlist()
+        //{
+        //    var datastr = HttpContext.Request.Cookies["wishlist"];
+        //    var data = JsonConvert.DeserializeObject<List<WishlistCookieItemViewModel>>(datastr);
+        //    return Json(data);
+        //}
+
+        private WishlistViewModel  _showWishlist()
+        {
+            var WishVM = new WishlistViewModel();
+
+            if (User.Identity.IsAuthenticated)
+            {
+                string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                var wishlistitems = _context.WishlistItems.Include(x => x.Tour).ThenInclude(x => x.TourImages.Where(x => x.PosterStatus == true)).Where(x => x.AppUserId == userId).ToList();
+                
+                foreach (var item in wishlistitems)
+                {
+                    WishlistItemViewModel witemm = new WishlistItemViewModel
+                    {
+                        Tour = _context.Tours.Include(x => x.TourImages.Where(x => x.PosterStatus==true)).FirstOrDefault(x => x.Id == item.TourId)
+                    };
+
+                    WishVM.Items.Add(witemm);
+                }
+
+
+            }
+
+            else
+            {
+                var wishliststr = Request.Cookies["wishlist"];
+
+                if (wishliststr != null)
+                {
+                    List<WishlistCookieItemViewModel> cookieItems = JsonConvert.DeserializeObject<List<WishlistCookieItemViewModel>>(wishliststr);
+
+                    foreach (var cookieItem in cookieItems)
+                    {
+                        WishlistItemViewModel item = new WishlistItemViewModel
+                        {
+                            Tour = _context.Tours.Include(x => x.TourImages).FirstOrDefault(x => x.Id == cookieItem.TourId)
+                        };
+                        WishVM.Items.Add(item);
+                    }
+                }
+            }
+            return WishVM;
+        
+        }
+
+
+
 
 
         public IActionResult Detail(int id)
@@ -197,3 +268,5 @@ namespace Final_Project_Travel.Controllers
 
     }
 }
+
+

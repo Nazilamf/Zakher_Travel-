@@ -5,7 +5,7 @@
 
 @{
     var settings = _layoutService.GetSettings();
-    var wishlist = _layoutService.GetWishlist();
+    
 }
 
 
@@ -104,7 +104,7 @@
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </div>
                     <div style="transform: translate(60px,-35px);" class="search">
-                        <i class="fa-solid fa-heart"></i>
+                        <a asp-action="wishlist" asp-controller="tour"><i class="fa-solid fa-heart"></i></a>
                     </div>
                 </div>
             </div>
@@ -120,8 +120,8 @@
                 <div class="search">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </div>
-                <div id="wishlistcard"  style=" margin-left: 10px;" class="minicart-btn" ">
-                    <i class="fa-solid fa-heart"></i>
+                <div id="wishlistcard"  style=" margin-left: 10px;" class="minicart-btn">
+                    <a asp-action="wishlist" asp-controller="tour" style="color:#FFA500;"><i class="fa-solid fa-heart"></i></a>
             
                 </div>
             </div>
@@ -183,14 +183,7 @@
         </div>
 
 
-        <!-- offcanvas mini cart start -->
-        <div class="offcanvas-minicart-wrapper">
-            <div id="wishlistcard" class="minicart-inner">
-                <div class="offcanvas-overlay"></div>
-              @Html.Partial("_WishlistPartialView",wishlist)
-            </div>
-        </div>
-        <!-- offcanvas mini cart end -->
+        
     </footer>
 
     <!-- Footer end -->

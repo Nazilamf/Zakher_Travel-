@@ -114,15 +114,7 @@ $('.img-zoom').zoom();
 
 
 
-$(".minicart-btn").on('click', function(){
-  $("body").addClass('fix');
-  $(".minicart-inner").addClass('show')
-})
 
-$(".offcanvas-close, .minicart-close,.offcanvas-overlay").on('click', function(){
-  $("body").removeClass('fix');
-  $(".offcanvas-search-inner, .minicart-inner").removeClass('show')
-})
 
 
 window.addEventListener("scroll", function () {

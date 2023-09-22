@@ -28,5 +28,5 @@
     <Folder Include="wwwroot\manage\assets\uploads\workers\" />
     <Folder Include="wwwroot\manage\assets\uploads\slider\" />
   </ItemGroup>
-
+	
 </Project>

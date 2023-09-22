@@ -9,15 +9,15 @@
                     <!-- Cart Table Area -->
                     <section id="tour-count">
                         <div class="items d-flex row container" style="width: 120%;">
-@foreach (var item in Model.Wishlist)
+@foreach (var item in Model.Items)
                             {
 
                                 <!-- product grid item start -->
                                 <div class="count-item item mb-5 col-lg-4 col-12 ">
-                                    <a asp-controller="tour" asp-action="addtowishlist" asp-route-id="@item.Id" class="wishlist-btn" data-toggle="tooltip" title="Add To Cart">
-                                        <div class="icon-wishlist addwish "></div>
+                                    <a  asp-controller="tour" asp-action="removewishlist" asp-route-id="@item.Tour.Id" class="wishlist-btn wishlist-on" data-toggle="tooltip" title="Add To Cart">
+                                        <div class="icon-wishlist "><i class="fa-solid fa-heart fa-2xl mt-2 me-3" style="color: #ff6600; margin-left:-5px;"></i></div>
                                     </a>
-                                    <div class="image" style=" background-image: url(~/../manage/assets/uploads/tours/@item.Tour.TourImages.FirstOrDefault(x=>x.PosterStatus==true).ImageName));">
+                                    <div class="image" style=" background-image: url(../../manage/assets/uploads/tours/@item.Tour.TourImages.FirstOrDefault(x=>x.PosterStatus==true).ImageName)">
                                        
                                         <span>@item.Tour.DiscountPrice <del>@item.Tour.SalePrice</del></span>
                                         <div class="img-icons">

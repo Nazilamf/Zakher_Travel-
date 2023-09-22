@@ -14,23 +14,3 @@
 
 
 
-
-$(document).on("click", ".wishlist-btn", function (e) {
-    e.preventDefault();
-    let url = $(this).attr("href");
-
-    fetch(url).then(response => {
-
-        if (!response.ok) {
-            alert("Xeta bas verdi")
-        }
-        else
-            return response.text()
-
-    }).then(data => {
-        $("#wishlistcard").html(data);
-    }).then(() => {
-        var value = $(".minicart-inner-content").attr("data-count");
-        $(".notification").html(value);
-    })
-});

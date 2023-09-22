@@ -5,7 +5,7 @@
 
 @{
     var settings = _layoutService.GetSettings();
-    var wishlist = _layoutService.GetWishlist();
+   
 }
 
 
@@ -169,14 +169,7 @@
 
             </div>
         </div>
-        <!-- offcanvas mini cart start -->
-        <div class="offcanvas-minicart-wrapper">
-            <div id="wishlistcard" class="minicart-inner">
-                <div class="offcanvas-overlay"></div>
-                @Html.Partial("_WishlistPartialView",wishlist)
-            </div>
-        </div>
-        <!-- offcanvas mini cart end -->
+       
     </footer>
 
     <!-- Footer section end -->
