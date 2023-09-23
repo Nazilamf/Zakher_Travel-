@@ -25,6 +25,8 @@ namespace Final_Project_Travel.Controllers
         public IActionResult Index(string? search,int ? categoryId = null, List<int> destinationId = null, int? month = null, decimal? minPrice = null, decimal? maxPrice = null, string sort = "A_to_Z")
 
         {
+            
+
             ViewBag.Search= search;
             var query = _context.Tours.Where(x => x.IsDeleted ==false).Include(x => x.TourImages.Where(x => x.PosterStatus ==true)).Include(x => x.Category).Include(x => x.Destination).AsQueryable();
 

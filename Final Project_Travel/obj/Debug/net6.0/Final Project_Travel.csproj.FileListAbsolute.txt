@@ -331,3 +331,5 @@ C:\Users\HP\Desktop\API\API-Project\Final Project_Travel\Zakher_Travel-\Final Pr
 C:\Users\HP\Desktop\API\API-Project\Final Project_Travel\Zakher_Travel-\Final Project_Travel\bin\Debug\net6.0\SixLabors.Fonts.dll
 C:\Users\HP\Desktop\API\API-Project\Final Project_Travel\Zakher_Travel-\Final Project_Travel\bin\Debug\net6.0\System.IO.Packaging.dll
 C:\Users\HP\Desktop\API\API-Project\Final Project_Travel\Zakher_Travel-\Final Project_Travel\bin\Debug\net6.0\XLParser.dll
+C:\Users\HP\Desktop\API\API-Project\Final Project_Travel\Zakher_Travel-\Final Project_Travel\bin\Debug\net6.0\PagedList.dll
+C:\Users\HP\Desktop\API\API-Project\Final Project_Travel\Zakher_Travel-\Final Project_Travel\bin\Debug\net6.0\PagedList.Mvc.dll
