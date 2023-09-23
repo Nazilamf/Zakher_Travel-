@@ -13,7 +13,7 @@
             <ul >
             <li><a href="#" class="tab-a active-a " (@ViewBag.tab= ="Profile" ? "show active" : "" )" href="#profile" data-toggle="tab" data-id="tab1">ACCOUNT</a></li>
             <li><a href="#" class="tab-a  (@ViewBag.tab == " Order" ? "show active" : "" )" href="#orders" data-toggle="tab" data-id="tab2">BOOKINGS</a></li>
-               <li><a asp-action="login"  class="tab-a" data-id="tab3">LOG OUT</a></li>
+            
             </ul>
          </div><!--end of tab-menu-->
     <div class="tab tab-active " (@ViewBag.tab== "Profile" ? "show active" : "")" data-id="tab1">
@@ -32,7 +32,7 @@
                     <th style="background-color: #DBA337;color: white;" scope="col">TourName</th>
                    <th style="background-color: #DBA337;color: white;"scope="col">Status</th>
                    <th style="background-color: #DBA337;color: white;"scope="col">Total Price</th>
-                   <th style="background-color: #DBA337;color: white;" scope="col">Action</th>
+                  
 
                  </tr>
                </thead>
@@ -45,14 +45,15 @@
                     <td>@item.CreatedDate</td>
                     <td>@item.OrderItem.TourName</td>
                    <td>@item.Status</td>
-                   <td>@item.TotalAmount</td>
-                    <td><a asp-action="getdetail" asp-controller="tour" asp-route-id="@item.Id" class="btn" style="background-color: #DBA337; color: white;">View</a></td>
-                 </tr>
+                   <td>@item.TotalAmount AZN</td>
+                   </tr>
                  }
 
                </tbody>
              </table>
 
       </div><!--end of container-->
+
+     
     <!-- Main section end -->
 

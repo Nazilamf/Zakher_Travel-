@@ -27,7 +27,8 @@ namespace Final_Project_Travel.ViewModels
         public List<SelectListItem> SortItems { get; set; }
         public List<WishlistItem> WishlistItems { get; set; }
 
-      
+   
+
     }
 
 
