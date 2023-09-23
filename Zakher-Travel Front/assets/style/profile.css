@@ -1,0 +1,137 @@
+
+.tab-container{
+	margin: auto;
+   text-align: center;
+	background-color:white;
+	padding: 3%;
+	border-radius: 4px;
+}
+.tab-menu{}
+.tab-menu ul{
+	margin: 0;
+	padding: 0;
+}
+.tab-menu ul li{
+	list-style-type: none;
+	display: inline-block;
+}
+.tab-menu ul li a{
+	text-decoration: none;
+	color: rgba(0,0,0,0.4);
+	background-color: lightgray;
+	padding: 7px 25px;
+	border-radius: 4px;
+}
+.tab-menu ul li a.active-a{
+	background-color:#DBA337;
+	color: #ffffff;
+}
+.tab{
+	display: none;
+}
+.tab h2{
+	color: rgba(0,0,0,.7);
+}
+.tab p{
+	color: rgba(0,0,0,0.6);
+   text-align: center;
+}
+.tab-active{
+	display: block;
+}
+
+
+
+
+  
+ 
+  
+.title {
+   text-align: center;
+   font-size: 24px;
+   margin-bottom: 20px;
+   color: #DBA337;
+ }
+ 
+ .card {
+   width: 500px;
+   background-color: white;
+   padding: 20px;
+   margin-top: 50px!important;
+   margin-bottom: 50px!important;
+   border-radius: 10px;
+   border-top: 4px solid #DBA337;
+   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+ }
+ 
+ form {
+   display: flex;
+   flex-direction: column;
+   gap: 10px;
+ }
+ 
+ input {
+   padding: 10px;
+   border: none;
+   background-color: transparent;
+   border-bottom: 1px solid #ccc;
+   color: #fff;
+   transition: box-shadow 0.3s;
+ }
+ 
+ input:focus {
+   box-shadow: 0 0 10px #DBA337;
+ }
+ 
+ .buttons {
+   display: flex;
+   justify-content: flex-end;
+   align-items: center;
+   gap: 10px;
+ }
+ 
+ .login-button,
+ .register-link {
+   padding: 10px 20px;
+   border: none;
+   border-radius: 5px;
+   cursor: pointer;
+   transition: background-color 0.3s, box-shadow 0.3s, color 0.3s;
+   text-decoration: none;
+ }
+ 
+ .login-button {
+   background-color: transparent;
+   color: #DBA337;
+ }
+ 
+ .login-button:hover {
+   background-color: #DBA337;
+   color: #fff;
+   box-shadow: none;
+ }
+ 
+ .login-button:active {
+   box-shadow: 0 0 10px #DBA337;
+ }
+ 
+ .register-link {
+   color: grey;
+   background-color: transparent;
+ }
+ 
+ .register-link:hover {
+   color: #DBA337;
+ }
+ 
+ .register-link:active {
+   box-shadow: 0 0 10px #ccc;
+ }
+ 
+ @media (max-width: 480px) {
+   .card {
+     width: 100%;
+     max-width: 300px;
+   }
+ }
+ 
