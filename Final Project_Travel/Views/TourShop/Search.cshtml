@@ -1,0 +1,68 @@
+﻿@using Final_Project_Travel.ViewModels;
+@model TourShopViewModel
+
+<section id="tour-count">
+    <div class="items d-flex row" style="width: 120%;">
+
+        @foreach (var item in Model.Tours)
+        {
+            <!-- product grid item start -->
+            <div class="count-item item mb-5 col-lg-4 col-12 ">
+                @foreach (var wishlist in Model.WishlistItems)
+                {
+                    if (wishlist.TourId == item.Id)
+                    {
+                        <a asp-controller="tour" asp-action="remoaddvewishlist" asp-route-id="@item.Id" class="wishlist-btn wishlist-on" data-toggle="tooltip" title="Add To Cart">
+                            <div class="icon-wishlist "><i class="fa-solid fa-heart fa-2xl mt-2 me-3" style="color: #FF6400; margin-left:-5px;"></i></div>
+                        </a>
+                    }
+                    else
+                    {
+                        <a asp-controller="tour" asp-action="addtowishlist" asp-route-id="@item.Id" class="wishlist-btn" data-toggle="tooltip" title="Add To Cart">
+                            <div class="icon-wishlist addwish "></div>
+                        </a>
+                    }
+                }
+
+
+                <div class="image" style=" background-image: url(../../manage/assets/uploads/tours/@item.TourImages.FirstOrDefault(x=>x.PosterStatus==true).ImageName)">
+
+                    <span>@item.DiscountPrice  AZN  <del>@item.SalePrice AZN</del></span>
+                    <div class="img-icons">
+                        <a asp-action="checkout" asp-controller="order" asp-route-id="@item.Id" data-toggle="tooltip" title="Add To Cart">
+                            <i style="background-color: rgba(43, 42, 42, 0.344); color: white!important;"
+                           class="fa-solid fa-plane"></i>
+                        </a>
+                        <a asp-controller="tour" asp-action="detail" asp-route-id="@item.Id">
+                            <span data-toggle="tooltip" title="Quick View">
+                                <i style="background-color: rgba(43, 42, 42, 0.344); color: white!important;"
+                               class="fa-solid fa-eye"></i>
+                            </span>
+                        </a>
+                    </div>
+
+
+                </div>
+                <div class="slide-text">
+                    <a asp-controller="tour" asp-action="detail" asp-route-id="@item.Id"> <h2>@item.Name</h2></a>
+                    <p><i class="fa-regular fa-clock"></i>@(@item.EndDate.Subtract(item.StartDate).Days+1) DAYS - @item.EndDate.Subtract(item.StartDate).Days NIGHTS</p>
+
+                </div>
+                <div class="read-more">
+                    <div class="ratings">
+                        @for (int i = 1; i<=5; i++)
+                        {
+                            <span class=" fa-regular fa-star @(i<=item.Rate?"fa-solid fa-star":"")"></span>
+                        }
+                    </div>
+                    <div class="read">
+                        <a style="color:white;text-decoration:none;" asp-controller="tour" asp-action="detail" asp-route-id="@item.Id">READ MORE</a>
+
+
+                    </div>
+                </div>
+
+                <!-- product grid item end -->
+
+            </div>
+        }

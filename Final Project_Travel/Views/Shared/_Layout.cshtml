@@ -51,14 +51,15 @@
 <body>
     <!-- Header start -->
     <header>
-
+        <form  asp-action="index" asp-controller="tourshop"  method="get" id="searchForm">
         <div class="search-item">
             <i class="fa-solid fa-xmark"></i>
             <div class="btn-input">
-                <input type="text" placeholder="Search...">
-                <button><i class="fa-solid fa-magnifying-glass"></i></button>
+                <input type="text" placeholder="Search..." form="searchForm"value="@ViewBag.Search" name="search">
+                <button form="searchForm" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
             </div>
         </div>
+        </form>
         <div class="register">
             <p> @DateTime.UtcNow.ToString("dd-MMMM-yyyy")</p>
             <p>
@@ -100,9 +101,11 @@
                         <li><a  asp-action="index" asp-controller="destination">DESTINATIONS</a></li>
                         <li><a asp-action="index" asp-controller="contactus">CONTACT US</a></li>
                     </ul>
+                    <
                     <div class="search">
                         <i class="fa-solid fa-magnifying-glass pt-1"></i>
                     </div>
+
                     <div style="transform: translate(60px,-35px);" class="search">
                         <a asp-action="wishlist" asp-controller="tour"><i class="fa-solid fa-heart pt-1"></i></a>
                     </div>
@@ -117,9 +120,11 @@
                     <li><a asp-action="index" asp-controller="destination">DESTINATIONS</a></li>
                     <li><a asp-action="index" asp-controller="contactus">CONTACT US</a></li>
                 </ul>
+                <form type="submit" method="get" asp-action="search" asp-controller="tourshop">
                 <div class="search">
                     <i class="fa-solid fa-magnifying-glass pt-1"></i>
                 </div>
+                </form>
                 <div id="wishlistcard"  style=" margin-left: 10px;" class="minicart-btn">
                     <a asp-action="wishlist" asp-controller="tour" style="color:#FFA500;"><i class="fa-solid fa-heart pt-1"></i></a>
             

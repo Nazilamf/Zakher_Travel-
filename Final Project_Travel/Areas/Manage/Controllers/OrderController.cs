@@ -4,6 +4,7 @@ using Final_Project_Travel.Areas.Manage.ViewModels;
 using Final_Project_Travel.DAL;
 using Final_Project_Travel.Email;
 using Final_Project_Travel.Entities;
+using Final_Project_Travel.Enums;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -55,21 +56,16 @@ namespace Final_Project_Travel.Areas.Manage.Controllers
             if (order == null || order.Status != Enums.OrderStatus.Pending) return View("error");
 
             order.Status = Enums.OrderStatus.Accepted;
-            
-          
-            
-                await _mailService.SendEmailAsync(new MailRequest
-                {
-                    ToEmail=order.Email,
-                    Subject="TourBooking",
-                    Body=$"<h2>Sizin{order.OrderItem.TourName} adli Tur rezervasiyanız qebul olundu <h2>"
-                });
+
+
+            await _sendMailAsync(order.Email,
+                            Enums.OrderStatus.Accepted);
 
             _context.SaveChanges();
             return RedirectToAction("Index");
         }
 
-        public IActionResult Reject(int id)
+        public async Task< IActionResult> Reject(int id)
         {
             Order order = _context.Orders.Find(id);
 
@@ -77,6 +73,8 @@ namespace Final_Project_Travel.Areas.Manage.Controllers
 
             order.Status = Enums.OrderStatus.Rejected;
             _context.SaveChanges();
+            await _sendMailAsync(order.Email,
+                          Enums.OrderStatus.Rejected);
 
             return RedirectToAction("Index");
         }
@@ -118,5 +116,28 @@ namespace Final_Project_Travel.Areas.Manage.Controllers
             }
         }
 
+        private async Task _sendMailAsync(string email, OrderStatus orderstatus)
+        {
+            var mailReq = new MailRequest();
+            mailReq.ToEmail = email;
+            mailReq.Subject = "ZakherTravel-Booking";
+
+
+
+            if (orderstatus.ToString() == "Accepted")
+            {
+                mailReq.Body = $"Salam. Sizin rezervasiyanız qəbul olundu.\n";
+
+
+            }
+            else
+            {
+                mailReq.Body = $"Salam. Sizin rezervasiya ləgv olundu.\n";
+                   
+            }
+
+            await _mailService.SendEmailAsync(mailReq);
+        }
     }
+
 }

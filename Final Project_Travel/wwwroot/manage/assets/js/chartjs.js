@@ -1,7 +1,10 @@
 $(function () {
-  /* ChartJS
+   ChartJS
    * -------
    * Data and config for chartjs
+   * 
+   * 
+   * ////Area Chart
    */
   'use strict';
   var data = {
@@ -154,7 +157,7 @@ $(function () {
       ],
     }],
 
-    // These labels appear in the legend and in the tooltips when hovering different arcs
+    // These labels appear in the legend and in the tooltips when hovering different arcs Pie-chart
     labels: [
       'Red',
       'Blue',
