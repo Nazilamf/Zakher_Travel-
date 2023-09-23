@@ -34,15 +34,20 @@
             </div>
            @foreach (var item in Model.Destinations)
             {
+                     
                 <div class="col-md-3 col-sm-6 item mb-3">
+                    
+                     <a asp-controller="tourshop" asp-action="index" asp-route-id="@item.Id">
                     <div class="card item-card card-block">
                         <div class="dest-count">
                             <h4>@item.Tours.Count() Tours</h4>
                         </div>
-                        <img src="~/manage/assets/uploads/destination/@item.ImageName">
+                       <img src="~/manage/assets/uploads/destination/@item.ImageName">
                         <h4 class="item-card-title text-right p-2"><i>@item.Name</i></h4>
                     </div>
+                         </a>
                 </div>
+               
             }
         
         </div>

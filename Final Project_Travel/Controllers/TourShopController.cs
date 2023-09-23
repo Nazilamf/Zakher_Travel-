@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System.Globalization;
+using System.Linq;
 
 namespace Final_Project_Travel.Controllers
 {
@@ -21,12 +22,12 @@ namespace Final_Project_Travel.Controllers
             _context=context;
         }
 
-        
-        public IActionResult Index(string? search,int ? categoryId = null, List<int> destinationId = null, int? month = null, decimal? minPrice = null, decimal? maxPrice = null, string sort = "A_to_Z")
+
+        public IActionResult Index(int? id, string? search, int? categoryId = null, List<int> destinationId = null, int? month = null, decimal? minPrice = null, decimal? maxPrice = null, string sort = "A_to_Z")
 
         {
-            
 
+          
             ViewBag.Search= search;
             var query = _context.Tours.Where(x => x.IsDeleted ==false).Include(x => x.TourImages.Where(x => x.PosterStatus ==true)).Include(x => x.Category).Include(x => x.Destination).AsQueryable();
 
@@ -39,11 +40,12 @@ namespace Final_Project_Travel.Controllers
             {
                 query =query.Where(x => x.CategoryId == categoryId);
             }
-            if (destinationId.Count>0)
+            if (destinationId.Count>0 ||id!=null)
             {
-                query = query.Where(x => destinationId.Contains(x.DestinationId));
+                query = query.Where(x => destinationId.Contains(x.DestinationId) ||x.DestinationId==id);
             }
 
+          
             if (month != null)
             {
 
@@ -52,22 +54,10 @@ namespace Final_Project_Travel.Controllers
             }
             if (search!= null)
             {
-                foreach (var item in query)
-                {
-                   
-                        query =query.Where(item => item.Name.Contains(search));
-                    
-                }
+               query = query.Where(x => x.Name.Contains(search) || x.Destination.Name.Contains(search));
+
             }
-            if (search!= null)
-            {
-                foreach (var item in query)
-                {
-                   
-                        query =query.Where(item => item.Destination.Name.Contains(search));
-                   
-                }
-            }
+           
 
             if (minPrice != null && maxPrice!=null)
             {

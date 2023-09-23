@@ -37,11 +37,13 @@
         <div class="items js-flickity" data-flickity-options='{"wrapAround": true,"freeScroll": true }'>
            @foreach (var item in Model.Destinations)
             {
+            
             <div class="item">
                 <div class="hover"></div>
                 <p>@item.Name</p>
                 <img src="~/manage/assets/uploads/destination/@item.ImageName" alt="">
             </div>
+           
         }
            
         </div>
